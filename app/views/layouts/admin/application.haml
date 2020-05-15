@@ -1,0 +1,61 @@
+!!!
+/ %html
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html.no-js
+  / <![endif]
+  %head
+    %title= admin_meta_title
+    %meta{:content => "width=device-width", :name => "viewport"}
+    = stylesheet_link_tag "admin/lib/bootstrap.min", :media => "all" 
+    = stylesheet_link_tag "admin/common", :media => "all"  
+    = stylesheet_link_tag "#{params[:controller]}.css", :media => "all"
+
+    = favicon_link_tag "admin/favicon.ico", :rel=>'shortcut icon', :type=>'image/x-icon'
+    = favicon_link_tag "admin/favicon.ico", :rel=>'icon', :type=>'image/x-icon'
+
+    /= javascript_include_tag "application"
+
+    /[if lt IE 9]
+      <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    /[if IE] <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    /[if lte IE 8]
+      <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+      <link rel="stylesheet" type="text/css" media="screen" href="/application/assets/css/ie8.css"  />
+
+
+    = javascript_include_tag "jquery"
+    = javascript_include_tag "jquery_ujs"
+    = javascript_include_tag "admin/common"
+    = javascript_include_tag "admin/lib/bootstrap.min"
+
+    = javascript_include_tag "#{params[:controller]}" if Rails.application.assets.find_asset("#{params[:controller]}")
+    = csrf_meta_tags
+    /[if lt IE 9]
+      <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+
+    = javascript_include_tag "admin/lib/jquery.fancybox"
+    = stylesheet_link_tag "admin/lib/jquery.fancybox", :media => "all", "data-turbolinks-track" => true
+
+    - if ['admin/properties', 'admin/listings'].include?(params[:controller]) && params[:action] == 'edit'
+      %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBTAJ_u96lpq6hTZepr9lpBxYSlsTlywJY"}
+      - if params[:controller] == 'admin/properties'
+        = javascript_include_tag "admin/map"
+      - if params[:controller] == 'admin/listings'
+        = javascript_include_tag "admin/map_for_listing"
+
+    - if params[:controller] == 'admin/statistics'
+      = javascript_include_tag "admin/lib/highcharts"
+      = javascript_include_tag "admin/lib/exporting"
+
+  %body
+    .full_width
+      %input#del_read{:type => 'hidden', :value => t("view.admin.common.del_read")}
+      %input#del_read_all{:type => 'hidden', :value => t("view.admin.common.del_read_all")}
+      = yield
+    .clearfix
+
+
+  = render partial: 'layouts/admin/modals'    

@@ -1,0 +1,23 @@
+.index
+  .decor
+  .top_content.index
+    .container
+      = render partial: 'layouts/header'
+
+      .margintop-80
+        .errors_block
+          .error_404
+            .container
+              .info
+                .error 400
+                .text
+                  .h2 
+                    Wrong
+                    %br
+                    page url
+                  .h4
+                    Sorry, you entered an incorrect
+                    %br
+                    page url.
+                    %br
+                    Try it from the beginning

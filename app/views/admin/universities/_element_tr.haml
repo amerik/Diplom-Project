@@ -1,0 +1,23 @@
+%td
+  = admin_default_checkbox_tr
+%td 
+  .normal
+    = element.decorate.position
+  .fast_edit       
+    %input.field_input{:type => 'text', :name => 'university[position]', :placeholder => 'Position', :value => element.position}
+%td 
+  .normal
+    = element.decorate.name
+  .fast_edit       
+    %input.field_input{:type => 'text', :name => 'university[name]', :placeholder => 'Name', :value => element.name}
+%td          
+  %ul.functions
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/element_tr"}}
+    %li
+      = link_to edit_admin_university_path(element) do
+        .icon.edit_function
+    %li
+      = link_to '#' do
+        .icon.delete_function{:data => {:id => element.id, :entity => @entity_table}}

@@ -1,0 +1,24 @@
+.available_lession
+  .availability Available lesson
+  .tool-tip
+    .tool-tip-header
+      .h4 Lesson information 
+      .ui.icon.cross.black.close
+    .tool-tip-body
+      = form_for Basket.new, :url => baskets_path, :method => :post do |f|
+        %input{:type => 'hidden', :name => 'month', :value => @month}
+        %input{:type => 'hidden', :name => 'year', :value => @year}
+        %input{:type => 'hidden', :name => 'day', :value => day_this}
+        .ui.calendar
+          - is_select = false
+          - hour_select = nil
+          - hours.each do |element|
+            - if @user_current.baskets.has_status('new').has_schedule(element.id).count == 0
+              - is_select = true
+              - hour_select = element
+          - if is_select
+            = select_hours(hours, hour_select, 'basket[schedule_id]', '', '', @user_current, false, "Select Time for Lesson:")
+            .ui.button.middle.fill-with-icon.background.background-prymary-gradient.border.rounded-8.color.color-white.create_basket
+              Schedule a lesson
+          - else
+            .h4{:style => "color: #52a3ef"} No shedules

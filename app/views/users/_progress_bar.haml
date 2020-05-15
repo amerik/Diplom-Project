@@ -1,0 +1,22 @@
+.progress_bar
+  .item.on-stage.item_stage_1{:class => "#{@user_current.step_profile > 0 ? 'stage-reached' : ''}"}
+    / .stage-reached
+    .number
+      %span.circle.ui.border.rounded-100 
+        1
+        .ui.icon.check.white
+    .text Personal Information
+
+  .item.item_stage_2{:class => "#{@user_current.step_profile >= 1 ? 'on-stage' : ''} #{@user_current.step_profile > 1 ? 'stage-reached' : ''}"}
+    .number
+      %span.circle.ui.border.rounded-100 
+        2
+        .ui.icon.check.white
+    .text Choice of Specialization     
+    
+  .item.item_stage_3{:class => "#{@user_current.step_profile >= 2 ? 'on-stage' : ''}"}
+    .number
+      %span.circle.ui.border.rounded-100 
+        3
+        .ui.icon.check.white
+    .text Additional Information  

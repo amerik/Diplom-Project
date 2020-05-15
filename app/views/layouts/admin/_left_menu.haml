@@ -1,0 +1,144 @@
+.type_1_menu
+  .left_menu
+    .list_menu
+      %ul.first
+
+        %li{:class => "#{['admin/messages', 'admin/reviews', 'admin/statistics'].include?(params[:controller]) || (params[:controller] == 'admin/categories' && params[:has_kind] == 'message') ? 'active' : ''}"}
+          = link_to '#', :class => 'docs' do 
+            %span.icon
+            Messages
+          %ul
+
+        %li{:class => "#{['admin/notifications', 'admin/pages', 'admin/meta_tags', 'admin/achivments', 'admin/partners', 'admin/reviews', 'admin/categories', 'admin/page_helps'].include?(params[:controller]) || (params[:controller] == 'admin/categories' && params[:has_kind] == 'article') ? 'active' : ''}"}
+          = link_to admin_pages_path, :class => 'pages' do 
+            %span.icon
+            Pages
+          %ul
+            - if @user_current.is_privilege?('see', 'notifications')
+              %li
+                = link_to admin_notifications_path do
+                  .label
+                    %span.text Notifications
+            - if @user_current.is_privilege?('see', 'meta_tags')
+              %li
+                = link_to admin_meta_tags_path do
+                  .label
+                    %span.text Meta tags
+            - if @user_current.is_privilege?('see', 'achivments')
+              %li
+                = link_to admin_achivments_path do
+                  .label
+                    %span.text Achivments
+            - if @user_current.is_privilege?('see', 'partners')
+              %li
+                = link_to admin_partners_path do
+                  .label
+                    %span.text Partners
+            - if @user_current.is_privilege?('see', 'partners')
+              %li
+                = link_to admin_reviews_path do
+                  .label
+                    %span.text Reviews 
+            - if @user_current.is_privilege?('see', 'categories')
+              %li
+                = link_to admin_categories_path do
+                  .label
+                    %span.text Categories 
+            - if @user_current.is_privilege?('see', 'page_helps')
+              %li
+                = link_to admin_page_helps_path do
+                  .label
+                    %span.text Page Helps                                                            
+
+        %li{:class => "#{['admin/users', 'admin/universities', 'admin/user_emails', 'admin/roles', 'admin/privileges', 'admin/request_users'].include?(params[:controller]) ? 'active' : ''}"}
+          = link_to admin_users_path, :class => 'users' do 
+            %span.icon
+            Users
+          %ul
+            - if @user_current.is_privilege?('see', 'users')
+              %li
+                = link_to admin_users_path do
+                  .label
+                    %span.text Students
+            - if @user_current.is_privilege?('see', 'mentors')
+              %li
+                = link_to mentors_admin_users_path do
+                  .label
+                    %span.text Mentors
+            - if @user_current.is_privilege?('see', 'moderators')
+              %li
+                = link_to moderators_admin_users_path do
+                  .label
+                    %span.text Moderators
+            - if @user_current.admin?
+              %li
+                = link_to admin_roles_path do
+                  .label
+                    %span.text Roles
+            - if @user_current.is_privilege?('see', 'options')
+              %li
+                = link_to admin_universities_path do
+                  .label
+                    %span.text Universities
+            - if @user_current.is_privilege?('see', 'request_users')
+              %li
+                = link_to admin_request_users_path do
+                  .label
+                    %span.text Subscribes
+
+        - if @user_current.is_privilege?('see', 'settings')
+          %li{:class => "#{['admin/countries', 'admin/cities', 'admin/locations', 'admin/options'].include?(params[:controller]) ? 'active' : ''}"}
+            = link_to admin_options_path, :class => 'settings' do 
+              %span.icon
+              Settings
+            %ul
+              - if @user_current.is_privilege?('see', 'options')
+                %li
+                  = link_to admin_options_path do
+                    .label
+                      %span.text= t("view.admin.option.options")
+              - if @user_current.is_privilege?('see', 'options')
+                %li
+                  = link_to admin_countries_path do
+                    .label
+                      %span.text= t("view.admin.common.countries")
+              - if @user_current.is_privilege?('see', 'options')
+                %li
+                  = link_to admin_cities_path do
+                    .label
+                      %span.text= t("view.admin.common.cities")
+
+    = link_to exit_admin_users_path, :class => 'exit' do 
+      %span.icon
+      Exit   
+
+.type_2_menu
+  .menu_activator
+  .left_menu      
+    .list_menu
+      %ul.first
+        %li
+          = link_to '#', :class => 'profile' do 
+            %span.icon
+        %li
+          = link_to '#', :class => 'settings' do 
+            %span.icon
+        %li
+          = link_to '#', :class => 'docs' do 
+            %span.icon
+        %li
+          = link_to '#', :class => 'media' do 
+            %span.icon
+        %li
+          = link_to '#', :class => 'instruments' do 
+            %span.icon
+        %li
+          = link_to '#', :class => 'users' do 
+            %span.icon
+        %li
+          = link_to '#', :class => 'pages' do 
+            %span.icon
+
+    = link_to exit_admin_users_path, :class => 'exit' do 
+      %span.icon
+          

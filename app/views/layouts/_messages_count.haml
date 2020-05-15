@@ -1,0 +1,4 @@
+- if count>0
+  = link_to "#{@user_current.role_kind == 'client' ? my_mentor_schedules_path : my_student_profiles_path(:user_id => last_message.user_sender_id) }" do
+    .messages.messages_count
+      .count= count

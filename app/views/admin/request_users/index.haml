@@ -1,0 +1,24 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'                         
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to 'Subscribes', admin_request_users_path
+
+    .h3.marginbottom-20= 'Subscribes'
+    
+    .default_table
+      %table.table.table-striped.table-condensed
+        %tr
+          %th
+            E-mail
+          %th
+            Date
+
+        - @elements.each do |element|
+          %tr{:data => {:id => element.id}}
+            = render partial: "admin/#{@entity_table}/element_tr", :locals => {:element => element}
+
+    = admin_pagginate(@url, @params_pagginate, @page, params)

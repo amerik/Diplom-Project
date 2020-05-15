@@ -1,0 +1,14 @@
+.user_cabinet
+  %header
+    .wrapper
+      = link_to root_path do
+        %img.logo{:src => '/assets/logo_x189.png'}
+
+  = render partial: 'users/progress_bar'  
+  
+  .stages{:data => {:role => @user_current.role_kind}}
+    = render partial: 'users/stage_1'
+    = render partial: 'users/stage_2'
+    = render partial: 'users/stage_3'
+        
+  = render partial: 'layouts/footer'

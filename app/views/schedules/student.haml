@@ -1,0 +1,172 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .tab
+        - unless @user_current.get_schedule_current.nil?
+          .ui.buttons-wrap.border.rounded-8
+            = link_to @user_current.client? ? student_schedules_path : mentor_schedules_path do
+              .button.relative.ui.middle.color.color-black.border.inline-block
+                .text
+                  Lesson
+            = link_to @user_current.client? ? student_schedules_path(:is_forcibly => true) : mentor_schedules_path(:is_forcibly => true) do
+              .button.relative.ui.middle.fill-with-icon.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block
+                .text
+                  Calendar
+        - else
+          .button.ui.middle.fill-with-icon.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block.show_order
+            .text
+              %span.count.count_baskets.marginright-10= @baskets.count
+              Awaiting confirmation
+              %span.icon.customize.right
+
+        = render partial: 'schedules/menu_student'
+
+        - if @my_mentor.nil?
+          .tab-body.min-height
+            = render partial: 'profiles/search_mentor', :locals => {:related => 'schedules'}
+        - else
+          .tab-body
+            .marginbottom-50
+              %h1.inline-block Plan a session with a mentor:
+              .mentor-info
+                .avatar
+                  %img{:src => @my_mentor.profile.image_url('42x42', 'png')}
+                .name= @my_mentor.profile.decorate.full_name
+                .ui.button.small.border.border-1.border-light-gray.rounded-8.color.color-dark.change_mentor{:data => {:id => @user_current.id } } Change mentor
+            .change-month
+              = link_to student_schedules_path(:year => (DateTime.new(@year, @month, 1) - 1.months).year, :month => (DateTime.new(@year, @month, 1) - 1.months).month), :class => 'change_month prev' do
+                %span.ui.icon.inline-block.arrowleft.black
+              .month 
+                = t("datetime.month_full_name.m_#{@month}")
+                %span= @year
+              = link_to student_schedules_path(:year => (DateTime.new(@year, @month, 1) + 1.months).year, :month => (DateTime.new(@year, @month, 1) + 1.months).month), :class => 'change_month next' do
+                %span.ui.icon.inline-block.arrowright.black
+
+            - first_day = 0
+            - is_check_first_day = true
+            - is_true_first_data = false
+            .calendar_lesions_student
+              .weak.names
+                .item sun
+                .item mon
+                .item tue
+                .item wed
+                .item thu
+                .item fri
+                .item sat
+              - last_day = (DateTime.new(@year, @month, 1) - 1.months).end_of_month.day
+              - next_day = 1
+              - 0.upto(5) do |row|
+                .weak
+                  - 0.upto(6) do |day|
+                    - if DateTime.new(@year, @month, 1).beginning_of_month.wday == day && is_check_first_day
+                      - if day == 0
+                        - is_true_first_data = true
+                      - first_day = day + (row * 7)
+                      - is_check_first_day = false
+                    - day_this = day + 1 + (row * 7) - first_day
+
+                    - if (first_day > 0 || is_true_first_data) && DateTime.new(@year, @month, 1).end_of_month.day >= day_this
+                      .item.day_item_body{:class => "day_item_body_#{@year}_#{@month}_#{day_this} #{day_this == DateTime.now.day ? 'today' : ''}"}
+                        = render partial: 'schedules/item_day', :locals => { :day_this => day_this }
+                    - else
+                      - if row < 2
+                        .item.last-month
+                          %span.day
+                            = last_day - (7 - (day + 1) - (7 - DateTime.new(@year, @month, 1).wday))
+                      - else
+                        .item.next-month
+                          %span.day
+                            = next_day
+                            - next_day += 1
+
+
+              / .weak
+              /   .item.last-month
+              /     %span.day 26
+              /   .item.last-month
+              /     %span.day 27
+              /   .item.last-month
+              /     %span.day 28
+              /   .item
+              /     %span.day 1
+              /   .item.day-passed
+              /     %span.day 2
+              /     = render partial: 'schedules/available_lession'        
+              /   .item
+              /     %span.day 3
+              /   .item.day-passed
+              /     %span.day 4
+              /     = render partial: 'schedules/available_lession'                
+              / .weak
+              /   .item
+              /     %span.day 5
+              /   .item
+              /     %span.day 6
+              /   .item.today
+              /     %span.day 7
+              /     = render partial: 'schedules/scheduled_lesson'  
+              /   .item
+              /     %span.day 8
+              /   .item
+              /     %span.day 9                
+              /   .item
+              /     %span.day 10
+              /     = render partial: 'schedules/available_lession'                    
+              /   .item
+              /     %span.day 11
+              / .weak
+              /   .item
+              /     %span.day 12
+              /   .item
+              /     %span.day 13
+              /   .item
+              /     %span.day 14
+              /     .place_occupied
+              /       .availability Place occupied                
+              /   .item
+              /     %span.day 15
+              /   .item
+              /     %span.day 16
+              /     = render partial: 'schedules/scheduled_lesson'            
+              /   .item
+              /     %span.day 17
+              /   .item
+              /     %span.day 18   
+              / .weak
+              /   .item
+              /     %span.day 19
+              /     .place_occupied
+              /       .availability Place occupied
+              /   .item
+              /     %span.day 20
+              /   .item
+              /     %span.day 21
+              /     = render partial: 'schedules/available_lession'                 
+              /   .item
+              /     %span.day 22
+              /   .item
+              /     %span.day 23
+              /   .item
+              /     %span.day 24
+              /   .item
+              /     %span.day 25     
+              / .weak
+              /   .item
+              /     %span.day 26
+              /   .item
+              /     %span.day 27
+              /     = render partial: 'schedules/available_lession'                
+              /   .item
+              /     %span.day 28
+              /   .item
+              /     %span.day 29
+              /   .item
+              /     %span.day 30
+              /   .item
+              /     %span.day 31
+              /   .item.next-month
+              /     %span.day 1

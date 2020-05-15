@@ -1,0 +1,21 @@
+.default_dropdown.dropdown{:class => "#{cl_button}"}
+  %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+    .text
+      - if !element_select.nil? && element_select != ""
+        - if cl_button == 'btn'
+          = t("#{i18n}#{element_select}")
+        - else
+          = t("#{i18n}#{element_select}")
+      - else
+        - if cl_button == 'btn'
+          = init_text
+        - else
+          = init_text
+    %span.caret_x
+  %ul.dropdown-menu
+    - if is_init
+      %li{:class => "#{class_li}", :data => {:id => ''}}= link_to init_text, '#'
+    - elements.each do |element|
+      - if element != 'true' && element != 'false'
+        %li{:class => "#{class_li}", :data => {:id => element}}= link_to t("#{i18n}#{element}"), '#'
+  %input.select_value{:type => 'hidden', :name => name, :value => !element_select.nil? ? element_select : ''}

@@ -1,0 +1,50 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'                         
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to 'Page Helps', admin_page_helps_path
+    .h3.marginbottom-20= 'Page Helps'
+    .filters_block
+      = form_for PageHelp.new, :url => admin_page_helps_path, :method => :get do |f|
+        %input{:type => 'hidden', :name => 'page', :value => 1}
+        .filter.inline-block.marginleft-25
+          %span.inline-block Kind
+          %span.inline-block.marginleft-20= admin_select_enumerize(Category.kind.values, params[:has_kind], 'has_kind', 'model.category.alias.', '', false, 'Select Category', 'bordered rounded width-150')
+
+
+        .filter.inline-block.marginleft-10
+          %span.inline-block Category
+          %span.inline-block.marginleft-20= admin_select_standart(Category.sort, @category_select, 'has_category', '', false, 'Select Category', 'bordered rounded width-250')
+
+    
+        .inline-block.marginleft-10
+          = link_to 'search', '#', :class => 'default_button dark search_entities'
+          = link_to 'reset', admin_page_helps_path, :class => 'default_button'
+
+    .new_entity
+      = link_to new_admin_page_help_path, :class => 'create_new' do 
+        %span.text create new
+        %span.ball
+
+    .filters_block      
+      .inline-block.marginleft-10
+        = link_to 'delete selected', '#', :class => 'default_button dark del_checking_tr', :data => {:entity => @entity_table}
+    
+    .default_table
+      %table.table.table-striped.table-condensed
+        %tr
+          %th= admin_default_checkbox_th
+          %th Name                             
+          %th Category
+          %th Description
+          %th Kind
+          %th
+
+        - @elements.each do |element|
+          %tr{:data => {:id => element.id}}
+            = render partial: "admin/#{@entity_table}/element_tr", :locals => {:element => element}
+
+    = admin_pagginate(@url, @params_pagginate, @page, params)

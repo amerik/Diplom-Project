@@ -1,0 +1,12 @@
+.row
+  .col-md-6.col-xs-12
+
+    = render partial: "admin/meta_tags/form_data", :locals => { :f => f, :entity => meta_tag }
+
+    .margintop-20
+    .default_label H1
+    %input.default_input_text.width-350{:name => 'translation_page[h1]', :value => entity.h1}
+
+    .margintop-20
+    .default_label Description
+    %textarea.default_input_text.width-350.ckeditor{:name => 'translation_page[description]'}= entity.description

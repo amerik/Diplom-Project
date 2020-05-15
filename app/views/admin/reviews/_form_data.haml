@@ -1,0 +1,30 @@
+.row
+  .col-md-6.col-xs-12
+
+    .margintop-20
+    .default_label Image
+    - unless entity.image.file.nil?
+      %img{:src => entity.image_url('165x165')}
+    %input.default_input_text.width-350{:name => 'review[image]', :type => 'file'}
+
+    .margintop-20
+    .default_label Name
+    %input.default_input_text.width-350{:name => 'translation[name]', :value => entity.name}
+
+    .margintop-20
+    .default_label Location
+    %input.default_input_text.width-350{:name => 'translation[location]', :value => entity.location}
+
+    .margintop-20
+    .default_label Position
+    %input.default_input_text.width-350{:name => 'review[position]', :value => entity.position}
+
+    .margintop-20
+    .default_label User
+    = admin_select_standart(User.has_role('mentor').sort, entity.user_id.nil? ? nil : entity.user, 'review[user_id]', '', false)
+
+
+    .margintop-20
+    .default_label Description
+    %textarea.default_input_text.width-350.ckeditor{:name => 'translation[description]'}= entity.description
+

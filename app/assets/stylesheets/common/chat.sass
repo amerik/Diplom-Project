@@ -1,0 +1,122 @@
+@import "common/mixing"
+@import "common/ui-mixin"
+@import "lib/jquery.mCustomScrollbar"
+
+.chat-block
+  width: 408px
+  position: absolute
+  overflow: hidden
+  .chat-wrapper
+    position: relative
+    width: 100%
+    height: 100%
+    .chat-header
+      height: 53px
+      background: #FFFFFF
+      border-bottom: 1px solid #EBEBEB
+      padding: 0px 30px
+      @include box_shadow(0px, 6px, 24px, rgba(0,0,0,0.03))
+      .h5
+        font-size: 18px
+        color: #1A2028
+        font-weight: 700
+        float: left
+        margin: 0px
+        line-height: 53px
+        &.with-icon-status
+          &:before
+            background: url('/assets/chat-status.png')
+            display: inline-block
+            vertical-align: middle
+            margin-right: 10px
+            width: 20px
+            height: 20px
+            content: ''
+      .date
+        line-height: 53px
+        float: right
+        color: #1A2028
+        font-size: 14px
+        font-weight: 400
+    .chat-body
+      height: calc(100% - (53px + 83px))
+      background: #FFFFFF
+      margin-bottom: 12px
+      .chat-area
+        height: 95%
+        position: relative
+        padding: 0px 0px 10px 10px
+        overflow: auto
+        .mCSB_inside > .mCSB_container
+          margin-right: 8px
+        .chat-item
+          position: relative
+          clear: both
+          max-width: 80%
+          margin-top: 10px
+          margin-bottom: 10px
+          p
+            margin-bottom: 0px
+          &.you
+            float: left
+          &.other-user
+            float: right
+            margin-right: 10px
+            .text
+              background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+              color: #FFFFFF
+
+            .date
+              text-align: right
+              padding-right: 25px
+          .text
+            background: #FFFFFF
+            @include rounded(100px)          
+            font-size: 14px
+            font-weight: 500
+            @include box_shadow(0px, 8px, 24px, rgba(0,0,0,0.12))
+            padding: 10px 25px
+          .date
+            color: rgba(26,32,40,0.3)
+            font-weight: 400
+            font-size: 10px
+            padding-left: 25px
+            padding-top: 5px
+      .somebody-writing
+        opacity: 0.3
+        font-size: 14px
+        color: #1A2028
+        padding: 0px 30px
+        .icon
+          margin-right: 10px
+    .chat-footer
+      height: 71px
+      background: #FFFFFF
+      border-top: 1px solid #EBEBEB
+      padding: 0px 45px 0px 30px
+      .input
+        margin-top: 13px
+        input[type="text"]
+          padding-right: 80px
+        .file-attach
+          position: absolute
+          width: 28px
+          opacity: 0.3
+          height: 28px
+          right: 45px
+          top: 9px
+          cursor: pointer
+        .chat-send
+          right: -16px
+          top: 0px
+          width: 46px
+          height: 46px
+          position: absolute
+          z-index: 2
+          @include rounded(100%)
+          cursor: pointer
+          background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+          .icon
+            width: 24px
+            height: 24px
+            margin: 10px

@@ -1,0 +1,23 @@
+.video_items_container{:data => {:perpage => per_page}}
+  - if videos.count > 0
+    %ul.video_list
+      - videos.each do |video|
+        - unless video.nil?
+          %li
+            = link_to '#', :data => {:file => "/videos/#{video.file}.webm", :id => "#{video.id}", :history => "#{video.schedule.decorate.date_day_with_time}"}, :class => "video_link" do
+              .wrapper
+                .pull-left
+                  .h4 Session Date:
+                  / March 3, 2018 (14:00-15:00)
+                  .p= video.schedule.decorate.date_day_with_time
+                .pull-right
+                  .h4 Mentor:
+                  .p= video.schedule.mentor.profile.decorate.full_name
+
+  - else  
+    .p.text-center.text-uppercase There are no videos in this period               
+
+
+- if @count_elements >= per_page
+  .clearfix
+  = pagginate(@url, @params_pagginate, @page, params, 'load_videos_next')  

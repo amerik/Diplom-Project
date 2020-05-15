@@ -1,0 +1,17 @@
+.top_header
+  = link_to root_path do
+    %img.logo.v-middle{:src => '/assets/logo.png'}
+  .nav.v-middle
+    %ul
+      %li= link_to 'Home', root_path, :class => "#{params[:controller] == 'index' && params[:action] == 'index' ? 'active' : ''}"
+      %li= link_to 'About', about_index_index_path, :class => "#{params[:controller] == 'index' && params[:action] == 'about' ? 'active' : ''}"
+      %li= link_to 'Pricing', pricing_index_index_path, :class => "#{params[:controller] == 'index' && params[:action] == 'pricing' ? 'active' : ''}"
+      %li= link_to 'Mentors', mentors_index_index_path, :class => "#{params[:controller] == 'index' && params[:action] == 'mentors' ? 'active' : ''}"
+
+  - unless @user_current.auth?      
+    .login.v-middle
+      = link_to 'Sign Up', '#', :class => 'sign-up'
+      = link_to 'Log In', '#', :class => 'log-in'
+  - else
+    .pull-right.margintop-10
+      = render partial: 'layouts/user_auth'

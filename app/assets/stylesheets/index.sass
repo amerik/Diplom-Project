@@ -1,0 +1,1163 @@
+@import "lib/slick"
+
+.index
+  position: relative
+  .decor
+    background: url('/assets/decorations.svg') no-repeat
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-size: 99%
+    background-position: center 38%
+    z-index: -1
+    max-width: 1300px
+    margin: auto
+    opacity: 0.4
+  .top_content
+    position: relative
+    .top_header
+      margin-top: 13px
+      &>a
+        display: inline-block
+      .logo
+        display: inline-block
+      .nav
+        margin-left: 100px
+        display: inline-block
+        ul
+          padding: 0px
+          list-style: none
+          margin: 0px
+          overflow: hidden
+          
+          li
+            margin-right: 39px
+            float: left
+            a
+              font-weight: 300
+              font-size: 16px
+              line-height: 20px
+              text-align: left   
+              color: #ffffff     
+              font-style: normal 
+              text-decoration: none
+              &:hover,
+              &.active
+                text-shadow: 0px 0px 10px #FFFFFF
+      .login
+        margin-left: 100px
+        display: inline-block
+        a
+          font-weight: 300
+          font-size: 16px
+          line-height: 24px
+          text-align: left   
+          color: #ffffff  
+          font-style: normal
+          text-decoration: none
+          &:hover
+            text-shadow: 0px 0px 10px #FFFFFF          
+          &.log-in
+            margin-left: 24px
+            border: 1px solid #FFFFFF
+            box-sizing: border-box
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.06)
+            border-radius: 8px   
+            text-align: center
+            font-weight: 500
+            padding: 11px 32px
+            
+    .decor
+      height: 754px
+      background: url('/assets/top_content_decor.svg') no-repeat
+    .bg_gradient
+      background: url('/assets/bg_gradient.svg') no-repeat
+      background-size: cover
+      position: absolute
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      z-index: 0
+      background-position-x: center
+      background-position-y: bottom  
+      background-color: #FFFFFF
+    &.index
+      height: 710px
+      .left_content
+        width: 575px
+        margin-top: 45px
+        h1
+          font-style: normal
+          font-weight: 700
+          line-height: normal
+          font-size: 48px
+          color: #FFFFFF   
+          margin-bottom: 6px
+          margin-top: 0px
+        .h2
+          margin-top: 0px
+          font-style: normal
+          font-weight: 300
+          line-height: normal
+          font-size: 28px
+          color: #FFFFFF 
+          margin-bottom: 41px
+        p
+          font-style: normal
+          font-weight: normal
+          line-height: 26px
+          font-size: 16px
+          color: #FFFFFF   
+          margin-top: 0px
+        a.get_started
+          margin-top: 54px
+          display: inline-block
+          font-style: normal
+          font-weight: 500
+          line-height: normal
+          font-size: 18px
+          text-align: center
+          color: #000000  
+          background: #FFFFFF
+          box-shadow: 0px 10px 24px rgba(255, 255, 255, 0.4)
+          border-radius: 8px
+          padding: 18px 49px
+          text-decoration: none    
+      .tree_illlustration
+        position: absolute
+        width: 461px
+        height: 421px
+        left: 50.99%
+        right: 25%
+        top: 100px    
+    &.pricing,
+    &.about
+      height: 609px
+      .center_content
+        margin-top: 70px
+        h1
+          font-style: normal
+          font-weight: 700
+          line-height: normal
+          font-size: 42px
+          text-align: center
+          color: #FFFFFF
+          margin: 0px
+          span
+            font-weight: 300
+            font-family: "intro_lightregular"
+            letter-spacing: 16px
+            padding-left: 16px           
+          &:before,
+          &:after
+            content: ''
+            width: 40px
+            height: 3px
+            background: #ffffff
+            vertical-align: middle
+            display: inline-block
+          &:before
+            margin-right: 8px
+          &:after
+            margin-left: 8px
+
+        .h5
+          margin-top: 0px
+          font-style: normal
+          font-weight: 300
+          line-height: normal
+          font-size: 28px
+          text-align: center
+          color: #FFFFFF
+
+  .why_we_are_called
+    margin-top: 0px
+    .video
+      position: relative
+      display: inline-block
+      margin-top: 135px
+      .placeholder
+        background: #FFFFFF
+        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.06)
+        border-radius: 10px    
+        width: 551px
+        height: 367px
+        overflow: hidden
+      .play_button
+        background: url('/assets/play_button.png')
+        width: 101px
+        height: 100px
+        position: absolute
+        z-index: 2
+        top: 0
+        bottom: 0
+        right: 0
+        left: 0
+        margin: auto
+        cursor: pointer
+    img.max-560
+      width: 560px
+    .right_part
+      display: inline-block
+      vertical-align: top
+      margin-left: 60px
+      width: 525px
+      h2
+        font-style: normal
+        font-weight: 700
+        line-height: 54px
+        font-size: 42px
+        color: #000000  
+        margin-top: 0px
+        margin-bottom: 15px
+        span
+          display: block
+          font-weight: normal
+          font-family: 'intro_lightregular'
+          letter-spacing: 16px
+          margin-top: 10px
+      p
+        font-style: normal
+        font-weight: normal
+        line-height: 28px
+        font-size: 16px
+        color: #000000        
+      ul
+        padding: 0px
+        margin: 0px
+        margin-top: 22px
+        list-style: none
+        li
+          display: block
+          margin-bottom: 15px
+          .check
+            background: url('/assets/check.png')
+            width: 25px
+            height: 27px
+            display: inline-block
+            vertical-align: middle          
+          .text
+            font-style: normal
+            font-weight: normal
+            line-height: 26px
+            font-size: 16px
+            color: #000000
+            display: inline-block
+            vertical-align: middle
+            margin-left: 18px    
+            width: calc(100% - 50px)             
+      .try_now
+        background: linear-gradient(0deg, #1A92EB 0%, #66B8F6 100%)
+        box-shadow: 0px 10px 24px rgba(96, 181, 246, 0.3)
+        border-radius: 8px
+        font-style: normal
+        font-weight: 500
+        line-height: normal
+        font-size: 18px
+        text-align: center
+        color: #FFFFFF     
+        display: block
+        padding: 18px 0px
+        margin-top: 40px
+        text-decoration: none
+        &.short
+          display: inline-block
+          padding: 18px 50px
+  .how_it_works
+    margin-top: 140px
+    h2
+      font-style: normal
+      font-weight: 700
+      line-height: normal
+      font-size: 42px
+      text-align: center
+      color: #000000     
+      margin-top: 0px
+      margin-bottom: 70px
+    .choosing-mentor
+      margin-bottom: 67px
+      ul
+        padding: 0px
+        margin: 0px
+        border: 2px solid #E1E1E1
+        box-sizing: border-box
+        border-radius: 6px   
+        list-style: none
+        display: table
+        margin: 0px auto     
+        li 
+          float: left
+          width: 235px    
+          height: 68px
+          position: relative   
+          a
+            padding: 23px 0px
+            font-style: normal
+            font-weight: 500
+            line-height: normal
+            font-size: 18px
+            text-align: center     
+            color: #000000      
+            display: block
+            text-decoration: none
+            position: absolute
+            background: #FAFAFA
+            border: 1px solid #E1E1E1
+            box-sizing: border-box           
+            left: -1px
+            right: 1px
+            top: -1px
+            bottom: -1px
+            margin: auto
+            &:after
+              content: ""
+              border: 8px solid transparent
+              border-left-color: #E5E5E5
+              position: absolute
+              right: -17px
+              z-index: 2
+              top: 27px
+            &:before
+              content: ""
+              border: 8px solid transparent
+              border-left-color: #FAFAFA
+              position: absolute
+              right: -14px
+              z-index: 3
+              top: 27px
+
+            &.active
+              background: linear-gradient(180deg, #64B7F6 0%, #1D94EC 100%)          
+              top: -2px
+              bottom: -2px
+              left: -2px
+              color: #FFFFFF
+              right: -1px  
+              &:after
+                display: none
+              &:before
+                border-left-color: #34a1ef
+                right: -14px
+              &:nth-last-child(1)
+                right: -2px
+
+          &:nth-child(1)
+            a
+              border-radius: 6px 0px 0px 6px 
+          &:nth-last-child(1)
+            a
+              border-radius: 0px 6px 6px 0px     
+              right: -1px 
+              &:after,
+              &:before
+                display: none   
+    p
+      line-height: 28px
+      font-size: 16px
+      text-align: center
+      color: #000000
+      width: 721px         
+      display: table
+      margin: 0px auto
+    .contents
+      margin-top: 65px
+      display: none
+      &.first
+        display: block
+    img.how-works-image
+      display: block
+      margin: 63px auto
+    small
+      line-height: 20px
+      font-size: 14px
+      text-align: center
+      color: #000000
+      mix-blend-mode: normal
+      opacity: 0.4  
+      display: block  
+  .why__need_mentor
+    position: relative
+    height: 1450px
+    margin-top: 118px
+    .left_content,
+    .right_content
+      margin-top: 400px
+      width: 50%
+      float: left
+      position: relative
+      .details
+        width: 493px
+        float: left
+        &.to-right
+          float: right
+          &:before
+            content: ''
+            position: absolute
+            background: url('/assets/line.png')
+            width: 1px
+            height: 664px
+            left: 0
+        .icon
+          display: inline-block
+          vertical-align: middle
+        h3
+          font-style: normal
+          font-weight: bold
+          line-height: 44px
+          font-size: 42px
+          color: #FFFFFF      
+          vertical-align: middle
+          display: inline-block
+          margin-left: 20px
+        ul
+          padding: 0px
+          margin: 0px
+          margin-top: 30px
+          list-style: none
+          li
+            display: block
+            margin-bottom: 15px
+            .check
+              background: url('/assets/check_white.png')
+              width: 26px
+              height: 27px
+              display: inline-block
+              vertical-align: middle          
+            .text
+              font-style: normal
+              font-weight: normal
+              line-height: 26px
+              font-size: 18px
+              color: #FFFFFF
+              display: inline-block
+              vertical-align: middle
+              margin-left: 18px    
+              width: calc(100% - 50px) 
+        a.mentor
+          background: #FFFFFF
+          box-shadow: 0px 10px 24px rgba(255, 255, 255, 0.4)
+          border-radius: 8px   
+          font-style: normal
+          font-weight: 500
+          line-height: normal
+          font-size: 18px
+          text-align: center
+          color: #000000 
+          padding: 18px 50px
+          margin-top: 70px
+          text-decoration: none
+          display: inline-block        
+    .bg
+      background: url('/assets/why_do_you_bg.svg') no-repeat
+      background-size: cover
+      position: absolute
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      z-index: 0
+      background-position-x: center
+      background-position-y: bottom  
+      background-color: #FFFFFF  
+  .our_partners  
+    margin-top: 157px
+    h2
+      font-style: normal
+      font-weight: 700
+      line-height: normal
+      font-size: 42px
+      text-align: center
+      color: #000000      
+    .partners_slider-wrapper
+      width: 1045px
+      height: 75px
+      display: table
+      margin: 30px auto
+      margin: 30px auto
+      .partners_slider
+        margin: 0px -12px
+        img
+          display: inline-block
+          vertical-align: middle
+          margin: 0px 23px
+        .slick-arrow
+          width: 26px
+          height: 27px
+          background: url('/assets/partners/left_control.png') no-repeat
+          border: none
+          outline: none
+          color: transparent
+          position: absolute
+          top: 18px
+          left: -47px
+          &.slick-prev 
+            left: initial
+            right: -47px
+            background: url('/assets/partners/right_control.png') no-repeat
+        .slick-list
+          width: 1062px
+  .our_mentors 
+    margin-top: 220px
+    h2
+      font-style: normal
+      font-weight: 700
+      line-height: normal
+      font-size: 42px
+      text-align: center
+      color: #000000  
+      margin-bottom: 40px
+      span
+        letter-spacing: 16px
+        font-family: "intro_lightregular"
+        font-weight: normal
+      &+p
+        width: 925px
+        display: table
+        margin: 0px auto
+    p
+      line-height: 24px
+      font-size: 16px
+      text-align: center
+      color: #000000  
+    .mentors_slider
+      .slider-bar
+        display: table
+        margin: 34px auto
+        .items_list
+          margin: 0px -20px
+          a
+            display: inline-block
+            margin: 0px 20px
+            &.active
+              img
+                opacity: 1
+          img
+            border-radius: 50%
+            width: 42px
+            height: 42px
+            opacity: 0.5
+            -webkit-transition: .5s opacity
+            transition: .5s opacity
+            -webkit-transition-delay: .5s opacity
+            transition-delay: .5s opacity            
+      .slider-item-selected
+        width: 780px
+        margin: 37px auto
+        position: relative
+        min-height: 400px
+
+        .control
+          width: 12px
+          height: 20px
+          position: absolute
+          left: 32%
+          top: 70px
+          z-index: 1
+          margin: auto
+          color: transparent
+          background: url('/assets/mentors/left_arrow.png')
+          &.next
+            background: url('/assets/mentors/right_arrow.png')
+            right: 32%
+            left: inherit
+        .slide_contents
+          position: absolute
+          top: 0
+          visibility: hidden
+          opacity: 0
+          -webkit-transition: .5s opacity
+          transition: .5s opacity
+          -webkit-transition-delay: .7s opacity
+          transition-delay: .7s opacity
+          &.active
+            opacity: 1
+            visibility: visible
+            position: relative
+
+        .slider-part
+          width: 281px
+          display: table
+          margin: 0px auto
+          position: relative
+          img
+            width: 165px
+            height: 165px
+            border-radius: 50%
+            margin: 0px auto
+            display: block
+
+        .name
+          font-style: normal
+          font-weight: 300
+          line-height: 24px
+          font-size: 16px
+          text-align: center
+          letter-spacing: 1.37143px
+          color: #000000  
+          margin-top: 15px        
+        .title
+          font-style: normal
+          font-weight: normal
+          line-height: 24px
+          font-size: 12px
+          text-align: center
+          letter-spacing: 1.02857px
+          color: #000000
+          mix-blend-mode: normal
+          opacity: 0.3  
+          margin-bottom: 35px   
+        p
+          font-weight: normal
+          line-height: 24px
+          font-size: 16px
+          text-align: center
+          color: #000000             
+
+  .price_list
+    margin-top: 35px
+    img.icon
+      margin: 0px auto
+      display: block
+    h2
+      font-style: normal
+      font-weight: 700
+      line-height: 42px
+      font-size: 42px
+      text-align: center
+      color: #000000   
+    p
+      line-height: 24px
+      font-size: 16px
+      text-align: center
+      color: #1A2028
+
+    .price_items
+      display: table
+      width: 740px
+      margin: 95px auto 0px
+      .price_item
+        margin-right: 30px
+        display: block
+        float: left
+        width: calc(100%/2 - 20px)
+        background: #FFFFFF
+        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.06)   
+        position: relative
+        padding: 30px 40px
+        height: 435px
+        &:nth-last-child(1)
+          margin-right: 0px
+        img.icon
+          position: relative
+          margin-top: -84px
+        .h2
+          font-style: normal
+          font-weight: 700
+          line-height: 26px
+          font-size: 20px
+          text-align: center
+          color: #1A2028       
+          margin-top: 0px
+          display: block
+          span
+            font-weight: 300
+            font-size: 14px
+        .block
+          height: 270px
+        .line
+          background: linear-gradient(270deg, #FFFFFF 0%, #EBEBEB 47.76%, #FFFFFF 99.29%)
+          display: block
+          height: 1px    
+          margin: 20px 0px
+        .h3
+          font-style: normal
+          font-weight: normal
+          line-height: 28px
+          font-size: 18px
+          text-align: center
+          color: #1A2028    
+        .p
+          font-style: normal
+          font-weight: normal
+          line-height: 18px
+          font-size: 14px
+          text-align: center
+          color: rgba(26,32,40,0.4)
+          margin-bottom: 18px      
+        a.current-plan
+          background: #FFFFFF     
+          padding: 15px
+          display: block
+          font-style: normal
+          font-weight: 500
+          line-height: 22px
+          font-size: 14px
+          text-align: center
+          color: #1A2028
+          text-decoration: none
+          border-radius: 8px 
+          border: 1px solid #D6D6D6
+          box-sizing: border-box
+        a.get-start
+          background: linear-gradient(180deg, #66B8F6 0%, #1A92EB 100%)      
+          padding: 15px
+          display: block
+          font-style: normal
+          font-weight: 500
+          line-height: 22px
+          font-size: 14px
+          text-align: center
+          color: #FFFFFF
+          text-decoration: none
+          border-radius: 8px          
+
+  .become_mentor
+    margin-top: 100px
+    height: 320px
+    border: 3px solid #1A92EB
+    box-sizing: border-box  
+    padding: 0px
+    position: relative
+    z-index: 1
+    &:after
+      position: absolute
+      top: -30px
+      bottom: -30px
+      left: 30px
+      right: 30px
+      margin: auto
+      border: 1px solid #66B8F6
+      box-sizing: border-box
+      content: ''
+      z-index: 0
+    .h2
+      font-style: normal
+      font-weight: bold
+      line-height: 42px
+      font-size: 32px
+      text-align: center
+      color: #000000
+      margin-top: 60px
+      display: block
+    .become_a_mentor
+      border-radius: 8px
+      background: linear-gradient(180deg, #66B8F6 0%, #1A92EB 100%)
+      padding: 18px 63px
+      font-style: normal
+      font-weight: 500
+      line-height: 24px
+      font-size: 18px
+      text-align: center
+      color: #FFFFFF
+      display: table
+      margin: 30px auto 20px
+      text-decoration: none
+      position: relative
+      z-index: 1
+
+  .mission_and_promise
+    width: 1075px
+    display: table
+    margin: 0px auto
+    h3
+      font-style: normal
+      font-weight: 700
+      line-height: normal
+      font-size: 42px
+      text-align: left
+      color: #000000
+      margin-bottom: 15px
+    p
+      line-height: 28px
+      font-size: 16px
+      color: #000000
+
+    ul
+      padding: 0px
+      margin: 0px
+      margin-top: 22px
+      list-style: none
+      li
+        display: block
+        margin-bottom: 15px
+        .check
+          background: url('/assets/check.png')
+          width: 25px
+          height: 27px
+          display: inline-block
+          vertical-align: middle          
+        .text
+          font-style: normal
+          font-weight: normal
+          line-height: 26px
+          font-size: 16px
+          color: #000000
+          display: inline-block
+          vertical-align: middle
+          margin-left: 18px    
+          width: calc(100% - 50px) 
+
+    .content
+      width: 553px
+      display: inline-block
+    .our_mission
+      clear: both
+      margin-bottom: 160px
+      overflow: hidden
+    .our_promise
+      clear: both
+
+
+  .top_mentors_list
+    margin-top: 35px
+    h2
+      font-style: normal
+      font-weight: 700
+      line-height: 42px
+      font-size: 42px
+      text-align: center
+      color: #000000   
+    .mentors__list
+      margin: 30px 0px
+      .mentor_item
+        margin-bottom: 50px
+        box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.08)
+        .top-container
+          background: #FFFFFF
+          padding: 30px      
+          overflow: hidden
+          img
+            width: 130px
+            height: 130px
+            border-radius: 50%
+            float: left
+          .data-content
+            margin-left: 160px
+            width: calc(100% - 130px)
+            padding-right: 30px
+            .top-part
+              border-bottom: 1px solid #EBEBEB 
+              padding-bottom: 20px
+              overflow: hidden
+              padding-top: 10px
+              button
+                border: 1px solid #D6D6D6
+                box-sizing: border-box
+                border-radius: 8px   
+                font-weight: 500
+                line-height: 46px
+                font-size: 14px
+                text-align: center
+                color: #1A2028  
+                background: #FFFFFF
+                padding: 0px 30px                       
+            .bottom-part
+              padding: 20px 0px 0px
+              overflow: hidden
+              position: relative
+              &:before
+                content: ''
+                width: 1px
+                background: #EBEBEB
+                position: absolute
+                left: 0
+                right: 0
+                margin: auto
+                bottom: 15px
+                top: 15px
+              .left-part
+                width: 50%
+                float: left
+                padding-right: 30px              
+              .right-part
+                padding-left: 30px
+                width: 50%
+                float: left
+                .h5
+                  padding-bottom: 10px
+              .more-career-view
+                font-weight: 500
+                line-height: 24px
+                font-size: 14px
+                color: #1A92EB 
+                position: relative
+                &:after
+                  content: ''
+                  left: 0
+                  right: 0
+                  height: 1px 
+                  position: absolute     
+                  background: #1A92EB
+                  bottom: -1px         
+              .choice
+                ul
+                  padding: 0px
+                  margin-top: 10px
+                  list-style: none
+                  &.show-all
+                    li
+                      display: block !important                  
+                  li
+                    display: block
+                    padding-bottom: 18px
+                    .text
+                      display: block
+                      margin-left: 25px
+                    .p
+                      font-size: 14px
+                      font-weight: 400
+                      line-height: 18px
+                      color: #1A2028
+                      margin-bottom: 0px
+                      margin-top: 0px    
+                      &.h4
+                        font-size: 14px
+                        line-height: 22px
+                        font-weight: 700
+                        color: #1A2028                                     
+                    &:before
+                      width: 12px
+                      height: 12px
+                      border-radius: 100px
+                      background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+                      display: inline-block
+                      content: ""
+                      float: left
+                      margin-top: 5px
+                    &:not(:nth-child(1)):not(:nth-child(2))
+                      display: none             
+            .p
+              font-weight: normal
+              line-height: 22px
+              font-size: 12px
+              color: #1A2028           
+            .h5
+              font-weight: 500
+              line-height: 22px
+              font-size: 14px
+              color: #1A2028      
+              margin: 0px
+            .name
+              font-weight: 700
+              line-height: 26px
+              font-size: 20px
+              color: #1A2028   
+              margin: 5px 0px   
+            .position
+              font-style: normal
+              font-weight: normal
+              line-height: 22px
+              font-size: 14px
+              color: #1A2028                   
+        .bottom-container
+          padding: 30px
+          background: #FEFEFE
+          box-shadow: inset 0px 10px 24px rgba(0, 0, 0, 0.08)
+          //overflow: hidden
+          .student-reviews
+            margin: 0px -15px
+            .review-item
+              width: calc(100% / 3)
+              padding: 15px
+              float: left
+              position: relative
+              &:nth-last-child(1)
+                &:after
+                  display: none
+              &:after
+                position: absolute
+                content: ''
+                top: 15px
+                bottom: 15px
+                width: 1px
+                background: #EBEBEB
+                right: 15px
+                margin: auto
+              img
+                width: 72px
+                height: 72px
+                float: left
+                border-radius: 50%
+              .review-data
+                width: calc(100% - 85px)
+                margin-left: 85px
+                display: block
+                .p
+                  &.type
+                    font-weight: 500
+                  line-height: 22px
+                  font-size: 11px
+                  color: #1A2028    
+                .name
+                  font-weight: bold
+                  line-height: 26px
+                  font-size: 14px
+                  color: #1A2028  
+                .comment
+                  border: 1px solid #F1F1F1
+                  box-sizing: border-box      
+                  padding: 10px 38px 10px 10px
+                  margin-top: 10px
+                  position: relative
+                  margin-right: 30px
+                  &:after
+                    content: ''
+                    background: url('/assets/apostrophe.png')
+                    width: 19px
+                    height: 14px
+                    position: absolute
+                    top: 10px
+                    right: 10px
+                  .p
+                    line-height: 16px                              
+              
+
+  .footer
+    height: 770px
+    position: relative
+    //margin-top: 116px
+    margin-top: -63px
+    overflow: hidden
+    z-index: 0
+    p
+      line-height: 20px
+      font-size: 12px
+      color: #FFFFFF   
+    h3
+      font-style: normal
+      font-weight: 700
+      line-height: normal
+      font-size: 18px
+      color: #FFFFFF 
+      margin-bottom: 24px
+      margin-top: 30px
+    .left_container
+      width: 300px
+      float: left
+      img.footer-logo
+        margin-bottom: 15px
+      .social
+        margin-top: 28px
+        a
+          margin-right: 30px
+          display: inline-block
+    .center_container
+      width: 290px
+      float: left
+      margin-left: 155px
+      .instagram
+        img
+          box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.24)
+        a
+          margin: 0px 20px 20px 0px 
+          display: inline-block
+    .right_container
+      width: 293px
+      float: left
+      margin-left: 100px
+
+      .subscribe
+        /* border: 1px solid #FFFFFF
+        box-sizing: border-box
+        /* border-radius: 6px    
+        height: 42px
+        margin-top: 18px
+        display: block
+        position: relative
+        .input-container
+          height: 42px
+          background: transparent !important
+        input
+          font-style: normal
+          font-weight: 500
+          font-size: 12px
+          color: #FFFFFF
+          mix-blend-mode: normal
+          opacity: 0.5
+          background: transparent
+          border: none
+          outline: none
+          padding: 10px 20px
+          height: 42px
+          &::-webkit-input-placeholder
+            color: #FFFFFF
+          &:-ms-input-placeholder
+            color: #FFFFFF
+          &::-moz-placeholder
+            color: #FFFFFF
+            opacity: 1
+          &:-moz-placeholder
+            color: #FFFFFF
+            opacity: 1
+        .button
+          background: #FFFFFF
+          box-shadow: 0px 6px 14px rgba(255, 255, 255, 0.3)
+          border-radius: 6px     
+          font-style: normal
+          font-weight: 500
+          line-height: normal
+          font-size: 12px
+          text-align: center
+          color: #000000 
+          padding: 10px 20px
+          top: 2px
+          right: 2px    
+          position: absolute  
+          text-decoration: none     
+          z-index: 2
+    .wrapper
+      margin-top: 370px
+    hr
+      margin-top: 60px
+      opacity: 0.2
+    .nav
+      float: left
+      ul
+        padding: 0px
+        margin: 10px 0px
+        list-style: none
+        li
+          font-style: normal
+          font-weight: 300
+          line-height: normal      
+          color: #FFFFFF
+          font-size: 14px
+          float: left
+          margin-right: 35px
+          a
+            color: #FFFFFF   
+            text-decoration: none
+            &:hover
+              text-shadow: 0px 0px 10px #FFFFFF       
+    .copyright
+      font-style: normal
+      font-weight: 300
+      line-height: normal
+      font-size: 14px
+      text-align: right
+      color: #FFFFFF
+      mix-blend-mode: normal
+      opacity: 0.6 
+      float: right  
+      padding-top: 10px
+    .bg
+      background: url('/assets/landing_footer_bg.svg') no-repeat
+      background-size: cover
+      position: absolute
+      left: 0
+      right: 0
+      top: 0
+      bottom: -63px
+      z-index: 0
+      background-position-x: center
+      background-position-y: bottom         
+      background-color: #FFFFFF    
+  .user-logged
+    .user
+      .name
+        color: #FFFFFF
+      a
+        color: #FFFFFF

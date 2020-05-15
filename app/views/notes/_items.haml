@@ -1,0 +1,14 @@
+- notes.each do |note|
+  %li.note_item{:id => "note-#{note.id}", :data => {:id => note.id}}
+    = link_to '#' do
+      .wrapper
+        .h4= note.name
+        / .time Today 14:38 PM
+        .time= note.decorate.created_at
+        .description= simple_format(note.description)
+        - if @user_current.mentor?
+          .buttons-area
+            = link_to '#', :class => "edit_note inline-block" do
+              .ui.icon.marginright-10.inline-block.customize
+            = link_to '#', :class => "del_note inline-block" do
+              .ui.icon.marginright-10.inline-block.delete          

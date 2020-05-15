@@ -1,0 +1,9 @@
+.notes-header
+  .h5 Notes
+  .plus-button.function-button
+    .ui.icon.arrowdown.black
+  - if @user_current.mentor?
+    = link_to '#', :class => "add_note function-button" do
+      %span.ui.icon.plus.white.inline-block         
+.notes-body
+  %ul.notes_body= render partial: 'notes/items', :locals => { :notes => @schedule_current.notes.or_default }

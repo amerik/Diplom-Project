@@ -1,0 +1,145 @@
+= form_for @user_current.profile, :url => profile_path(@user_current.profile), :method => :put do |f|
+  .main_information-block.full-body.white-background.box-shadow
+    .info-wrapper
+      .h1.marginbottom-30 Main Information
+      .image_part
+        .image_upload.image_area
+          %img{:src => @user_current.profile.image_url('130x130', 'png')}
+          
+        .ui.button.small.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.margintop-30.upload.upload-avatar 
+          Upload avatar
+          %input.set_image{:type => 'file'}
+
+      .right-part      
+        .wrapper
+
+          .half-column
+            .marginbottom-25
+              .ui.input
+                .label-text First Name:
+                .input-container
+                  %span.error_message Enter first name
+                  = f.text_field :first_name, :placeholder => 'Enter first name'
+            .marginbottom-25
+              .ui.calendar
+                .label-text Date of Birth:
+                .calendar-container
+                  .calendar-trigger.ui.icon.calendar.birth_at_field
+                  %span.error_message Select birth date
+                  = f.text_field :birth_at, :placeholder => 'Select birth date', :readonly => false, :class => "date_with_year", :value => @user_current.profile.decorate.birth_at
+            .marginbottom-25
+              = select_country(Country.or_default, @user_current.profile.country.nil? ? nil : @user_current.profile.country, 'profile[country_id]', 'profile_country_id', '', false, "Country:")
+            .marginbottom-25
+              = select_standart(University.or_default, @user_current.profile.university, 'profile[university_id]', 'profile_university_id', '', false, "University:")
+
+
+          .half-column
+            .marginbottom-25
+              .ui.input
+                .label-text Last Name:
+                .input-container
+                  %span.error_message Enter last name
+                  = f.text_field :last_name, :placeholder => 'Enter last name'          
+            .marginbottom-25
+              .ui.input
+                .label-text Year of Study:
+                .input-container
+                  %span.error_message Enter year of study
+                  = f.text_field :year_of_study, :placeholder => 'Enter year of study'          
+
+            .marginbottom-25
+              //= select_enumerize(Profile.sex.values, @user_current.profile.sex, 'profile[sex]', 'profile_sex', 'model.profile.sex.', '', false, "Sex:")
+            / .marginbottom-25.cities_body
+            /   - if @user_current.profile.city.nil?
+            /     = select_standart([], nil, 'profile[city_id]', 'profile_city_id', '', false, "City:")
+            /   - else
+            /     = select_standart(@user_current.profile.city.country.cities.sort, @user_current.profile.city, 'profile[city_id]', 'profile_city_id', '', false, "City:")
+            .marginbottom-25
+              .ui.input
+                .label-text Degree:
+                .input-container
+                  %span.error_message Enter degree
+                  = f.text_field :degree, :placeholder => 'Enter degree'
+
+          .clearfix
+          .marginbottom-0
+            .ui.textarea
+              // .label-text About Yourself:
+              // .textarea-container
+              //  = f.text_area :about_my, :placeholder => 'About Yourself'                 
+        .clearfix          
+
+  .half-body
+    .resume-block.white-background.box-shadow.margintop-30
+      .info-wrapper
+        .h1 Resume
+        %hr
+        = uploader_single('your_cv', 'profile_your_cv', @user_current.profile.get_your_cv, 'del_your_cv', '.pdf, .doc, .docx, .odt, .pages')
+        %hr
+        .margintop-30
+          .h1 Supporting documents
+          %hr
+          .half-column{:style => "margin-left: 0px"}= uploader_single('any_first', 'profile_any_first', @user_current.profile.get_any_first, 'del_any_first', 'any')
+          .half-column.margintop-20= uploader_single('any_second', 'profile_any_second', @user_current.profile.get_any_second, 'del_any_second', 'any')
+    
+    .social-block.white-background.box-shadow.margintop-30
+      .info-wrapper
+        .h1 Social networks
+        %hr
+        .wrapper
+
+          .ui.input.pull-left.marginbottom-25
+            .label-text Facebook:
+            .input-container.with_icon{:class => "#{!@user_current.profile.fb_url.nil? && @user_current.profile.fb_url != '' ? 'success' : ''}"}
+              .icon.fb-icon
+              %input.soc_fb_url{:type => 'text', :placeholder => 'Url', :name => 'profile[fb_url]', :value => @user_current.profile.fb_url}
+          .pull-left
+            .add-profile.button.ui.middle.border.border-1.border-light-gray.rounded-8.color.color-dark.inline-block.check_social_url{:data => {:soc => 'fb_url'}} Check profile
+
+          .ui.input.pull-left.marginbottom-25
+            .label-text Twitter:
+            .input-container.with_icon{:class => "#{!@user_current.profile.tw_url.nil? && @user_current.profile.tw_url != '' ? 'success' : ''}"}
+              .icon.twitter-icon
+              %input.soc_tw_url{:type => 'text', :placeholder => 'Url', :name => 'profile[tw_url]', :value => @user_current.profile.tw_url}
+          .pull-left
+            .add-profile.button.ui.middle.border.border-1.border-light-gray.rounded-8.color.color-dark.inline-block.check_social_url{:data => {:soc => 'tw_url'}} Check profile
+
+          .ui.input.pull-left.marginbottom-25
+            .label-text Instagram:
+            .input-container.with_icon{:class => "#{!@user_current.profile.inst_url.nil? && @user_current.profile.inst_url != '' ? 'success' : ''}"}
+              .icon.instagram-icon
+              %input.soc_inst_url{:type => 'text', :placeholder => 'Url', :name => 'profile[inst_url]', :value => @user_current.profile.inst_url}
+          .pull-left
+            .add-profile.button.ui.middle.border.border-1.border-light-gray.rounded-8.color.color-dark.inline-block.check_social_url{:data => {:soc => 'inst_url'}} Check profile
+
+          .ui.input.pull-left.marginbottom-25
+            .label-text Google Plus:
+            .input-container.with_icon{:class => "#{!@user_current.profile.google_url.nil? && @user_current.profile.google_url != '' ? 'success' : ''}"}
+              .icon.google-plus-icon
+              %input.soc_inst_url{:type => 'text', :placeholder => 'Url', :name => 'profile[google_url]', :value => @user_current.profile.google_url}
+          .pull-left
+            .add-profile.button.ui.middle.border.border-1.border-light-gray.rounded-8.color.color-dark.inline-block.check_social_url{:data => {:soc => 'google_url'}} Check profile
+
+
+  .specialization-block.half-body.marginleft-30.margintop-30.white-background.box-shadow
+    .info-wrapper
+      .h1 Specialization
+      %hr
+
+      .wrapper.specializations_body
+        - if @user_current.profile.specializations.count > 0
+          - @user_current.profile.specializations.or_default.each_with_index do |specialization, index|
+            = render partial: 'specializations/item', :locals => { :i => index, :specialization => specialization }
+        - else
+          = render partial: 'specializations/item', :locals => { :i => 0, :specialization => Specialization.new }
+
+      .clearfix
+      .margintop-20.center
+        .button.ui.middle.border.border-1.border-light-gray.rounded-8.color.color-dark.add_new_specialization{:data => {:counts => @user_current.profile.specializations.count + 1}}
+          %span.ui.icon.plus.v-middle.black.inline-block.marginright-5
+          Company & Specialization    
+      .clearfix
+
+  .clearfix
+  .margintop-40.center
+    .continue.ui.button.large.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.update_entity Save data

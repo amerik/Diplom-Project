@@ -1,0 +1,226 @@
+en:
+  module:
+    auth:
+      system_error: System error
+      login_input_error: Login or password entered incorrectly
+      input_login: Enter login and password
+      error_old_password: Not valid current password
+      error_small_password: Password must be longer than 4 characters
+
+  activerecord:
+    errors:
+      models:
+        user_email:
+          attributes:
+            login:
+              non_uniq_login: A subscription registered to this email account already exists
+              email_not_valid: E-mail is incorrect
+        user:
+          attributes:
+            login:
+              email_not_valid: E-mail is incorrect
+              non_uniq_login: This E-mail is already in use
+            password:
+              too_short_pass: Password must be longer than 4 characters
+              not_confirmation_password: Passwords do not match
+            role:
+              blank: Select role
+
+  model:
+    task:
+      status:
+        new: New
+        success: Success
+    profile:
+      sex:
+        man: Male
+        woman: Female
+      time_preference:
+        morning: Morning
+        afternoon: Afternoon
+        evening: Evening
+        hight: Hight
+      price_preference:
+        v_8_12: '8-12'
+        v_13_17: '13-17'
+        v_18_22: '18-22'
+        v_22_26: '22-26'
+        v_27: '27+'
+    category:
+      kind:
+        student: Student
+        mentor: Mentor
+
+  view:
+    admin:
+      index:
+        login: Login (E-mail)
+        password: Password
+        sign_in: Sign in
+        forget_password: Forget password
+        title_auth: Login as administrator
+      common:
+        title_default: Admin panel
+        del_read: Delete post?
+        del_read_all: Delete all post?
+        delete_selected: delete selected
+        select_text: '--- Select ---'
+        roles: Roles
+        countries: Countries
+        cities: Cities
+        first: '< first'
+        last: 'last >'
+        locations: Locations
+        properties_active: Properties active
+        properties_in_rent: Properties in rent
+        properties_archive: Properties archive
+        request_mentors: "mentor's requests"
+        reviews: Reviews
+      user:
+        first_name: First name
+        last_name: Last name
+        login: Login
+        position: Position
+        moderators: Moderators
+        empl_name: Empl Name
+        empl_id: Empl ID
+        position: Position
+        last_login: Last login
+        status: Status
+        edit_moderator: Edit moderator
+        new_moderator: New moderator
+        type_user: Type user
+        clients: Clients
+        account_created: Account created
+        name: Name
+        bookungs: Bookungs
+        total_requests: Total requests
+        deleted: Deleted
+        total_spent: Total spent
+        age: Age
+        gender: Gender
+        country_passport: Country passport
+        country_live: Country live
+        edit: Edit client
+      role:
+        name: Name
+        description: Description
+        new_role: New role
+        edit_role: Edit role
+        privileges: Privileges
+      country:
+        name_rus: Name form rus
+        name_en: Name form en
+        edit_country: Edit country
+        new_country: New country
+      city:
+        name_rus: Name form rus
+        name_en: Name form en
+        edit_country: Edit city
+        new_country: New city
+      notification:
+        time: Time
+        id: Number
+        user: User ID
+        type: Type
+        text: Text
+        status: Status
+      location:
+        name: Name
+      property:
+        id: ID
+        name: Name
+        count_peoples: Peoples
+        count_bedrooms: Bedrooms
+        period_booking_at: Period booking at
+        max_price: Max price
+        min_price: Min price
+        status: Status
+        number_of_listing_before: Number of listing before
+      request_mentor:
+        created_at: Date of request
+        id: Request number
+        name: "Property's name"
+        location: Location
+        count_peoples: People cap
+        count_bedrooms: Bedrooms
+        period_booking_at: Period of booking
+        max_price: Max price
+        min_price: Min price
+      review:
+        id: ID
+        created_at: Date of review
+        property: Object
+        user: User
+        booking: Booking ID
+        accuracy: Accuracy
+        location: Location
+        communication_with_owner: Communication
+        check_in: Check in
+        check_out: Check out
+        cleanliness: Clean
+        companys_support: "Company's support"
+        like: Like
+        dislike: Dislike
+      option:
+        fee_for_travelers: Set fee for travelers
+        fee_for_mentor: Set fee for mentor
+        min_days_for_stay: Set min days for stay
+        discount_1: 1 discount
+        discount_2: 2 discount
+        discount_3: 3 discount
+        discount_4: 4 discount
+        discount_5: 5 discount
+
+    specialization:
+      name_client: 'Specializations that you want to have:'
+      name_mentor: 'Specialization:'
+      company_client: 'Companies where you would like to work:'
+      company_mentor: 'Your company name:'
+      industry_client: 'Industries of interest:'
+      industry_mentor: 'Industry:'
+      occupation_client: 'Dream occupation:'
+      occupation_mentor: 'Current occupation:'
+  datetime:
+    month_year_head:
+      m_1: Jan
+      m_2: Feb
+      m_3: Mar
+      m_4: Apr
+      m_5: May
+      m_6: Jun
+      m_7: Jul
+      m_8: Aug
+      m_9: Sep
+      m_10: Oct
+      m_11: Nov
+      m_12: Dec
+    month_full_name:
+      m_1: January
+      m_2: February
+      m_3: March
+      m_4: April
+      m_5: May
+      m_6: June
+      m_7: July
+      m_8: August
+      m_9: September
+      m_10: October
+      m_11: November
+      m_12: December
+    dweek:
+      dw_0: Sunday
+      dw_1: Monday
+      dw_2: Tuesday
+      dw_3: Wednesday
+      dw_4: Thursday
+      dw_5: Friday
+      dw_6: Saturday
+    dweek_short:
+      dw_0: Sun
+      dw_1: Mon
+      dw_2: Tue
+      dw_3: Wed
+      dw_4: Thu
+      dw_5: Fri
+      dw_6: Sat

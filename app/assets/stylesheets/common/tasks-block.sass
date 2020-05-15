@@ -1,0 +1,129 @@
+@import "common/mixing"
+@import "common/ui-mixin"
+
+.tasks-block
+  /*border: 1px solid #D6D6D6*/
+  &.active
+    .tasks-body
+      display: block
+    .function-button.plus-button
+      //background: #D6D6D6 !important
+      .icon
+        //background: url(/assets/icons/black/Minus.png) !important
+        background-image: url(/assets/icons/black/ArrowTop.png) !important  
+        margin: 3px 3px !important
+        width: 22px !important
+        background-position: 3px 2px
+  .tasks-header
+    height: 53px
+    background: #FFFFFF
+    border-bottom: 1px solid #D6D6D6
+    padding: 0px 30px
+    position: relative
+    @include box_shadow(0px, 6px, 24px, rgba(0,0,0,0.03))
+    border: 1px solid #D6D6D6
+    .h5
+      font-size: 18px
+      color: #1A2028
+      font-weight: 700
+      float: left
+      margin: 0px
+      line-height: 53px
+    .function-button
+      float: right
+      width: 34px
+      height: 34px
+      opacity: 1
+      @include rounded(100px)
+      display: inline-block
+      margin: 9px 0px 9px 20px
+      cursor: pointer
+      &.add_task  
+        @include box_shadow(0px, 6px, 18px, rgba(0,0,0,0.08))
+        background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)         
+        width: 25px
+        height: 25px     
+        margin-top: 13px      
+      .icon
+        &.arrowdown
+          width: 22px
+          height: 22px
+          margin: 7px   
+          opacity: 0.5 !important
+        &.plus
+          width: 16px
+          height: 16px
+          margin: 5px            
+  .tasks-body
+    padding: 30px 0px 0px 15px
+    min-height: 400px
+    height: 400px     
+    border: 1px solid #D6D6D6
+    margin-top: -1px
+    ul
+      padding: 0px
+      margin: 0px
+      list-style: none
+      li
+        dispay: block
+        margin-bottom: 20px
+        .icon.achieved
+          width: 46px
+          height: 46px
+          display: inline-block
+          margin: 5px 15px
+          background: url('/assets/achievements/achieve_item.png')
+          position: relative          
+          background-size: cover
+          vertical-align: top
+          &.disabled
+            background-image: url('/assets/achievements/achieve_item_disabled.png')
+          &.certificate
+            &:after
+              background-image: url('/assets/achievements/normal/certificate.png')
+          &.clipboard
+            &:after
+              background-image: url('/assets/achievements/normal/clipboard.png')
+          &.graduation
+            &:after
+              background-image: url('/assets/achievements/normal/graduation.png')
+          &.letter
+            &:after
+              background-image: url('/assets/achievements/normal/letter.png')
+          &.library
+            &:after
+              background-image: url('/assets/achievements/normal/library.png')
+          &:after
+            width: 32px
+            height: 26px
+            background-size: contain
+            position: absolute
+            left: 0
+            right: 0
+            top: 0
+            bottom: 0
+            margin: auto
+            content: ''
+        .text
+          font-size: 16px
+          font-weight: 400
+          color: #1A2028
+          display: inline-block
+          line-height: 24px
+          width: calc(100% - 90px)
+          vertical-align: middle
+          p
+            word-break: break-word
+            line-height: 20px
+            font-size: 14px
+        .buttons-area
+          margin-left: 80px
+    .mCSB_inside > .mCSB_container
+      margin-right: 10px     
+  &.height-not-fix
+    .tasks-body
+      min-height: initial !important
+
+.block-show-hide
+  .tasks-body
+    display: none      

@@ -1,0 +1,47 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'                         
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to t("view.admin.common.countries"), admin_countries_path
+
+    .h3.marginbottom-20= t("view.admin.common.countries")
+    .new_entity
+      = link_to new_admin_country_path, :class => 'create_new' do 
+        %span.text create new
+        %span.ball
+
+    .filters_block
+      = form_for Country.new, :url => { :controller => 'countries', :action => 'index' }, :method => :get do |f|
+        %input{:type => 'hidden', :name => 'page', :value => 1}
+        .filter.inline-block.marginleft-25
+          .inline-block
+            %span Name
+            %input.default_input_text{:type => 'text', :name => 'has_search', :value => params[:has_search]}
+    
+        .inline-block.marginleft-10
+          = link_to 'search', '#', :class => 'default_button dark search_entities'
+          = link_to 'reset', admin_countries_path, :class => 'default_button'
+
+        .inline-block.marginleft-10
+          = link_to 'delete selected', '#', :class => 'default_button dark del_checking_tr', :data => {:entity => @entity_table}
+    
+    .default_table
+      %table.table.table-striped.table-condensed
+        %tr
+          %th= admin_default_checkbox_th
+          %th
+            = t("view.admin.country.name_rus")
+            = admin_sort(@url, 'order_name_rus', params)
+          %th
+            = t("view.admin.country.name_en")
+            = admin_sort(@url, 'order_name_en', params)
+          %th
+
+        - @elements.each do |element|
+          %tr{:data => {:id => element.id}}
+            = render partial: "admin/#{@entity_table}/element_tr", :locals => {:element => element}
+
+    = admin_pagginate(@url, @params_pagginate, @page, params)

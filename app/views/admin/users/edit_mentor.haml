@@ -1,0 +1,14 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to t("view.admin.user.mentors"), mentors_admin_users_path
+      %li= link_to t("view.admin.mentor.edit"), edit_mentor_admin_user_path(@user)
+    .h3.marginbottom-20= t("view.admin.mentor.edit")
+
+    = render partial: 'admin/users/mentor_tabs', :locals => { :user => @user }
+
+    = render partial: 'admin/users/mentor_form_data', :locals => { :entity => @user }

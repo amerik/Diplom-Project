@@ -1,0 +1,29 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .search-block.full-body.white-background.box-shadow    
+        .h1 How can we help you?
+        .search-area
+          = form_for PageHelp.new, :html => {:id => 'search_page_help_form'}, :url => search_page_help_profiles_path, :method => :post do |f|
+            .ui.input
+              .input-container.with_icon
+                .icon.search-icon
+                %input{:type => 'text', :name => 'has_search', :placeholder => 'Start typing your search'}
+                %input{:type => 'hidden', :name => 'kind', :value => "#{@user_current.role_kind}" }
+                .ui.button.small.fill.background.background-prymary-gradient.border.rounded-8.color.color-white.search.search-page-help Search now
+
+      .category-block.white-background.box-shadow.pull-left.margintop-30   
+        .h1 Categories
+        %ul
+          - @categories.each_with_index do |category, index|
+            %li
+              = link_to faq_profiles_path(category) , :class => "#{@alias == category.alias ? 'active' : ''}" do
+                %span.ui.icon.inline-block.black.v-middle{:class => "#{category.alias}"}
+                = index + 1
+                = category.name
+
+      .question-block.white-background.box-shadow.pull-left.marginleft-30.margintop-30.answers_body
+        = render partial: 'profiles/page_help', :locals => {:elements => @page_helps}

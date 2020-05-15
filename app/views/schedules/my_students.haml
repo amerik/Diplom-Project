@@ -1,0 +1,36 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .tab
+        = render partial: 'schedules/menu_mentor'
+        .tab-body
+          .my-students-block
+            - @user_current.my_students.each do |user|
+              .student-item.full-body.white-background.box-shadow.marginbottom-30
+                .student-image
+                  %img{:src => user.profile.image_url('130x130', 'png')}
+                .student-data
+                  .left-part
+                    .p Student
+                    .name= user.profile.decorate.full_name
+                    .p= user.profile.decorate.university
+                  .right-part
+                    / = link_to '#' do
+                    /   .button.ui.small.border.border-1.border-light-gray.rounded-8.color.color-dark.marginright-15.inline-block.margintop-10 Stop learning 
+                    = link_to my_student_profiles_path(:user_id => user.id) do
+                      .button.ui.small.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block.profile.margintop-10 View full profile
+                  .clearfix
+                  %hr
+                  .left-part.bottom
+                    .p Tasks:
+                    .tasks-block
+                      / = render partial: 'profiles/achievements', :locals => { :user_achivments => @user_achivments, :per_page => @per_page, :user => @user_current }
+                      / = render partial: 'layouts/pagination'
+                  .right-part 
+                    .p Upcomming lessons:
+                    %ul.upcomming
+                      - Schedule.has_user(user.id).has_mentor(@user_current.id).has_status('is_pay').order("start_at asc").each do |schedule|
+                        %li= schedule.decorate.date_day_with_time

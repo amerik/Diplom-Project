@@ -1,0 +1,10 @@
+- elements.each_with_index do |element, index|
+  .question-item{:class => "#{index == 0 ? 'active' : ''}"}
+    .question
+      = link_to '#'  do
+        = element.name
+        .ui.circle.background.background-prymary-gradient
+          .ui.icon.plus.v-center.white
+    .answer
+      = simple_format(element.description)
+      = link_to 'Still have questions?', '#', :class => 'still-question'

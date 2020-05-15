@@ -1,0 +1,2 @@
+%input.set_property_detail_other{:type => 'checkbox', :checked => Filter.get_boolean(property_detail_other[value]) == 'true'}
+%input{:type => 'hidden', :value => Filter.get_boolean(property_detail_other[value]), :name => "property_detail_other[#{value}]"}

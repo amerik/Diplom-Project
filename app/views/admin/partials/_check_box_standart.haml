@@ -1,0 +1,5 @@
+.yes_no_switch{:class => "#{class_name} #{checked ? 'active' : ''}", :data => data}
+  .ball
+  .button.no no
+  .button.yes yes
+  %input.checkbox_value{:type => 'hidden', :name => name, :value => checked.to_s}

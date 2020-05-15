@@ -1,0 +1,31 @@
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %body
+    %header
+      %meta{:charset => "utf-8"}/
+      %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js", :type => "text/javascript"}
+      %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.0.3/adapter.min.js", :type => "text/javascript"}
+      %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js", :type => "text/javascript"}
+      %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js", :type => "text/javascript"}
+      %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.1.0/bootbox.min.js", :type => "text/javascript"}
+      %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js", :type => "text/javascript"}
+      %script{:src => "/assets/janus.js", :type => "text/javascript"}
+      %script{:src => "/assets/video_room.js", :type => "text/javascript"}
+      %script{:src => "/assets/remote_feed.js", :type => "text/javascript"}
+    .local
+    %video#my_video{:autoplay => "", :height => "240", :width => "320"}
+    %br/
+    .remote
+    %video#remotevideo{:autoplay => "", :height => "240", :width => "320"}
+    %br/
+    user1 token
+    %input#me{:name => "user_token", :type => "text", :value => "44354524523452354"}/
+    %br/
+    %br/
+    user2 token
+    %input#other_user{:name => "user_token", :type => "text", :value => "6535634564"}/
+    %br/
+    %br/
+    %button#start_call{:style => "padding: 5px 20px;"} Call
+    %button#cancel_call{:style => "padding: 5px 20px;"} Cancel
+    %button#answer_call{:style => "padding: 5px 20px; display: none;"} Answer
+    %button#screen_share{:style => "padding: 5px 20px;"} Screen Share

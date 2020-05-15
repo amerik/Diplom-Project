@@ -1,0 +1,25 @@
+#add_task.modal.slide-in
+  .modal-dialog
+    .wrapper
+      .close{:'data-dismiss' => "modal",  :'aria-label' => "Close"}
+        %img{:src => '/assets/close_shape.png'}
+      .h3 Add new task
+      = form_for Task.new, :url => tasks_path, :method => :post do |f|
+        = f.hidden_field :schedule_id, :value => @schedule_current.id
+        %hr
+        .ui.textarea.margintop-20
+          .p.marginbottom-5 Your comment:
+          .textarea-container
+            = f.text_area :description, :placeholder => 'Leave your comment for this task'  
+        %hr
+
+        .margintop-20.marginbottom-20
+          Achivement of this task:
+          = select_standart(Achivment.or_default, nil, 'task[achivment_id]', 'task_achivment_id', '', false, "")
+
+          .clearfix
+        %hr
+
+        .margintop-30.marginbottom-30
+          .ui.button.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.with_shadow.blue_button.create_task.min-width Save
+        %hr

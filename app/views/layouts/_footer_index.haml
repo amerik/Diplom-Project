@@ -1,0 +1,63 @@
+.footer
+  .container
+    .wrapper
+      .left_container
+        %img.footer-logo{:src => '/assets/logo_footer.png'}
+        %p
+          All the products that we do are really cool! We invest 
+          the whole soul developing every detail in the 
+          projects. You can not doubt the quality of the result 
+          and our customers 
+        .social
+          = link_to '#' do
+            %img{:src => '/assets/social/twitter.png'}
+          = link_to '#' do
+            %img{:src => '/assets/social/instagram.png'}
+          = link_to '#' do
+            %img{:src => '/assets/social/facebook-index.png'}
+          = link_to '#' do
+            %img{:src => '/assets/social/g_plus.png'}
+          = link_to '#' do
+            %img{:src => '/assets/social/pinterest.png'}
+      .center_container
+        %h3 Instagram
+        .instagram
+          = link_to '#' do
+            %img{:src => '/assets/instagram/inst_1.png'}
+          = link_to '#' do
+            %img{:src => '/assets/instagram/inst_2.png'}
+          = link_to '#' do
+            %img{:src => '/assets/instagram/inst_3.png'}
+          = link_to '#' do
+            %img{:src => '/assets/instagram/inst_4.png'}
+          = link_to '#' do
+            %img{:src => '/assets/instagram/inst_5.png'}
+          = link_to '#' do
+            %img{:src => '/assets/instagram/inst_6.png'}
+      .right_container
+        = form_for RequestUser.new, :url => request_users_path do |f|
+          %h3 Subscribe Us
+          %p
+            Subscribe to the newsletter and keep abreast of the 
+            latest developments on our service, as 
+            well as additional materials 
+          .subscribe.ui.input
+            .input-container
+              %span.error_message
+              = f.text_field :email, :placeholder => 'Enter your e-mail...'
+              = link_to 'Send', '#', :class => 'button grey_button create_entity'
+
+    .clearfix
+    %hr
+    .nav
+      %ul
+        %li= link_to 'Home', root_path
+        %li= link_to 'About', about_index_index_path
+        %li= link_to 'Pricing', pricing_index_index_path
+        %li= link_to 'Mentors', mentors_index_index_path
+        %li
+          = link_to 'Sign Up', '#', :class => 'sign-up'
+          %span
+          = link_to 'Log In', '#', :class => 'log-in'
+    .copyright Copyright © 2020
+  .bg

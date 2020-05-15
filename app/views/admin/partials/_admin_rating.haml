@@ -1,0 +1,4 @@
+.stars_bar
+  %ul
+    - 1.upto(5) do |i|
+      %li{:class => "#{rating.to_f >= i ? 'active' : (rating.to_f >= (i - 0.5) ? 'half_active' : '')}"}

@@ -1,0 +1,21 @@
+- baskets.each_with_index do |basket, index|
+  .basket_item{:data => {:year => @year, :month => @month, :day => basket.schedule.start_at.day}}
+    %hr
+    .pull-left
+      .h3
+        Lesson
+        %span.num_basket= "№#{(index + 1)}"
+    .pull-right
+      .p.h1.inline-block.v-middle= basket.schedule.mentor.decorate.price
+      %span.remove.v-middle.marginleft-20.del_basket{:data => {:id => basket.id}}
+    .clearfix
+    / .marginbottom-25
+    /   .ui.calendar
+    /     .label-text Lesson Date:
+    /     .calendar-container
+    /       .calendar-trigger.ui.icon.calendar.black
+    /       %input{:type => 'text', :value => basket.schedule.decorate.date_day, :readonly => true}
+    .marginbottom-25
+      .ui.calendar
+        - hours = @my_mentor.schedules_for_mentor.has_status('new').has_start_at_date(DateTime.new(@year, @month, basket.schedule.start_at.day, 0, 0, 0)).or_default
+        = select_hours(hours, basket.schedule, '', '', '', @user_current, false, "Select Time for Lesson:", true)

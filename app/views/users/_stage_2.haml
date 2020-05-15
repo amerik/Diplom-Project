@@ -1,0 +1,31 @@
+.stage-2{:class => "#{@user_current.step_profile == 1 ? '' : 'hidden'}"}
+  .form_content
+    %h1.text-center 
+      Where would you like to work?
+    %h4.text-center Enter the name of the company / s in which you would like to work and the specializations that you are interested in
+    = form_for Specialization.new, :url => specializations_path, :method => :post do |f|
+      %input{:type => 'hidden', :value => 2, :name => 'step_profile'}
+      .wrapper.specializations_body
+        - if @user_current.profile.specializations.count > 0
+          - @user_current.profile.specializations.or_default.each_with_index do |specialization, index|
+            = render partial: 'specializations/item', :locals => { :i => index, :specialization => specialization }
+        - else
+          = render partial: 'specializations/item', :locals => { :i => 0, :specialization => Specialization.new }
+
+      .clearfix
+      .margintop-20.center
+        .button.ui.middle.border.border-1.border-light-gray.rounded-8.color.color-dark.add_new_specialization{:data => {:counts => @user_current.profile.specializations.count + 1}}
+          %span.ui.icon.plus.v-middle.black.inline-block.marginright-5
+          Company & Specialization    
+      .clearfix
+      .margintop-40.center
+        .pull-left  
+          .button.skip.ui.large.border.border-2.border-light-gray.rounded-8.color.color-dark.marginright-20.set_stage_back{:data => {:stage => 1, :oldstage => 2}} Skip for Now
+        .pull-left
+          .button.continue.ui.large.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.save_stage_2 Continue
+
+  .tree_progress
+    %h1.text-center Progress registation
+    %h4.text-center 
+      As your information becomes full, your tree grows. The higher the tree, the more suitable mentor we will choose for you
+    %img.tree{:src => '/assets/student/progress_tree_stage_2.png'}  

@@ -1,0 +1,10 @@
+%span.day= day_this
+- hours = @my_mentor.schedules_for_mentor.has_status('new').has_start_at_date(DateTime.new(@year, @month, day_this, 0, 0, 0)).or_default
+- if hours.count > 0
+  - if @user_current.schedules.by_in_work.has_start_at_date(DateTime.new(@year, @month, day_this, 0, 0, 0)).count > 0
+    = render partial: 'schedules/scheduled_lesson', :locals => { :hours => hours, :day_this => day_this }
+  - else
+    = render partial: 'schedules/available_lession', :locals => { :hours => hours, :day_this => day_this }
+- elsif hours.count == 0 && @my_mentor.schedules_for_mentor.by_in_work.has_start_at_date(DateTime.new(@year, @month, day_this, 0, 0, 0)).count > 0
+  .place_occupied
+    .availability Place occupied

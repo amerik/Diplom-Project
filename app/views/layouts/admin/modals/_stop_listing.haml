@@ -1,0 +1,39 @@
+#stop_listing.modal.auth.slide-in
+  .modal-dialog{:style => "width: 900px;"}
+    .col-md-10.col-md-offset-1.col-sm-8.col-sm-offset-2.col-xs-12.col-xs-offset-0
+      .modal-contents.mod
+        .close{:'data-dismiss' => "modal",  :'aria-label' => "Close"}
+
+        .bookings_body
+
+        / = form_for @property.user, :url => { :controller => 'users', :action => 'delete_account', :id => @property.user.id }, :method => :post do |f|
+        /   = f.hidden_field :is_del, :value => true
+        /   = f.hidden_field :del_moder_id, :value => @user_current.id
+        /   .h4{:style => "font-size: 15px; margin-bottom: 16px; font-weight: 600;"}
+        /     Delete owner's account
+        /     = @property.user.login
+        /   .row
+        /     .form-group
+        /       .col-md-4 
+        /         .h5 Reason:
+        /       .col-md-8
+        /         = admin_select_enumerize(Property.status_del.values, 'have_not_documents', 'user[del_kind]', 'model.user.status_del.', '', false, '', 'width-90')
+        /     .form-group
+        /       .col-md-12
+        /         .h5 Description of reject:
+        /       .col-md-12
+        /         %textarea.default_input_text.full-width{:style => 'min-height: 100px', :name => 'user[del_description]'}
+        /       .col-md-12
+        /         .checkbox_area.margintop-10
+        /           %ul
+        /             %li
+        /               .default_checkbox.inline-block.check_box_def
+        /               .text block email
+        /               = f.hidden_field :is_del_email, :value => 'false'
+        /             %li
+        /               .default_checkbox.inline-block.check_box_def
+        /               .text send notification to owner
+        /               = f.hidden_field :is_del_notification, :value => 'false'
+        /   .yes_no_buttons
+        /     = link_to 'confirm deleting', '#', :class => 'yes sent_delete_account', :style => "font-size: 15px;"
+        /     = link_to 'cancel', '#', :style => "font-size: 15px;", :'data-dismiss' => "modal",  :'aria-label' => "Close"

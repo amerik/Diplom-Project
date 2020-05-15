@@ -1,0 +1,36 @@
+%td
+  = admin_default_checkbox_tr
+
+%td
+  .normal
+    = element.name
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'translation[name]', :placeholder => 'Name', :value => element.name}
+%td
+  .normal
+    = element.alias
+  .fast_edit
+    = admin_select_enumerize(Category.alias.values, element.alias, 'category[alias]', 'model.category.alias.', '', false)
+
+%td
+  .normal
+    = element.kind
+  .fast_edit
+    = admin_select_enumerize(Category.kind.values, element.kind, 'category[kind]', 'model.category.kind.', '', false)
+
+%td 
+  .normal
+    = element.position
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'category[position]', :placeholder => 'Position', :value => element.position}
+%td          
+  %ul.functions
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/element_tr"}}
+    %li
+      = link_to edit_admin_category_path(element) do
+        .icon.edit_function
+    %li
+      = link_to '#' do
+        .icon.delete_function{:data => {:id => element.id, :entity => @entity_table}}

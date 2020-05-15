@@ -1,0 +1,10 @@
+.user_achivments{:data => {:perpage => per_page, :user => user.id}}
+  .achievement-items
+    - user_achivments.each do |user_achivment|
+      .achievement-item
+        .icon
+          %img{:src => user_achivment.achivment.image_url}
+        .achievement-message= user_achivment.description
+  - if @count_elements > per_page
+    .clearfix
+    = pagginate(@url, @params_pagginate, @page, params, 'load_user_achivment_next')

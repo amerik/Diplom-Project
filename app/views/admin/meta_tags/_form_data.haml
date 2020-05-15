@@ -1,0 +1,14 @@
+.row
+  .col-md-6.col-xs-12
+
+    .margintop-20
+    .default_label Title
+    %input.default_input_text.width-350{:name => 'translation[title]', :value => entity.title}
+
+    .margintop-20
+    .default_label Keywords
+    %input.default_input_text.width-350{:name => 'translation[keywords]', :value => entity.keywords}
+
+    .margintop-20
+    .default_label Description
+    %textarea.default_input_text.width-350{:name => 'translation[description]'}= entity.description

@@ -1,0 +1,57 @@
+- if related == 'profiles_student'
+  .image_part
+    %img{:src => user.profile.image_url('130x130', 'png')}
+    - unless user.profile.get_your_cv.nil?
+      = link_to user.profile.get_your_cv.file.url, :target => '_blank' do
+        .ui.button.small.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.margintop-20.resume Resume
+    - else
+      .ui.button.small.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.margintop-20.resume No resume
+    - if @user_current.client?
+      = link_to student_edit_profiles_path do
+        .button.ui.small.border.border-1.border-light-gray.rounded-8.color.color-dark.margintop-15 Edit profile  
+  .right-part
+    .marginbottom-10
+      .p.h6 Student
+    .marginbottom-10
+      .p.h3= user.profile.decorate.full_name
+    .p.h5= user.profile.decorate.university
+    %hr
+    .marginbottom-10
+      .p.h4.inline-block Location
+      .p.inline-block.marginleft-15= user.profile.decorate.location
+    .marginbottom-10
+      .p.h4.inline-block Specialization
+      .p.inline-block.marginleft-15= user.profile.decorate.specialization
+    .marginbottom-10
+      .p.h4.inline-block Social
+      .social.margintop-10
+        - if !user.profile.fb_url.nil? && user.profile.fb_url != ""
+          = link_to user.profile.fb_url, :target => '_blank' do
+            %img{:src => '/assets/social/28x28/Facebook.png'}
+        - if !user.profile.tw_url.nil? && user.profile.tw_url != ""
+          = link_to user.profile.tw_url, :target => '_blank' do
+            %img{:src => '/assets/social/28x28/Twitter.png'}
+        - if !user.profile.inst_url.nil? && user.profile.inst_url != ""
+          = link_to user.profile.inst_url, :target => '_blank' do
+            %img{:src => '/assets/social/28x28/Instagram.png'}
+        - if !user.profile.google_url.nil? && user.profile.google_url != ""
+          = link_to user.profile.google_url, :target => '_blank' do
+            %img{:src => '/assets/social/28x28/Google Plus.png'}               
+    %hr
+    .marginbottom-10
+      .p.h3 About
+    .p= user.profile.decorate.about_my
+
+- else
+  .image_part
+    %img{:src => user.profile.image_url('130x130', 'png')}
+  .right-part
+    .p.h2.name= user.profile.decorate.full_name
+    .p= user.profile.decorate.specialization
+    .p.h6.location= user.profile.decorate.location
+    .inline-block.v-center
+      = link_to student_profiles_path do
+        .ui.button.small.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.margintop-20.view View profile
+    .inline-block.marginleft-15.v-center
+      = link_to student_edit_profiles_path do
+        .button.ui.small.border.border-1.border-light-gray.rounded-8.color.color-dark.margintop-15 Edit profile

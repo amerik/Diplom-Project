@@ -1,0 +1,41 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'                         
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu'
+  .data_content
+    %ul.paths
+      %li= link_to t("view.admin.user.mentors"), mentors_admin_users_path
+
+    .h3.marginbottom-20= t("view.admin.user.mentors")
+
+    %input#student_id{:type => 'hidden', :value => params[:id]}
+
+    .col-md-6.col-xs-12{:style => "margin-top: 30px; margin-bottom: 50px"}
+      .h3.marginbottom-20 Specialization user
+
+      .default_table
+        %table.table.table-striped.table-condensed
+          %tr
+            %th №
+            %th Name
+            %th Company
+            %th Industry
+            %th Occupation
+          - @user.profile.specializations.or_default.each_with_index do |specialization, index|
+            %tr
+              %td= index + 1
+              %td= specialization.decorate.name
+              %td= specialization.decorate.company
+              %td= specialization.decorate.industry
+              %td= specialization.decorate.occupation
+
+    - unless @user.profile.specializations.or_default.first.nil?
+      .clearfix
+      .h3.marginbottom-20 Search mentors
+      = render partial: 'admin/users/mentors_appoint', :locals => { :mentors => @elements_search, :user => @user }
+    
+    .clearfix
+    .h3.marginbottom-20 All mentors
+    = render partial: 'admin/users/mentors_appoint', :locals => { :mentors => @elements, :user => @user }
+    = admin_pagginate(@url, @params_pagginate, @page, params)

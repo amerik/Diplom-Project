@@ -1,0 +1,14 @@
+.ui.pagination
+  = link_to url + "1" + url_sort, :class => "prev control #{class_page}", :data => {:page => 1} do
+    %span
+  %ul
+    - params_pagginate[:get_left_pages].each do |value|
+      %li= link_to value, url + "#{value}" + url_sort, :class => "#{class_page}", :data => {:page => value}
+
+    %li= link_to page, url + "#{page}" + url_sort, :class => "active #{class_page}", :data => {:page => page}
+
+    - params_pagginate[:get_right_pages].each do |value|
+      %li= link_to value, url + "#{value}" + url_sort, :class => "#{class_page}", :data => {:page => value}
+
+  = link_to url + "#{params_pagginate[:last_page]}" + url_sort, :class => "next control #{class_page}", :data => {:page => params_pagginate[:last_page]} do
+    %span

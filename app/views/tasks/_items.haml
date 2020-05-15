@@ -1,0 +1,10 @@
+- tasks.each do |task|
+  %li.task_item{:id => "task-#{task.id}", :data => {:id => task.id}}
+    .icon.achieved.certificate
+    .text= simple_format(task.description)
+    - if @user_current.mentor?
+      .buttons-area
+        = link_to '#', :class => "edit_task inline-block" do
+          .ui.icon.marginright-10.inline-block.customize
+        = link_to '#', :class => "del_task inline-block" do
+          .ui.icon.marginright-10.inline-block.delete

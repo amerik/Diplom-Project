@@ -1,0 +1,25 @@
+@mixin vendor-prefix($property, $prefixed-number, $a1:nil, $a2:nil, $a3:nil, $a4:nil, $a5:nil, $a6:nil, $a7:nil, $a8:nil)
+  @if $a1 != nil and type-of($prefixed-number) == number
+    @each $prefix in "", -webkit-, -moz-, -ms-, -o-
+      $i: 0
+      $comma: false
+      $str: ""
+      @each $a in $a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8
+        @if $a != nil
+          @if $comma
+            $str: $str + ", "
+          $str: if($i == $prefixed-number, $str + $prefix + $a, $str + $a)
+          $comma: true
+          $i: $i + 1
+      #{unquote($property)}: unquote($str)
+  @else
+    @each $prefix in "", -webkit-, -moz-, -ms-, -o-
+      $comma: false
+      $str: ""
+      @each $a in $prefixed-number, $a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8
+        @if $a != nil
+          @if $comma
+            $str: $str + ", "
+          $str: $str + $a
+          $comma: true
+      #{unquote($prefix + $property)}: unquote($str)

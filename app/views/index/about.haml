@@ -1,0 +1,231 @@
+.index
+  .decor
+  .top_content.about
+    .container
+      = render partial: 'layouts/header'
+
+      .center_content
+        %h1 
+          About
+          %span ELEWAY
+        .h5 Here you can learn more about us
+
+    / .decor
+    .bg_gradient
+
+  .container
+    .mission_and_promise
+      .our_mission
+        .content.pull-left
+          %h3.text-left Our mission
+          %p
+            Our mission is to essentially provide all success-driven students with an all-inclusive platform designed with the intention to maximise the potential of every individual. To achieve this, the service makes use of extensive information from the user and tailors its capabilities accordingly, thus putting the users in contact with the future they envision for themselves
+            %br
+            %br
+            To achieve this, the service makes use of extensive information from the user and tailors its capabilities accordingly, thus putting the users in contact with the future they envision for themselves
+        %img.pull-right{:src => '/assets/target.png'}
+
+      .our_promise
+        %img.pull-left{:src => '/assets/checklist.png'}
+        .content.pull-right
+          %h3.text-left Our promise 
+          %p 
+            To protect the trust, time, and effort you put in us, we aim to keep a consistent level of support in all your time at university by following these guidelines:
+          %ul
+            %li
+              .check 
+              .text All our mentors will be assessed regularly
+            %li
+              .check
+              .text
+                All complaints regarding mentors or students will be taken 
+                %br
+                seriously
+            %li
+              .check
+              .text
+                Consultations can be held at any time as agreed between 
+                %br
+                student and mentor (24/7)              
+            %li
+              .check
+              .text
+                Should an outstanding opportunity come up, you will be 
+                %br 
+                notified the same day    
+
+          %p Our promise is to essentially provide all success-driven students with an all-inclusive platform designed with the intention to maximise the potential of every individual                                
+      
+
+
+  .how_it_works
+    .container
+      %h2 How it works
+      .choosing-mentor
+        %ul
+          %li= link_to 'Choosing of mentor', '#', :class => 'active', :'data-name' => 'choosing_of_mentor'
+          %li= link_to 'Learning process', '#', :'data-name' => 'learning_process'
+          %li= link_to 'Taking the exam', '#', :'data-name' => 'taking_the_exam'
+          %li= link_to 'Completion', '#', :'data-name' => 'completion'
+      
+        .contents.choosing_of_mentor.first
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor 
+
+        .contents.learning_process
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image_2.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor  
+
+        .contents.taking_the_exam
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image_3.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor  
+
+        .contents.completion
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image_4.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor  
+
+
+  .why__need_mentor
+    .container
+      .left_content
+        .details
+          %img.icon{:src => '/assets/student.png'}
+          %h3 
+            Why do you need 
+            %br
+            a mentor?
+          %ul
+            %li
+              .check
+              .text 
+                Mentors can help you make the important 
+                %br 
+                decisions in your professional life, based on 
+                %br 
+                experience
+            %li
+              .check
+              .text 
+                Support you in creating goals and making the 
+                %br 
+                changes necessary in your professional/ 
+                %br 
+                personal life to achieve those
+            %li
+              .check
+              .text 
+                Provide support and advice when reviewing 
+                %br 
+                your current situation and decide where to go 
+                %br 
+                from there
+            %li
+              .check
+              .text 
+                Act as a truly objective source of information 
+                %br 
+                and a good listener    
+
+          = link_to 'Find a mentor', '#' , :class => 'mentor grey_button'                               
+
+      .right_content
+        .details.to-right
+          %img.icon{:src => '/assets/teacher.png'}
+          %h3
+            Why become
+            %br
+            a mentor?
+          %ul
+            %li
+              .check
+              .text 
+                Mentors work with people from different 
+                %br
+                backgrounds, and expand their professional 
+                %br network
+            %li
+              .check
+              .text 
+                Improving communication skills such as 
+                %br 
+                offering positive feedback with constructive 
+                %br 
+                criticism
+            %li
+              .check
+              .text 
+                Further expansion of your knowledge in the 
+                %br 
+                professional field through regular research 
+                %br 
+                and communication
+            %li
+              .check
+              .text 
+                Motivating and supporting the next 
+                %br 
+                generation       
+
+          = link_to 'Become a mentor', '#' , :class => 'mentor grey_button'     
+    .bg
+
+
+  .why_we_are_called
+    .container  
+      %img.pull-left.max-560{:src => '/assets/tree_Illlustration_2.png'}
+        
+      .right_part
+        %h2 
+          Why we are called 
+          %span ELEWAY    
+        %p
+          Competitiveness is openly cynical. Focusing incorrectly translates the institutional complex analysis of the situation. It's not a fact that sponsorship attracts social status. The marketing and sales department, within the framework of today's views, categorically determines the format of the event, expanding the market share. The change in the global strategy, neglecting details, translates the institutional media channel:      
+
+        %ul
+          %li
+            .check
+            .text 
+              All our mentors will be assessed regularly
+          %li
+            .check
+            .text
+              All complaints regarding mentors or students will be taken 
+              %br
+              seriously
+          %li
+            .check
+            .text
+              Consultations can be held at any time as agreed between 
+              %br
+              student and mentor (24/7)      
+          %li
+            .check
+            .text
+              Should an outstanding opportunity come up, you will be 
+              %br
+              notified the same day         
+
+        = link_to 'Try it now','#', :class => 'try_now short blue_button'
+
+
+  = render partial: 'layouts/footer_index'

@@ -1,0 +1,26 @@
+%td
+  = admin_default_checkbox_tr
+%td 
+  .normal
+    = element.name
+  .fast_edit       
+    %input.field_input{:type => 'text', :name => 'role[name]', :placeholder => t("view.admin.role.name"), :value => element.name}
+%td 
+  .normal
+    = element.decorate.description
+  .fast_edit       
+    %input.field_input{:type => 'text', :name => 'role[description]', :placeholder => t("view.admin.role.description"), :value => element.description}
+%td 
+  .normal
+    = link_to 'set privileges', admin_privileges_path(:role_id => element.id)
+%td          
+  %ul.functions
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/element_tr"}}
+    %li
+      = link_to edit_admin_role_path(element) do
+        .icon.edit_function
+    %li
+      = link_to '#' do
+        .icon.delete_function{:data => {:id => element.id, :entity => @entity_table}}

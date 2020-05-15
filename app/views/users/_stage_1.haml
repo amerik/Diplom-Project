@@ -1,0 +1,71 @@
+.stage-1{:class => "#{@user_current.step_profile == 0 ? '' : 'hidden'}"}
+  .form_content
+    %h1.text-center 
+      Welcome to 
+      %span ELEWAY
+    %h4.text-center Tell us a little about yourself so we can customise your site experience
+    = form_for @user_current.profile, :url => profile_path(@user_current.profile), :method => :put do |f|
+      %input{:type => 'hidden', :value => 1, :name => 'user[step_profile]'}
+      .wrapper
+        .half-column
+          .marginbottom-25
+            .ui.input
+              .label-text First Name:
+              .input-container
+                %span.error_message Enter first name
+                = f.text_field :first_name, :placeholder => 'Enter first name'
+
+          .marginbottom-25
+            .ui.calendar
+              .label-text Date of Birth:
+              .calendar-container
+                .calendar-trigger.ui.icon.calendar.birth_at_field
+                %span.error_message Select birth date
+                = f.text_field :birth_at, :placeholder => 'Select birth date', :class => "date_of_year", :value => @user_current.profile.decorate.birth_at
+
+          .marginbottom-25
+            = select_country(Country.or_default, @user_current.profile.country.nil? ? nil : @user_current.profile.country, 'profile[country_id]', 'profile_country_id', '', false, "Country:")
+
+
+
+          .marginbottom-25
+            .ui.input
+              .label-text Year of Study:
+              .input-container
+                %span.error_message Enter year of study
+                = f.text_field :year_of_study, :class => 'year_mask', :placeholder => 'Enter year of study'
+        .half-column
+          .marginbottom-25
+            .ui.input
+              .label-text Last Name:
+              .input-container
+                %span.error_message Enter last name
+                = f.text_field :last_name, :placeholder => 'Enter last name'
+          / .marginbottom-25
+          /   = select_enumerize(Profile.sex.values, @user_current.profile.sex, 'profile[sex]', 'profile_sex', 'model.profile.sex.', '', false, "Sex:")
+
+
+          / .marginbottom-25.cities_body
+          /   - if @user_current.profile.city.nil?
+          /     = select_standart([], nil, 'profile[city_id]', 'profile_city_id', '', false, "City:")
+          /   - else
+          /     = select_standart(@user_current.profile.city.country.cities.sort, @user_current.profile.city, 'profile[city_id]', 'profile_city_id', '', false, "City:")
+
+          .marginbottom-25
+            = select_standart(University.or_default, @user_current.profile.university, 'profile[university_id]', 'profile_university_id', '', false, "University:")
+            
+          .marginbottom-25
+            .ui.input
+              .label-text Degree:
+              .input-container
+                %span.error_message Enter degree
+                = f.text_field :degree, :placeholder => 'Enter degree'
+      .clearfix
+      .margintop-20.center
+        .continue.ui.button.large.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.save_stage_1 Continue
+
+  .tree_progress
+    %h1.text-center Progress registation
+    %h4.text-center 
+      As your information becomes full, your tree grows. The higher the tree, the more suitable mentor we will choose for you
+    %img.tree{:src => '/assets/student/progress_tree_stage_1.png'}

@@ -1,0 +1,77 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'                         
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to 'Main','#'
+      %li= link_to 'Notifications','#'
+    .h3.marginbottom-20 Recent alerts
+    .recent_alerts
+      .headings Today
+      %ul
+        %li
+          %a{:href => "#", :role => "menuitem"} 
+            %span Settings:  
+            The color scheme was changed
+        %li
+          %a{:href => "#", :role => "menuitem"}
+            %span Docs:  
+            Added 5 new documents
+        %li
+          %a{:href => "#", :role => "menuitem"} 
+            %span Media:  
+            Added 15 new photos
+      .headings Yersteday
+      %ul
+        %li
+          %a{:href => "#", :role => "menuitem"} 
+            %span Settings:  
+            The color scheme was changed
+        %li
+          %a{:href => "#", :role => "menuitem"}
+            %span Docs:  
+            Added 5 new documents
+        %li
+          %a{:href => "#", :role => "menuitem"} 
+            %span Media:  
+            Added 15 new photos
+      .headings 11.06.2017
+      %ul
+        %li
+          %a{:href => "#", :role => "menuitem"} 
+            %span Settings:  
+            The color scheme was changed
+        %li
+          %a{:href => "#", :role => "menuitem"}
+            %span Docs:  
+            Added 5 new documents
+        %li
+          %a{:href => "#", :role => "menuitem"} 
+            %span Media:  
+            Added 15 new photos
+      .headings 12.06.2017
+      %ul
+        %li
+          %a{:href => "#", :role => "menuitem"} 
+            %span Settings:  
+            The color scheme was changed
+        %li
+          %a{:href => "#", :role => "menuitem"}
+            %span Docs:  
+            Added 5 new documents
+        %li
+          %a{:href => "#", :role => "menuitem"} 
+            %span Media:  
+            Added 15 new photos                        
+
+
+    .pagginate_block
+      %ul
+        %li= link_to '1','#', :class => 'active'
+        %li= link_to '2','#'
+        %li= link_to '3','#'
+        %li= link_to '4','#'
+        %li ...
+        %li= link_to '15','#'        

@@ -1,0 +1,61 @@
+@media (min-width: 250px) and (max-width: 600px)
+  .type_2_menu
+    .left_menu
+      padding-top: 60px
+      display: block 
+      ul
+        li
+          a
+            padding: 15px 5px
+            span.icon
+              display: table
+              margin: 0px auto
+      .list_menu
+        ul.first
+          overflow-y: auto
+          overflow-x: hidden
+          &>li>a
+            padding-left: 12px
+      .exit
+        margin-top: 0px
+        span.icon
+          margin: 10px auto
+          display: table
+    .menu_activator
+      display: block 
+      opacity: 1
+  body
+    &.left_menu_active
+      .menu_activator
+        opacity: 0
+        -webkit-transition: opacity 1s ease-in-out     
+      .type_2_menu
+        .left_menu
+          -webkit-transition: left 1s ease-in-out       
+          left: 0px
+      .data_content
+        margin-left: 74px !important
+        width: inherit !important    
+        -webkit-transition: margin-left 1s ease-in-out !important
+
+  header
+    height: 55px
+    .logo
+      top: 12px
+    ul
+      margin-top: 10px
+  .data_content
+    padding-top: 70px !important
+
+@media (min-width: 601px)
+  .type_1_menu
+    .left_menu
+      display: block
+
+@media (min-width: 601px) and (max-width: 1023px)
+  .left_detail_menu
+    display: none
+   
+  .content_wrapper.active 
+    .data_content
+      margin-left: 250px !important          

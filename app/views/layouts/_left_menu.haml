@@ -1,0 +1,44 @@
+.left-container
+  %ul.navigate
+    - if @user_current.mentor?
+      %li{:class => "#{params[:controller] == 'profiles' && (params[:action] == 'mentor' || params[:action] == 'mentor_edit') ? 'active' : ''}"}
+        = link_to mentor_profiles_path do
+          %span.icon.home
+          Home
+      %li{:class => "#{(params[:controller] == 'schedules' && (params[:action] == 'mentor' || params[:action] == 'my_students')) || (params[:controller] == 'videos' && (params[:action] == 'current') || (params[:action] == 'index') || (params[:controller] == 'profiles' && params[:action] == 'my_student')) ? 'active' : ''}"}
+        = link_to mentor_schedules_path do
+          %span.icon.mentor
+          My students
+      %li{:class => "#{params[:controller] == 'profiles' && params[:action] == 'pricing' ? 'active' : ''}"}
+        = link_to pricing_profiles_path do
+          %span.icon.pricing
+          Pricing
+      / %li
+      /   = link_to '#' do
+      /     %span.icon.internship
+      /     Internship
+      %li{:class => "#{params[:controller] == 'profiles' && params[:action] == 'faq' ? 'active' : ''}"}
+        = link_to faq_profiles_path(Category.first) do
+          %span.icon.faq
+          FAQ
+    - elsif @user_current.client?
+      %li{:class => "#{params[:controller] == 'profiles' && (params[:action] == 'student_home' || params[:action] == 'student' || params[:action] == 'student_edit') ? 'active' : ''}"}
+        = link_to student_home_profiles_path do
+          %span.icon.home
+          Home
+      %li{:class => "#{(params[:controller] == 'schedules' && params[:action] == 'student') || (params[:controller] == 'videos' && (params[:action] == 'current') || (params[:action] == 'index') || (params[:action] == 'my_mentor')) ? 'active' : ''}"}
+        = link_to student_schedules_path do
+          %span.icon.mentor
+          My mentor
+      %li{:class => "#{params[:controller] == 'profiles' && params[:action] == 'pricing' ? 'active' : ''}"}
+        = link_to pricing_profiles_path do
+          %span.icon.pricing
+          Pricing
+      / %li
+      /   = link_to '#' do
+      /     %span.icon.internship
+      /     Internship
+      %li{:class => "#{params[:controller] == 'profiles' && params[:action] == 'faq' ? 'active' : ''}"}
+        = link_to faq_profiles_path(Category.first) do
+          %span.icon.faq
+          FAQ

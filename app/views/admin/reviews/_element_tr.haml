@@ -1,0 +1,35 @@
+%td
+  = admin_default_checkbox_tr
+%td
+  %img{:src => element.image_url('165x165')}
+%td
+  .normal
+    = element.name
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'translation[name]', :placeholder => 'Name', :value => element.name}
+%td
+  .normal
+    = element.location
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'translation[location]', :placeholder => 'Location', :value => element.location}
+%td
+  .normal
+    = element.description.html_safe
+  .fast_edit
+    %textarea.margintop-10.field_input.ckeditor{:type => 'text', :name => 'translation[description]', :placeholder => 'Description'}= element.description        
+%td 
+  .normal
+    = element.position
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'review[position]', :placeholder => 'Position', :value => element.position}
+%td          
+  %ul.functions
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/element_tr"}}
+    %li
+      = link_to edit_admin_review_path(element) do
+        .icon.edit_function
+    %li
+      = link_to '#' do
+        .icon.delete_function{:data => {:id => element.id, :entity => @entity_table}}

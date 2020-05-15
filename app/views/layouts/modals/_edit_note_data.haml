@@ -1,0 +1,17 @@
+= form_for note, :url => note_path(note), :method => :put do |f|
+  %hr
+  .ui.input
+    .p.marginbottom-5 Header:
+    .input-container
+      %span.error_message Enter header
+      = f.text_field :name, :placeholder => 'Enter header'
+  %hr
+  .ui.textarea.margintop-20
+    .p.marginbottom-5 Your comment:
+    .textarea-container
+      = f.text_area :description, :placeholder => 'Leave your comment for this note'
+  %hr
+
+  .margintop-30.marginbottom-30
+    .ui.button.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.with_shadow.blue_button.update_note Save
+  %hr

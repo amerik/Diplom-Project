@@ -1,0 +1,17 @@
+#yes_no_modal.modal.slide-in
+  .modal-dialog
+    .wrapper
+      .close{:'data-dismiss' => "modal",  :'aria-label' => "Close"}
+        %img{:src => '/assets/close_shape.png'}
+      .h3 Attention!
+      %hr
+      .margintop-30.marginbottom-30
+        .p.description
+
+      %hr
+
+      .clearfix
+      .margintop-30.marginbottom-30.bottons
+        .ui.button.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.with_shadow.blue_button.yes Yes
+        .ui.button.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.with_shadow.blue_button.no{:'data-dismiss' => "modal",  :'aria-label' => "Close"} No
+      %hr

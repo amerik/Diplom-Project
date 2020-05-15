@@ -1,0 +1,25 @@
+%td
+  = admin_default_checkbox_tr
+%td 
+  = element.decorate.country
+%td 
+  .normal
+    = element.name_rus
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'city[name_rus]', :placeholder => t("view.admin.city.name_rus"), :value => element.name_rus}
+%td 
+  .normal
+    = element.name_en
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'city[name_en]', :placeholder => t("view.admin.city.name_en"), :value => element.name_en}
+%td          
+  %ul.functions
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/element_tr"}}
+    %li
+      = link_to edit_admin_city_path(element) do
+        .icon.edit_function
+    %li
+      = link_to '#' do
+        .icon.delete_function{:data => {:id => element.id, :entity => @entity_table}}

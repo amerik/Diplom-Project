@@ -1,0 +1,4 @@
+.tab-items
+  .tab-item{:class => "#{((params[:controller] == 'schedules' && params[:action] == 'student') || (params[:controller] == 'videos' && params[:action] == 'current'))  ? 'active' : ''}"}= link_to 'Elewator', student_schedules_path
+  .tab-item{:class => "#{params[:controller] == 'videos' && params[:action] == 'index' ? 'active' : ''}"}= link_to 'History', videos_path
+  .tab-item{:class => "#{(params[:controller] == 'schedules' && params[:action] == 'my_mentor') ? 'active' : ''}"}= link_to 'Mentor', my_mentor_schedules_path

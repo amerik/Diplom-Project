@@ -1,0 +1,22 @@
+.body-bg{:style => '-webkit-font-smoothing: antialiased !important; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; font-smoothing: antialiased; font-style: normal; background: #edf0f0; font-family:Arial, Helvetica, sans-serif; font-size: 18px; padding-top: 100px; padding-bottom: 200px;'}
+  .emailbody{:style => 'width: 600px; display: table; margin: 0px auto; padding: 0px; '}
+    .wrapper{:style => 'padding: 55px 50px 66px;  background: #ffffff;'}
+
+      = link_to SITE_NAME_GLOBAL_FULL do
+        %img{:src => SITE_NAME_GLOBAL_FULL + '/assets/logo_x189.png', :style => 'float: left'}    
+
+      .represent{:style => 'display: block;  margin-top: 90px;'}
+        %p{:style => 'font-size: 18px; color: #000000; line-height: 24px;'}
+          = "Dear, #{@user.profile.first_name}!"
+          %br
+          %br
+          Welcome to Eleway.
+          %br
+          To complete the sign-up procedure, please confirm your email.
+      
+      = link_to 'confirm email', SITE_NAME_GLOBAL_FULL + "/users/check_register?id=#{@user.id}&code=#{@user.code_register}", :style => 'color: #ffffff; text-transform: uppercase; font-size: 20px;  text-decoration: none; display: inline-block; margin: 45px 0px 70px; background: #0077cc; width: 240px; padding: 19px 0px; text-align: center; line-height: 11px;' 
+
+      %div{style: 'color: #000000; '}
+        Best regards, 
+        %br
+        Team of Eleway

@@ -1,0 +1,10 @@
+.tasks-header
+  .h5 Tasks
+
+  .plus-button.function-button
+    .ui.icon.arrowdown.black
+  - if @user_current.mentor?
+    = link_to '#', :class => "add_task function-button" do
+      %span.ui.icon.plus.white.inline-block  
+.tasks-body
+  %ul.tasks_body= render partial: 'tasks/items', :locals => { :tasks => @schedule_current.tasks.or_default }

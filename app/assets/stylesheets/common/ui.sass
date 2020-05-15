@@ -1,0 +1,907 @@
+@import "common/ui-mixin"
+@import "common/mixing"
+
+.ui
+  &.background
+    @include ui-colors($attribute: 'background')
+
+  &.color
+    @include ui-colors($attribute: 'color')
+  
+
+  &.border
+    //border-color
+    @include ui-colors($attribute: 'border')
+
+    ////rounded
+    &.rounded-100
+      border-radius: 100px
+    &.rounded-8
+      border-radius: 8px
+
+    //weight
+    &.border-1
+      border-width: 1px
+      border-style: solid
+    &.border-2
+      border-width: 2px
+      border-style: solid
+    &.border-3
+      border-width: 3px
+      border-style: solid
+    &.border-4
+      border-width: 4px
+      border-style: solid
+    &.border-5
+      border-width: 5px
+      border-style: solid
+
+
+  &.ui-state
+    &:hover
+      background: rgba(0,0,0,0.06)
+    &.disabled
+      background: rgba(255,255,255,0.60)
+
+  &.button
+    font-family: 'Montserrat', sans-serif
+    font-weight: 400       
+    cursor: pointer
+    &.min-width
+      min-width: 150px
+    &.fill
+      text-align: center
+    &.border
+      text-align: center
+    &.fill-with-icon
+      .text
+        //display: table
+        //margin: 0px auto
+        color: #FFFFFF
+      .icon
+        width: 16px
+        height: 16px
+        display: inline-block
+        //background: red
+        vertical-align: middle
+        margin-right: 10px
+        @include ui-icons($path: 'white')
+        background-size: cover !important
+        &.right
+          margin-right: initial
+          margin-left: 10px
+
+    &.small
+      line-height: 40px
+      font-size: 14px
+      height: 42px
+      padding-left: 20px
+      padding-right: 20px
+    &.middle
+      line-height: 46px
+      font-size: 14px
+      height: 46px
+      padding-left: 40px
+      padding-right: 40px      
+    &.large
+      line-height: 58px
+      height: 58px
+      padding-left: 40px
+      padding-right: 40px    
+      font-size: 18px
+      text-align: center
+    &.block
+      display: block
+    &.loading
+      cursor: progress
+      color: transparent !important
+      position: relative
+      .text
+        visibility: hidden
+      &:after
+        width: 30px
+        height: 8px
+        position: absolute
+        background: url(/assets/loading.gif) no-repeat
+        content: ""
+        background-size: cover
+        top: 0
+        bottom: 0
+        margin: auto
+        left: 0
+        right: 0
+
+  //icons
+  &.icon
+    width: 16px
+    height: 16px
+    background-size: cover !important
+    //display: block
+    @include ui-icons($path: 'blue')
+    &.white
+      @include ui-icons($path: 'white')
+    &.black
+      @include ui-icons($path: 'black')      
+
+
+  &.input
+    position: relative
+    .label-text
+      font-size: 12px
+      color: #1A2028
+      font-family: 'Montserrat', sans-serif
+      font-weight: bold      
+      margin-bottom: 10px
+      display: block
+      //text-transform: uppercase
+    .input-container
+      position: relative
+      height: 46px
+      position: relative
+      border-radius: 8px
+      background: rgba(214,214,214,0.3)
+      border: 1px solid rgba(214,214,214,0.5)    
+      span.error_message
+        display: none
+      &.focus
+        border-color: #1A92EB
+        background: #FFFFFF
+      &.error
+        background: rgba(238,54,50,0.1)
+        border-color: #EE3632 !important
+        &.down
+          span.error_message
+            bottom: -56px
+            top: initial
+            &:after
+              top: -6px
+              border-left: 1px solid #e74c3c
+              border-top: 1px solid #e74c3c
+              border-right: 0px
+              border-bottom: 0px
+        span.error_message
+          display: block
+          border: 1px solid #EE3632
+          position: absolute
+          height: 46px
+          background: #FFFFFF
+          left: 0
+          top: -56px
+          margin: auto
+          color: #EE3632
+          line-height: 16px
+          font-family: 'Montserrat', sans-serif
+          font-weight: 5        
+          font-size: 12px  
+          box-shadow: 0 8px 30px 0 rgba(0,0,0,0.10)
+          border-radius: 3px
+          word-wrap: normal
+          white-space: nowrap
+          text-overflow: ellipsis
+          padding-right: 18px
+          z-index: 2
+          &:after
+            position: absolute
+            left: 20px
+            content: ''
+            background: #FFFFFF
+            width: 10px
+            height: 10px
+            top: 40px
+            transform: rotate(45deg)
+            -webkit-transform: rotate(45deg)
+            -moz-transform: rotate(45deg)
+            -o-transform: rotate(45deg)
+            -ms-transform: rotate(45deg)
+            border-right: 1px solid #e74c3c
+            border-bottom: 1px solid #e74c3c
+          &:before
+            width: 18px
+            height: 18px
+            content: ''
+            background: url('/assets/error.png')
+            background-size: cover
+            display: inline-block
+            margin: 13px 10px 13px 18px
+            vertical-align: middle
+        &:after
+          content: ''
+          width: 24px
+          height: 24px
+          background: url('/assets/error.png')
+          position: absolute
+          top: 9px
+          right: 20px
+      &.success
+        background: rgba(26,146,235,0.1)
+        border-color: #1A92EB !important
+        &:after
+          content: ''
+          width: 24px
+          height: 24px
+          background: url('/assets/success.png')
+          position: absolute
+          top: 9px
+          right: 20px    
+      &.with_icon
+        .icon
+          width: 20px
+          height: 20px
+          position: absolute
+          left: 15px
+          top: 12px        
+          &.fb-icon
+            background: url('/assets/fb-icon.png') no-repeat
+            background-size: cover
+          &.instagram-icon
+            background: url('/assets/instagram-icon.png') no-repeat            
+            background-size: cover
+          &.twitter-icon
+            background: url('/assets/twitter-icon.png') no-repeat            
+            background-size: cover            
+          &.google-plus-icon
+            background: url('/assets/google-plus-icon.png') no-repeat            
+            background-size: cover            
+          &.search-icon
+            background: url('/assets/search-icon.png') no-repeat
+        input[type=text]
+        padding: 0px 20px 0px 45px
+      input[type="text"],
+      input[type="password"]
+        height: 44px
+        color: rgba(26,32,40,1)
+        min-width: 280px
+        width: 100%
+        padding: 10px 18px
+        outline: none
+        font-family: 'Montserrat', sans-serif
+        font-weight: 500
+        background: transparent
+        border: none
+        font-size: 14px
+        &::-webkit-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &:-moz-placeholder
+          color: rgba(26,32,40,0.3)
+          opacity: 1
+        &::-moz-placeholder
+          color: rgba(26,32,40,0.3)
+          opacity: 1
+        &:-ms-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &::-ms-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &::placeholder
+          color: rgba(26,32,40,0.3) 
+      
+    &.disabled
+      .input-container
+        input[type="text"],
+        input[type="password"]
+          cursor: not-allowed
+          pointer-events:none
+
+
+  &.textarea
+    position: relative
+    .label-text
+      font-size: 12px
+      color: #1A2028
+      font-family: 'Montserrat', sans-serif
+      font-weight: bold      
+      margin-bottom: 10px
+      display: block
+      //text-transform: uppercase
+    .textarea-container
+      position: relative
+      height: 109px
+      position: relative
+      border-radius: 8px
+      background: rgba(214,214,214,0.3)
+      border: 1px solid rgba(214,214,214,0.5)    
+      &.focus
+        border-color: #1A92EB
+      &.success
+        background: rgba(26,146,235,0.1)
+        border-color: #1A92EB !important
+      &.error
+        background: rgba(238,54,50,0.1)
+        border-color: #EE3632 !important
+        &.down
+          span.error_message
+            bottom: -56px
+            top: initial
+            &:after
+              top: -6px
+              border-left: 1px solid #e74c3c
+              border-top: 1px solid #e74c3c
+              border-right: 0px
+              border-bottom: 0px
+ 
+      textarea
+        height: 109px
+        color: rgba(26,32,40,1)
+        min-width: 280px
+        width: 100%
+        padding: 10px 18px
+        outline: none
+        font-family: 'Montserrat', sans-serif
+        font-weight: 500
+        background: transparent
+        border: none        
+        &::-webkit-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &:-moz-placeholder
+          color: rgba(26,32,40,0.53)
+          opacity: 1
+        &::-moz-placeholder
+          color: rgba(26,32,40,0.3)
+          opacity: 1
+        &:-ms-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &::-ms-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &::placeholder
+          color: rgba(26,32,40,0.3)  
+    &.disabled
+      .textarea-container
+        textarea
+          cursor: not-allowed
+          pointer-events:none
+
+  &.dropdown
+    position: relative
+    .label-text
+      font-size: 12px
+      color: #1A2028
+      font-family: 'Montserrat', sans-serif
+      font-weight: bold      
+      margin-bottom: 10px
+      display: block
+      //text-transform: uppercase
+    .dropdown-container
+      position: relative
+      height: 46px
+      position: relative
+      border-radius: 8px
+      background: #FFFFFF
+      border: 1px solid #C2C2C2
+      cursor: pointer
+      z-index: 2
+      &.focus
+        border-color: #1A92EB
+      &.error
+        background: rgba(238,54,50,0.1)
+        border-color: #EE3632 !important
+        span
+          width: 24px
+          height: 24px
+          background: url('/assets/error.png')
+          position: absolute
+          top: 9px
+          right: 20px
+          z-index: 1
+      &.success
+        background: rgba(26,146,235,0.1)
+        border-color: #1A92EB !important
+   
+      input[type="text"]
+        height: 44px
+        color: rgba(26,32,40,1)
+        min-width: 280px
+        width: 100%
+        padding: 10px 18px
+        outline: none
+        font-family: 'Montserrat', sans-serif
+        font-weight: 500
+        background: transparent
+        border: none
+        cursor: pointer
+        &::-webkit-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &:-moz-placeholder
+          color: rgba(26,32,40,0.3)
+          opacity: 1
+        &::-moz-placeholder
+          color: rgba(26,32,40,0.3)
+          opacity: 1
+        &:-ms-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &::-ms-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &::placeholder
+          color: rgba(26,32,40,0.3)      
+      .dropdown-trigger
+        width: 16px
+        height: 16px
+        position: absolute
+        right: 20px
+        top: 14px
+      &.menu-up +
+        .dropdown-list
+          display: block
+    .dropdown-list  
+      display: none
+      background: #FFFFFF
+      border-radius: 8px
+      z-index: 3
+      position: absolute
+      width: 100%
+      font-size: 14px
+      line-height: 22px
+      color: #1A2028
+      @include box_shadow(0px, 10px, 24px, rgba(0,0,0,0.08)) 
+      padding-top: 46px
+      margin-top: -46px
+      padding-bottom: 5px  
+      //overflow: auto
+      max-height: 300px
+      outline: none !important
+      &.country
+        padding: 0px 
+        margin: 1px     
+      ul
+        list-style: none
+        padding: 0px
+        margin: 0px
+        //max-height: 280px
+        // overflow-y: auto
+        li
+          border-bottom: 1px solid #EBEBEB
+          padding: 20px 20px
+          cursor: pointer
+          &:hover
+            background-color: rgba(26,145,235,0.08)
+          &:nth-last-child(1)
+            border-bottom: none !important
+      .mCSB_inside > .mCSB_container 
+        margin-right: 10px !important     
+    &.disabled
+      .dropdown-container
+        background: rgba(214,214,214,0.3)
+        input[type="text"]
+          color: rgba(26,32,40,0.5)
+          cursor: not-allowed
+        .dropdown-trigger
+          opacity: 0.2   
+      .dropdown-list
+        display: none !important          
+
+
+  &.calendar
+    position: relative
+    .label-text
+      font-size: 12px
+      color: #1A2028
+      font-family: 'Montserrat', sans-serif
+      font-weight: bold      
+      margin-bottom: 10px
+      display: block
+      //text-transform: uppercase
+    .calendar-container
+      position: relative
+      height: 46px
+      position: relative
+      border-radius: 8px
+      background: #FFFFFF
+      border: 1px solid #C2C2C2
+      span.error_message
+        display: none
+      &.focus
+        border-color: #1A92EB  
+      &.error
+        background: rgba(238,54,50,0.1)
+        border-color: #EE3632 !important
+        &.down
+          span.error_message
+            bottom: -56px
+            top: initial
+            &:after
+              top: -6px
+              border-left: 1px solid #e74c3c
+              border-top: 1px solid #e74c3c
+              border-right: 0px
+              border-bottom: 0px
+        span.error_message
+          display: block
+          border: 1px solid #EE3632
+          position: absolute
+          height: 46px
+          background: #FFFFFF
+          left: 0
+          top: -56px
+          margin: auto
+          color: #EE3632
+          line-height: 16px
+          font-family: 'Montserrat', sans-serif
+          font-weight: 5        
+          font-size: 12px  
+          box-shadow: 0 8px 30px 0 rgba(0,0,0,0.10)
+          border-radius: 3px
+          word-wrap: normal
+          white-space: nowrap
+          text-overflow: ellipsis
+          padding-right: 18px
+          z-index: 2
+          &:after
+            position: absolute
+            left: 20px
+            content: ''
+            background: #FFFFFF
+            width: 10px
+            height: 10px
+            top: 40px
+            transform: rotate(45deg)
+            -webkit-transform: rotate(45deg)
+            -moz-transform: rotate(45deg)
+            -o-transform: rotate(45deg)
+            -ms-transform: rotate(45deg)
+            border-right: 1px solid #e74c3c
+            border-bottom: 1px solid #e74c3c
+          &:before
+            width: 18px
+            height: 18px
+            content: ''
+            background: url('/assets/error.png')
+            background-size: cover
+            display: inline-block
+            margin: 13px 10px 13px 18px
+            vertical-align: middle
+  
+      input[type="text"]
+        height: 44px
+        color: rgba(26,32,40,1)
+        min-width: 280px
+        width: 100%
+        padding: 10px 18px
+        outline: none
+        font-family: 'Montserrat', sans-serif
+        font-weight: 500
+        background: transparent
+        border: none
+        &::-webkit-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &:-moz-placeholder
+          color: rgba(26,32,40,0.3)
+          opacity: 1
+        &::-moz-placeholder
+          color: rgba(26,32,40,0.3)
+          opacity: 1
+        &:-ms-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &::-ms-input-placeholder
+          color: rgba(26,32,40,0.3)
+        &::placeholder
+          color: rgba(26,32,40,0.3)          
+      .calendar-trigger
+        width: 16px
+        height: 16px
+        position: absolute
+        right: 20px
+        top: 14px
+        cursor: pointer
+
+
+
+  &.checkbox
+    margin: initial
+    &.disabled
+      .checkbox-container
+        .box
+          background: #F6F6F6
+          border-color: #D6D6D6
+          cursor: not-allowed
+          input
+            cursor: not-allowed
+        .ui-label        
+          cursor: not-allowed            
+        &.checked
+          .box
+            border-color: #D6D6D6
+            background: #F6F6F6          
+            &:after
+              background-image: url('/assets/check_box_checked_disabled.png')
+    .checkbox-container
+      &.checked
+        .box
+          background: #1A92EB
+          border-color: #1A92EB
+          &:after
+            background-image: url('/assets/check_box_checked.png') 
+      .box
+        position: relative
+        width: 16px
+        height: 16px
+        display: inline-block
+        vertical-align: middle
+        border: 1px solid #D6D6D6
+        border-radius: 2px
+        cursor: pointer
+        input[type="checkbox"]
+          opacity: 0
+          width: 16px
+          height: 16px
+          display: none
+        &:after
+          background-size: cover
+          width: 10px
+          height: 10px
+          position: absolute
+          content: ''        
+          left: 0
+          right: 0
+          bottom: 0
+          top: 0
+          margin: auto   
+      .ui-label
+        vertical-align: middle
+        font-size: 14px
+        font-weight: 500
+        color: #1A2028
+        line-height: 22px
+        display: inline-block
+        margin-left: 10px
+        cursor: pointer
+  &.radio
+    margin: initial
+    &.disabled
+      .radio-container
+        .circle
+          border-color: #D6D6D6
+          background: #F6F6F6
+          cursor: not-allowed
+          input
+            cursor: not-allowed  
+        .ui-label        
+          cursor: not-allowed
+        &.checked
+          .circle
+            border-color: #D6D6D6
+            background: #F6F6F6        
+            &:after
+              display: block
+              background: #878787
+    .radio-container
+      &.checked
+        .circle
+          background: #1A92EB
+          border-color: #1A92EB
+          &:after
+            display: block
+            background: #FFFFFF
+      .circle
+        position: relative
+        width: 16px
+        height: 16px
+        display: inline-block
+        vertical-align: middle
+        border: 1px solid #D6D6D6
+        border-radius: 100px
+        cursor: pointer
+        input[type="radio"],
+        input[type="checkbox"]
+          opacity: 0
+          width: 16px
+          height: 16px
+          display: none
+        &:after
+          width: 6px
+          height: 6px
+          position: absolute
+          content: ''        
+          left: 0
+          right: 0
+          bottom: 0
+          top: 0
+          margin: auto   
+          border-radius: 100px
+          display: none
+      .ui-label
+        vertical-align: middle
+        font-size: 14px
+        font-weight: 500
+        color: #1A2028
+        line-height: 22px
+        display: inline-block
+        margin-left: 10px
+        cursor: pointer
+
+  &.pagination
+    margin: 0px auto
+    a.control
+      display: inline-block
+      vertical-align: middle
+      span
+        width: 16px
+        height: 16px
+        background: url('/assets/icons/black/ArrowLeft.png')
+        display: inline-block
+        background-size: cover
+      &:hover
+        span
+          opacity: 0.3
+      &.next
+        span
+          transform: rotateY(180deg)
+    ul
+      padding: 0px
+      margin: 0px 20px
+      list-style: none
+      display: inline-block
+      vertical-align: middle
+      li
+        width: 35px
+        text-align: center
+        font-size: 14px
+        color: #1A2028
+        line-height: 22px
+        font-weight: 500
+        position: relative
+        display: inline-block
+        a
+          color: #1A2028
+          &.active
+            &:after
+              width: 35px
+              height: 35px
+              border-radius: 100px
+              position: absolute
+              content: ''
+              left: 0
+              right: 0
+              top: 0
+              bottom: 0
+              margin: auto
+              @include box_shadow(0px, 8px, 24px, rgba(0,0,0,0.14))
+          &:hover
+            text-decoration: none
+  &.file_loader
+    .file-loading-container
+      padding: 0px
+      .file-item
+        padding: 20px 0px
+        &:before
+          content: ''
+          width: 24px
+          height: 24px
+          background: url(/assets/icons/blue/File.png)
+          background-size: cover
+          display: inline-block
+          margin-right: 10px
+          vertical-align: middle
+        .name
+          font-weight: 500
+          color: #1A2028
+          font-size: 16px
+          line-height: 24px
+          display: inline-block
+          margin-right: 10px
+          vertical-align: middle
+        .size
+          display: inline-block
+          vertical-align: middle
+          font-weight: 400
+          font-size: 16px
+          color: rgba(26,32,40,0.4)
+          margin-right: 20px
+        .remove
+          width: 24px
+          cursor: pointer
+          @include box_shadow(0px, 8px, 24px, rgba(0,0,0,0.14))
+          height: 24px
+          background: url(/assets/error.png)
+          display: inline-block
+          vertical-align: middle
+          border-radius: 100px
+      .loading-status
+        margin-bottom: 15px
+        .loading-bar
+          width: 278px
+          height: 8px
+          display: inline-block
+          border-radius: 100px
+          background: #F6F6F6
+          position: relative
+          overflow: hidden
+          vertical-align: middle
+          margin-right: 20px
+          .status-bar
+            height: 8px
+            position: absolute
+            background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+            left: 0
+            top: 0
+            border-radius: 100px
+        .count
+          font-size: 14px
+          font-weight: 500
+          color: #1A2028
+          display: inline-block
+            vertical-align: middle
+      .upload_another_file
+        display: inline-block
+        position: relative
+        input[type="file"]
+          position: absolute
+          width: 100%
+        .text
+          font-weight: 500
+          color: #1E94EC
+          font-size: 16px
+          line-height: 24px
+          display: inline-block
+          margin-right: 10px
+          vertical-align: middle      
+          text-decoration: underline
+          &:before
+            content: ''
+            width: 24px
+            height: 24px
+            background: url(/assets/icons/blue/Clip.png)
+            background-size: cover
+            display: inline-block
+            margin-right: 10px
+            vertical-align: middle          
+
+.file-container
+  position: relative
+  span.error_message
+    display: none
+  &.error
+    /* background: rgba(238,54,50,0.1)
+    border-color: #EE3632 !important
+    &.down
+      span.error_message
+        bottom: -56px
+        top: initial
+        &:after
+          top: -6px
+          border-left: 1px solid #e74c3c
+          border-top: 1px solid #e74c3c
+          border-right: 0px
+          border-bottom: 0px
+    span.error_message
+      display: block
+      border: 1px solid #EE3632
+      position: absolute
+      height: 46px
+      background: #FFFFFF
+      left: 0
+      top: -56px
+      margin: auto
+      color: #EE3632
+      line-height: 16px
+      font-family: 'Montserrat', sans-serif
+      font-weight: 5        
+      font-size: 12px  
+      box-shadow: 0 8px 30px 0 rgba(0,0,0,0.10)
+      border-radius: 3px
+      word-wrap: normal
+      white-space: nowrap
+      text-overflow: ellipsis
+      padding-right: 18px
+      z-index: 2
+      &:after
+        position: absolute
+        left: 20px
+        content: ''
+        background: #FFFFFF
+        width: 10px
+        height: 10px
+        top: 40px
+        transform: rotate(45deg)
+        -webkit-transform: rotate(45deg)
+        -moz-transform: rotate(45deg)
+        -o-transform: rotate(45deg)
+        -ms-transform: rotate(45deg)
+        border-right: 1px solid #e74c3c
+        border-bottom: 1px solid #e74c3c
+      &:before
+        width: 18px
+        height: 18px
+        content: ''
+        background: url('/assets/error.png')
+        background-size: cover
+        display: inline-block
+        margin: 13px 10px 13px 18px
+        vertical-align: middle      

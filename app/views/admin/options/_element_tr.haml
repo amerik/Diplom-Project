@@ -1,0 +1,30 @@
+%td 
+  .normal
+    = t("view.admin.option.#{element.alias}")
+  .fast_edit
+    = t("view.admin.option.#{element.alias}")
+%td
+  - if element.alias == 'date_on_site'
+    .normal
+      - if element.val_param == 'true'
+        Yes
+      - elsif element.val_param == 'false'
+        No
+    .fast_edit       
+      .field_select= admin_check_box_standart(element.val_param == 'true', {}, 'option[val_param]', '')
+  - else
+    .normal
+      = element.val_param
+    .fast_edit       
+      %input.field_input{:type => 'text', :name => 'option[val_param]', :value => element.val_param}
+%td
+  - if element.alias == 'date_on_site'
+    .normal
+      .field_input= element.decorate.date_at_val
+    .fast_edit       
+      %input.field_input.date_field{:type => 'text', :name => 'option[date_at]', :value => element.decorate.date_at_val}
+%td          
+  %ul.functions
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/element_tr"}}

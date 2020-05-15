@@ -1,0 +1,48 @@
+#log_in_modal.modal.auth.slide-in
+  .modal-dialog
+    .wrapper
+      .close{:'data-dismiss' => "modal",  :'aria-label' => "Close"}
+        %img{:src => '/assets/close_shape.png'}
+      .h1 Log In
+
+      = form_for User.new, :html => {:autocomplete => "off", :id => 'new_user_auth'}, :url => authorization_users_path do |f|
+        .marginbottom-25
+          .ui.input
+            .label-text Your E-mail:
+            .input-container
+              %span.error_message A user with such an email address does not exit !
+              = f.text_field :login, :placeholder => 'Enter your e-mail', :class => 'log_in_enter', :id => "user_auth_login", :value => '', :autocomplete => 'off'
+        .marginbottom-25
+          .ui.input
+            .label-text Password:
+            .input-container
+              %span.error_message Password not correct !
+              = f.password_field :password, :placeholder => 'Enter your password', :class => 'log_in_enter', :id => "user_auth_password", :value => '', :autocomplete => 'off'
+        .marginbottom-25
+          .pull-left
+            .ui.checkbox
+              .checkbox-container.checked
+                .box
+                  %input{:type => 'checkbox', :checked => true}
+                .ui-label Stay signed in
+          .pull-right
+            = link_to 'Forgot your password?', '#', :class => 'lost forgot-password'
+        .clearfix
+        .margintop-50
+          .ui.button.large.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.with_shadow.user_authorization.blue_button Log In
+    %hr
+    .or OR
+    .social
+      = link_to '#', :class => 'facebook' do
+        %img{:src => '/assets/facebook.png'}
+      = link_to '#', :class => 'twitter' do
+        %img{:src => '/assets/twitter.png'}
+      = link_to '#', :class => 'googleplus' do
+        %img{:src => '/assets/google-plus.png'}
+
+      = render partial: 'layouts/sos_network', :locals => {:id => 'uLogin-3', :redirect_uri => URI.encode("#{SITE_FULL_NAME_GLOBAL}/users/soc_authorization/client") }
+
+    %hr
+    .bottom 
+      Don't have an account?
+      = link_to 'Sign Up', '#', :class => 'sign-up'

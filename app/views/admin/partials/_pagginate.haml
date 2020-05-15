@@ -1,0 +1,13 @@
+.pagginate_block
+  %ul
+    %li= link_to t("view.admin.common.first"), url + "1" + url_sort
+
+    - params_pagginate[:get_left_pages].each do |value|
+      %li= link_to value, url + "#{value}" + url_sort
+
+    %li= link_to page, url + "#{page}" + url_sort, :class => 'active'
+
+    - params_pagginate[:get_right_pages].each do |value|
+      %li= link_to value, url + "#{value}" + url_sort
+
+    %li= link_to t("view.admin.common.last"), url + "#{params_pagginate[:last_page]}" + url_sort

@@ -1,0 +1,12 @@
+#enter_sms.modal.auth.slide-in
+  .modal-dialog
+    .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-12.col-xs-offset-0
+      .modal-contents.mod
+        .close{:'data-dismiss' => "modal",  :'aria-label' => "Close"}
+        %input.default_input_text.full-width{:type => 'text', :placeholder => 'Enter your SMS-code'}
+        .yes_no_buttons
+          = link_to 'Login','#', :class => 'yes'
+
+
+
+            

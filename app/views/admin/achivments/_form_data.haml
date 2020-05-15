@@ -1,0 +1,20 @@
+.row
+  .col-md-6.col-xs-12
+
+    .margintop-20
+    .default_label Image
+    - unless entity.image.file.nil?
+      %img{:src => entity.image_url}
+    %input.default_input_text.width-350{:name => 'achivment[image]', :type => 'file'}
+
+    .margintop-20
+    .default_label Name
+    %input.default_input_text.width-350{:name => 'translation[name]', :value => entity.name}
+
+    .margintop-20
+    .default_label Alias
+    %input.default_input_text.width-350{:name => 'achivment[alias]', :value => entity.alias}
+
+    .margintop-20
+    .default_label Description
+    %textarea.default_input_text.width-350{:name => 'translation[description]'}= entity.description

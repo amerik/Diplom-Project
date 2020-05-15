@@ -1,0 +1,235 @@
+.index
+  .decor
+  .top_content.index
+    .container
+      = render partial: 'layouts/header'
+
+      .left_content
+        %h1 Find your mentor now!
+        .h2 Or become a mentor yourself
+        %p
+          Advertising support induces empirical rebranding. A point impact positions the presentation material. The ad unit directly positions sociometric buying and selling
+
+        = link_to 'Get started', '#', :class => 'get_started grey_button'
+
+      %img.tree_illlustration{:src => '/assets/tree_illlustration.png'}
+    / .decor
+    .bg_gradient
+
+  .why_we_are_called
+    .container
+      .video  
+        .placeholder
+          %img{:src => '/assets/video_prev.jpg'}
+        .play_button
+      .right_part
+        %h2 
+          Why we are called 
+          %span ELEWAY    
+        %p
+          Competitiveness is openly cynical. Focusing incorrectly translates the institutional complex analysis of the situation. It's not a fact that sponsorship attracts social status. The marketing and sales department, within the framework of today's views, categorically determines the format of the event, expanding the market share. The change in the global strategy, neglecting details, translates the institutional media channel:      
+
+        %ul
+          %li
+            .check
+            .text 
+              All our mentors will be assessed 
+              %br
+              regularly
+          %li
+            .check
+            .text
+              All complaints regarding mentors or students will be taken 
+              %br
+              seriously
+          %li
+            .check
+            .text
+              Consultations can be held at any time as agreed between 
+              %br
+              student and mentor (24/7)      
+          %li
+            .check
+            .text
+              Should an outstanding opportunity come up, you will be 
+              %br
+              notified the same day         
+
+        = link_to 'Try it now','#', :class => 'try_now blue_button'
+
+  .how_it_works
+    .container
+      %h2 How it works
+      .choosing-mentor
+        %ul
+          %li= link_to 'Choosing of mentor', '#', :class => 'active', :'data-name' => 'choosing_of_mentor'
+          %li= link_to 'Learning process', '#', :'data-name' => 'learning_process'
+          %li= link_to 'Taking the exam', '#', :'data-name' => 'taking_the_exam'
+          %li= link_to 'Completion', '#', :'data-name' => 'completion'
+      
+        .contents.choosing_of_mentor.first
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor 
+
+        .contents.learning_process
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image_2.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor  
+
+        .contents.taking_the_exam
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image_3.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor  
+
+        .contents.completion
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image_4.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor            
+
+
+  .why__need_mentor
+    .container
+      .left_content
+        .details
+          %img.icon{:src => '/assets/student.png'}
+          %h3 
+            Why do you need 
+            %br
+            a mentor?
+          %ul
+            %li
+              .check
+              .text 
+                Mentors can help you make the important 
+                %br 
+                decisions in your professional life, based on 
+                %br 
+                experience
+            %li
+              .check
+              .text 
+                Support you in creating goals and making the 
+                %br 
+                changes necessary in your professional/ 
+                %br 
+                personal life to achieve those
+            %li
+              .check
+              .text 
+                Provide support and advice when reviewing 
+                %br 
+                your current situation and decide where to go 
+                %br 
+                from there
+            %li
+              .check
+              .text 
+                Act as a truly objective source of information 
+                %br 
+                and a good listener    
+
+          = link_to 'Find a mentor', '#' , :class => 'mentor grey_button'                               
+
+      .right_content
+        .details.to-right
+          %img.icon{:src => '/assets/teacher.png'}
+          %h3
+            Why become
+            %br
+            a mentor?
+          %ul
+            %li
+              .check
+              .text 
+                Mentors work with people from different 
+                %br
+                backgrounds, and expand their professional 
+                %br network
+            %li
+              .check
+              .text 
+                Improving communication skills such as 
+                %br 
+                offering positive feedback with constructive 
+                %br 
+                criticism
+            %li
+              .check
+              .text 
+                Further expansion of your knowledge in the 
+                %br 
+                professional field through regular research 
+                %br 
+                and communication
+            %li
+              .check
+              .text 
+                Motivating and supporting the next 
+                %br 
+                generation       
+
+          = link_to 'Become a mentor', '#' , :class => 'mentor grey_button'     
+    .bg
+
+  .our_partners  
+    .container    
+      %h2 Our partners
+      .partners_slider-wrapper
+        .partners_slider
+          - 0.upto(@partners.length/@partners_per_slide).each do |i|
+            - if @partners[i * @partners_per_slide, @partners_per_slide].length > 0
+              %div
+                - @partners[i * @partners_per_slide, @partners_per_slide].each do |partner|
+                  %img{:src => "#{partner.image_url('220x66')}"}
+  .our_mentors
+    .container
+      %h2 
+        Our mentors about 
+        %span ELEWAY
+      %p 
+        Our mentors are satisfied with the work of the service and are ready to share with you the experience of working on our platform, as 
+        well as the advantages
+
+
+      .mentors_slider 
+        .slider-bar
+          .items_list
+            - i = 0
+            - @reviews.each do |review|
+              = link_to '#', :class => "#{i==0 ? 'active' : ''}" do
+                %img{:src => "#{review.image_url('42x42')}"}
+              - i += 1
+        %hr
+        .slider-item-selected
+          - if @reviews.length > 0
+            = link_to 'prev', '#', :class => 'prev control'
+            = link_to 'next', '#', :class => 'next control'
+          .slider_wrapper
+            - i = 0
+            - @reviews.each do |review|
+              .slide_contents{:class => "#{i==0 ? 'active' : ''}"}         
+                .slider-part
+                  %img{:src => "#{review.image_url('165x165')}"}
+                .name= review.name
+                .title.text-uppercase= review.location
+                %p= review.description.html_safe
+              - i += 1
+
+  = render partial: 'layouts/footer_index'

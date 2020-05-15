@@ -1,0 +1,144 @@
+html
+  height: 100% !important
+
+.user_auth_container
+  background: url('/assets/admin/user_bg.jpg')
+  background-size: cover
+  height: 100%
+  width: 100%
+  display: block 
+  .user_auth_wrapper
+    float: none !important
+    display: table
+    margin: 0px auto  
+  .user_auth_block
+    background: rgba(255,255,255,0.6)
+    min-height: 200px
+    margin-top: 50px
+    padding: 15px
+    -webkit-animation-delay: 1s
+    animation-delay: 1s
+    .h3
+      font-family: "ebrima"
+      font-size: 1.1em
+      margin-bottom: 15px
+    .login_area
+      display: table
+      margin: 0px auto
+      .icon
+        width: 35px
+        height: 35px
+        background: url('/assets/admin/user_auth_3.png')
+        display: inline-block
+        vertical-align: middle
+        margin-right: 5px
+        &.password
+          background-position: 0px -63px
+      input
+        display: inline-block
+        vertical-align: middle
+        border: none
+        background: transparent
+        border-bottom: 1px solid #92acd8
+        outline: none
+        font-size: 0.9em
+
+    a.button
+      display: block
+      border: 1px solid #4269d0
+      border-radius: 15px 
+      text-align: center
+      padding: 4px 3px
+      margin: 8px 15px
+      text-decoration: none
+      color: #4269d0
+      width: 138px
+      margin: auto
+      margin-bottom: 13px
+      &.login
+        background: #4269d0
+        color: #ffffff
+      &.send_sms
+        margin-top: 15px
+
+    a.forgot_password
+      font-size: 0.9em
+      color: #2269d4
+      vertical-align: middle
+      text-decoration: none
+      display: table
+      margin: 0px auto
+      font-family: 'Calibri-Light'
+      span
+        background: url('/assets/admin/forgot.png')
+        width: 26px
+        height: 26px
+        display: inline-block
+        vertical-align: middle
+    .phone_number
+      display: table
+      margin: 10px auto
+      span
+        font-size: 14px
+        margin-right: 5px
+      input
+        border: 0px
+        outline: none
+        background: none
+        font-size: 14px
+        display: inline-block
+        width: 120px
+        &::-webkit-input-placeholder
+          color: #333
+          font-size: 18px
+
+    .sign_up_by_phone
+      span.icon
+        background: url('/assets/admin/sms.png')
+        width: 32px
+        height: 32px
+        display: inline-block
+        margin-right: 10px
+        vertical-align: middle
+      font-size: 1.2em
+      color: #3b61c5
+      display: table
+      margin: 10px auto
+
+.recent_alerts
+  padding: 0px 15px
+  &:before
+    content: ''
+    border: 14px solid transparent
+    border-bottom-color: #ffffff
+    left: 125px
+    top: -27px
+    position: absolute      
+  .h3
+    margin: 0px 
+    padding: 5px 0px
+    color: #363535
+    font-size: 1.3em
+  .headings 
+    padding: 5px 10px
+    background: #bacdcd
+    color: #363535
+    margin: 10px -15px
+  ul
+    padding: 0px
+    li
+      display: block
+      padding: 2px 0px
+      a
+        display: block
+        color: #494949
+        font-size: 1em
+        span
+          display: inline-block
+          color: #55988d
+  a.all_notifications
+    color: #55988d
+    font-size: 1.1em
+    text-decoration: none
+    display: inline-block
+    margin: 10px 0px                  

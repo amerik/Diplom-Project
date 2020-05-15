@@ -1,0 +1,22 @@
+.uploader_single.file-container
+  %span.error_message please select the valid file
+  .uploader{:class => "#{attach.nil? ? '' : 'hidden'}"}
+    .ui.button.middle.fill-with-icon.background.background-prymary-gradient.border.rounded-8.color.color-white.select_file.inline-block.single_uploader
+      .text
+        %span.icon.clip
+        Select file
+      %input{:type => 'file', :name => name, :id => input_id, :class => "#{!attach.nil? ? 'is_file_true' : 'is_file_false'}"}
+    .p= "#{allow_files} (5MB limit)"
+  .uploader_true{:class => "#{attach.nil? ? 'hidden' : ''}"}
+    .ui.file_loader
+      .file-loading-container
+        .file-item
+          - unless attach.nil?
+            = link_to download_attachment_path(attach) do
+              .name{:title => attach.original_filename}= truncate(attach.original_filename, :length => 13)
+              .size= "(#{attach.decorate.size} mb)"
+            .remove{:class => "#{del_class}", :data => {:id => attach.id}}
+          - else
+            .name{:title => "File name"} File name
+            .size= "(0 mb)"
+            .remove.clear_file

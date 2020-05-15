@@ -1,0 +1,44 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'                         
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to 'Categories', admin_categories_path
+    .h3.marginbottom-20= 'Categories'
+    .filters_block
+      = form_for Category.new, :url => admin_categories_path, :method => :get do |f|
+        %input{:type => 'hidden', :name => 'page', :value => 1}
+        .filter.inline-block.marginleft-25
+          %span.inline-block Kind
+          %span.inline-block.marginleft-20= admin_select_enumerize(Category.kind.values, params[:has_kind], 'has_kind', 'model.category.alias.', '', false, 'Select Category', 'bordered rounded width-150')
+
+        .inline-block.marginleft-10
+          = link_to 'search', '#', :class => 'default_button dark search_entities'
+          = link_to 'reset', admin_categories_path, :class => 'default_button'
+          
+    .new_entity
+      = link_to new_admin_category_path, :class => 'create_new' do 
+        %span.text create new
+        %span.ball
+
+    .filters_block      
+      .inline-block.marginleft-10
+        = link_to 'delete selected', '#', :class => 'default_button dark del_checking_tr', :data => {:entity => @entity_table}
+    
+    .default_table
+      %table.table.table-striped.table-condensed
+        %tr
+          %th= admin_default_checkbox_th
+          %th Name
+          %th Alias
+          %th Kind                              
+          %th Position
+          %th
+
+        - @elements.each do |element|
+          %tr{:data => {:id => element.id}}
+            = render partial: "admin/#{@entity_table}/element_tr", :locals => {:element => element}
+
+    = admin_pagginate(@url, @params_pagginate, @page, params)

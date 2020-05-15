@@ -1,0 +1,31 @@
+%td
+  = admin_default_checkbox_tr
+%td 
+  .normal
+    = t("view.admin.user.#{element.role_kind}")
+  .fast_edit
+    = t("view.admin.user.#{element.role_kind}")
+%td 
+  .normal
+    = element.profile.decorate.full_name
+  .fast_edit
+    %input.field_input{:type => 'text', :name => 'user[profile][first_name]', :placeholder => t("view.admin.user.first_name"), :value => element.profile.first_name}
+    %input.margintop-10.field_input{:type => 'text', :name => 'user[profile][last_name]', :placeholder => t("view.admin.user.last_name"), :value => element.profile.last_name}
+%td 
+  .normal
+    = element.decorate.login
+  .fast_edit       
+    %input.field_input{:type => 'text', :name => 'user[login]', :placeholder => t("view.admin.user.login"), :value => element.login}
+%td 
+  = element.decorate.online_at
+%td          
+  %ul.functions
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/element_tr"}}
+    %li
+      = link_to edit_moderator_admin_user_path(element) do
+        .icon.edit_function
+    %li
+      = link_to '#' do
+        .icon.delete_function{:data => {:id => element.id, :entity => @entity_table}}

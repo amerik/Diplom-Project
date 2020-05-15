@@ -1,0 +1,7 @@
+%header
+  .wrapper
+    = link_to root_path do
+      %img.logo{:src => '/assets/logo_x189.png'}
+    .pull-right.margintop-10
+      - if @user_current.auth?
+        = render partial: 'layouts/user_auth'

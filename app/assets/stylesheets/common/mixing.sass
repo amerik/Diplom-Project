@@ -1,0 +1,24 @@
+@mixin rounded($radius: 0.5em)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  border-radius: $radius
+
+
+
+@mixin box_shadow($top, $left, $blur, $color, $inset: false)
+  @if $inset
+    -webkit-box-shadow:inset $left $top $blur $color
+    -moz-box-shadow:inset $left $top $blur $color
+    box-shadow:inset $left $top $blur $color
+  @else
+    -webkit-box-shadow: $left $top $blur $color
+    -moz-box-shadow: $left $top $blur $color
+    box-shadow: $left $top $blur $color
+
+
+@mixin rotate($rotate: 0deg)
+  transform: rotate($rotate)
+  -webkit-transform: rotate($rotate)
+  -moz-transform: rotate($rotate)
+  -o-transform: rotate($rotate)
+  -ms-transform: rotate($rotate)

@@ -1,0 +1,11 @@
+.user_cabinet
+  %header
+    .wrapper
+      = link_to root_path do
+        %img.logo{:src => '/assets/logo_x189.png'}   
+  
+  .stages.page_description
+    %h1= @page_static.h1
+    = @page_static.description.html_safe
+
+  = render partial: 'layouts/footer'

@@ -1,0 +1,573 @@
+@import "common/user_cabinet"
+@import "common/mixing"
+@import "common/ui-mixin"
+@import "common/animate"
+@import "common/chat"
+@import "common/tasks-block"
+@import "common/notes-block"
+
+.cabinet_body
+  .mentor-info
+    display: inline-block
+    vertical-align: middle
+    margin-left: 15px
+    max-width: 550px
+    .avatar
+      width: 47px
+      height: 47px
+      display: inline-block
+      vertical-align: middle
+      background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+      position: relative
+      border-radius: 100px
+      img
+        width: 39px
+        height: 39px
+        position: absolute
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+        margin: auto
+        border-radius: 100px
+    .name
+      font-size: 18px
+      color: #1A2028
+      line-height: 24px
+      display: inline-block
+      vertical-align: middle
+      margin-left: 15px
+    .button
+      display: inline-block
+      margin-left: 20px
+
+  .block-wrapper
+    height: 480px
+  .video-chat-block
+    height: 480px
+    &.full
+      position: fixed
+      left: 0
+      right: 0
+      bottom: 0
+      top: 0
+      z-index: 3
+      height: 100%
+      margin: 0px
+      .other-user .image
+        top: 40% !important
+      .video-call-block
+        top: 0
+        bottom: 0
+        height: inherit
+        video#remote-stream
+          width: 100% !important
+          height: 100% !important
+        .video-ready-to-call-container,
+        .video-establishing-container,
+        .video-stream-container
+          top: 0
+          bottom: 0
+          height: inherit
+          &:before,
+          &:after
+            height: 100%
+            top: 0
+            bottom: 0
+
+  .video-call-block
+    position: relative
+    height: 480px
+    -webkit-transition: width 0.5s linear
+    transition: width 0.5s linear
+    z-index: 3
+    &.chat-active
+      .chat.option-buttons
+        right: 425px !important
+    .remote-stream-container
+      video
+        width: 100%
+        position: relative
+        z-index: 3
+    &.min
+      width: 663px
+      .remote-stream-container
+        video
+          width: 666px
+          height: 500px
+    &.max
+      width: 100%    
+    .vid-button
+      .icon
+        width: 24px
+        height: 24px
+        margin: 9px
+        position: absolute
+        z-index: 2
+      &.option-buttons
+        //display: none
+        &.microphone.muted
+          .icon.microphone:after
+            content: ''       
+            width: 40px
+            height: 1px
+            z-index: 3
+            position: absolute
+            transform: rotate(45deg)
+            top: 11px
+            border-top: 1px dotted #ffffff
+            border-bottom: 1px dotted #ffffff
+            left: -13px
+      &.putthephoneup  
+        width: 64px
+        height: 64px
+        position: absolute
+        z-index: 2
+        @include rounded(100%)
+        cursor: pointer      
+        @include box_shadow(0px, 6px, 18px, rgba(0,0,0,0.18))
+        background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+        bottom: 30px
+        left: 0px
+        right: 0px
+        margin: auto
+        transform: rotate(120deg)
+        &.disable
+          opacity: 0.4        
+        &:hover
+          background: linear-gradient(180deg, #1A91EB 0%, #80C5F9 100%)
+        .icon
+          width: 40px
+          height: 17px
+          margin: 21px 11px
+      &.answer_to_call
+        width: 64px
+        height: 64px
+        position: absolute
+        z-index: 2
+        @include rounded(100%)
+        cursor: pointer      
+        @include box_shadow(0px, 6px, 18px, rgba(0,0,0,0.18))
+        background-image: linear-gradient(-180deg, #F86661 0%, #EE3632 100%)
+        background: #2BB64F
+        bottom: 30px
+        left: 0px
+        right: 106px
+        margin: auto
+        transform: rotate(120deg)
+        display: none
+        &.disable
+          opacity: 0.4
+        &:hover
+          background: #198F37
+        .icon
+          width: 40px
+          height: 17px
+          margin: 21px 11px      
+      &.putthephonedown  
+        width: 64px
+        height: 64px
+        position: absolute
+        z-index: 2
+        @include rounded(100%)
+        cursor: pointer      
+        @include box_shadow(0px, 6px, 18px, rgba(0,0,0,0.18))
+        background-image: linear-gradient(-180deg, #F86661 0%, #EE3632 100%)
+        bottom: 30px
+        left: 0px
+        right: 0px
+        margin: auto
+        display: none
+        &.disable
+          opacity: 0.4        
+        &.right
+          right: -103px
+        &:hover
+          background: #EE3632
+        .icon
+          width: 40px
+          height: 17px
+          margin: 21px 11px
+      &:not(.putthephonedown):not(.putthephoneup):not(.answer_to_call)
+        width: 42px
+        height: 42px
+        position: absolute
+        z-index: 2
+        @include rounded(100%)
+        cursor: pointer
+        &:hover
+          &:before
+            width: 52px
+            height: 52px
+            margin: -5px
+            -webkit-transition: all 0.05s linear
+            transition: all 0.05s linear
+        &:before
+          @include box_shadow(0px, 6px, 18px, rgba(0,0,0,0.08))
+          content: ''
+          width: 42px
+          height: 42px
+          background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+          position: absolute
+          opacity: 1
+          @include rounded(100px)
+          margin: 0px
+          z-index: 1
+        &:after
+          content: ''
+          z-index: 0
+          width: 52px
+          height: 52px
+          background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+          position: absolute
+          opacity: 0.5
+          @include rounded(100px)
+          margin: -5px
+        &.resize
+          top: 30px
+          left: 30px
+        &.chat
+          top: 30px
+          right: 30px
+        &.microphone
+          bottom: 40px
+          left: calc(-64px - 100px)
+          right: 0px
+          margin: auto
+          .icon
+            width: 13px
+            margin-left: 14px
+        &.videocamera
+          bottom: 40px
+          right: calc(-64px - 100px)
+          left: 0px
+          margin: auto
+          .icon
+            height: 16px
+            margin-top: 13px
+        &.screen-share
+          bottom: 40px
+          right: calc(-64px - 100px)
+          left: 0px
+          margin: auto
+          .icon
+            height: 24px
+            height: 24px
+            background: url('/assets/icons/white/screen.png')
+            margin-top: 9px            
+    .video-ready-to-call-container
+      position: absolute
+      height: 480px
+      width: 100%
+      left: 0
+      margin: auto
+      z-index: 1    
+      background: #000000
+      &:before
+        content: ''
+        opacity: 0.4
+        background-image: linear-gradient(-180deg, #4AAAF2 40%, #012D4D 100%)
+        position: absolute
+        width: 100%
+        height: 480px
+        z-index: 2
+      &:after
+        content: ''
+        opacity: 0.4
+        background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+        position: absolute
+        width: 100%
+        height: 480px   
+        z-index: 1  
+      .other-user
+        .image
+          position: absolute
+          top: 30%
+          left: 0
+          right: 0
+          margin: auto
+          @include rounded(100%)
+          z-index: 2
+          background-size: cover
+          @include box_shadow(0px, 8px, 24px, rgba(0,0,0,0.30))
+          width: 140px
+          height: 140px
+
+    .video-establishing-container
+      display: none
+      position: absolute
+      height: 480px
+      width: 100%
+      left: 0
+      margin: auto
+      z-index: 1    
+      background: #000000
+      &:before
+        content: ''
+        opacity: 0.4
+        background-image: linear-gradient(-180deg, #4AAAF2 40%, #012D4D 100%)
+        position: absolute
+        width: 100%
+        height: 480px
+        z-index: 2
+      &:after
+        content: ''
+        opacity: 0.4
+        background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+        position: absolute
+        width: 100%
+        height: 480px   
+        z-index: 1     
+      .establishing-text
+        font-size: 16px
+        color: #FFFFFF
+        font-weight: 600
+        position: absolute
+        width: 230px
+        top: 10%
+        left: 0
+        right: 0
+        margin: auto
+        z-index: 2
+      .other-user
+        .image,
+        .round-1,
+        .round-2
+          position: absolute
+          top: 30%
+          left: 0
+          right: 0
+          margin: auto
+          z-index: 1
+          @include rounded(100%)
+        .image
+          z-index: 2
+          background-size: cover
+          @include box_shadow(0px, 8px, 24px, rgba(0,0,0,0.30))
+          width: 140px
+          height: 140px
+        .round-1
+          top: 22%
+          width: 220px
+          height: 220px
+          background: rgba(255,255,255,0.1)
+          opacity: 0
+          -webkit-animation: hide_show 1s ease-out infinite
+          -moz-animation: hide_show 1s ease-out infinite
+          animation: hide_show 1s ease-out infinite
+          animation-delay: 0.6s
+          animation-fill-mode: both
+        .round-2
+          top: 26%
+          background: rgba(255,255,255,0.2)
+          animation: hide_show 1s
+          opacity: 0
+          width: 180px
+          height: 180px
+          -webkit-animation: hide_show 1.2s ease-out infinite
+          -moz-animation: hide_show 1.2s ease-out infinite
+          animation: hide_show 1.2s ease-out infinite
+          animation-delay: 0.3s
+          animation-fill-mode: both          
+    .video-stream-container
+      position: absolute
+      height: 480px
+      width: 100%
+      left: 0
+      margin: auto
+      z-index: 1
+      display: none
+      overflow: hidden
+      background: #000000
+      &:before
+        content: ''
+        opacity: 0.4
+        background-image: linear-gradient(-180deg, #4AAAF2 40%, #012D4D 100%)
+        position: absolute
+        width: 100%
+        height: 480px
+        z-index: 2
+      &:after
+        content: ''
+        opacity: 0.4
+        background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+        position: absolute
+        width: 100%
+        height: 480px   
+        z-index: 1 
+    .you
+      width: 100px
+      height: 100px
+      @include box_shadow(0px, 8px, 24px, rgba(0,0,0,0.30))
+      z-index: 2
+      position: absolute
+      bottom: 30px
+      left: 30px
+      background-size: cover
+      @include rounded(100%)
+      overflow: hidden
+  .chat-block
+    display: none
+    height: 480px
+    right: 0px
+    top: 0px
+    background: #FFFFFF
+    z-index: 3
+  .past-lessons-block
+    .break
+      width: 17px
+      height: 2px
+      background: #C2C2C2
+      float: left
+      margin: 50px 7px
+    .ui.calendar
+      input
+        min-width: 230px
+    .past-lessons-list
+      ul.video_list
+        padding: 0px
+        margin: 0px
+        list-style: none
+        li
+          dispay: block
+          padding: 0px
+          border-bottom: 1px solid #D6D6D6
+          .wrapper
+            padding: 20px 30px
+            display: block
+            overflow: hidden
+          a
+            display: block
+            &:hover 
+              .wrapper     
+                background: rgba(26,146,235,0.08)
+            &.active
+              .h4,
+              .p
+                color: #FFFFFF
+              .wrapper
+                background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+          .h4
+            font-size: 14px
+            color: #1A2028
+            font-weight: 700
+            margin: 0px
+            line-height: 22px      
+            display: block
+          .p
+            display: block
+            color: rgba(26,32,40,0.3)
+            font-size: 14px
+            font-weight: 400        
+            line-height: 22px
+          .pull-right
+            .p,
+            .h4
+              text-align: right       
+      .mCSB_inside > .mCSB_container
+        margin-right: 10px  
+      .ui.pagination             
+        margin: 40px auto
+        display: table
+  .video-history-block
+    height: 390px
+    display: block
+    position: relative
+    //overflow: hidden
+    .tone
+      background: rgba(0,0,0,0.65)
+      position: absolute
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      margin: auto
+      z-index: 2
+    .video-container
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      top: 0
+      margin: auto
+      z-index: 0
+      min-height: 100%
+      background-size: cover
+    .function-button
+      width: 80px
+      height: 80px
+      position: absolute
+      z-index: 3
+      @include rounded(100%)
+      cursor: pointer
+      &:hover
+        &:before
+          width: 80px
+          height: 80px
+          margin: -5px
+          -webkit-transition: all 0.05s linear
+          transition: all 0.05s linear
+      &:before
+        @include box_shadow(0px, 6px, 18px, rgba(0,0,0,0.08))
+        content: ''
+        width: 66px
+        height: 66px
+        background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+        position: absolute
+        opacity: 1
+        @include rounded(100px)
+        margin: 2px
+        z-index: 1
+      &:after
+        content: ''
+        z-index: 0
+        width: 80px
+        height: 80px
+        background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+        position: absolute
+        opacity: 0.5
+        @include rounded(100px)
+        margin: -5px
+      &.play
+        top: 0px
+        left: 0px
+        right: 0px
+        bottom: 0px
+        margin: auto   
+        .icon
+          position: absolute
+          z-index: 3
+          width: 25px
+          height: 25px
+          background-size: 100% 100% !important
+          margin: 23px
+    video#player
+      width: 520px
+      height: 390px    
+    .you
+      width: 100px
+      height: 100px
+      @include box_shadow(0px, 8px, 24px, rgba(0,0,0,0.30))
+      z-index: 1
+      position: absolute
+      bottom: 30px
+      left: 30px
+      background-size: cover
+      @include rounded(100%)  
+
+    .player-dimensions     
+      width: 520px !important
+      height: 390px !important
+
+    .video-js .vjs-big-play-button
+      width: 70px
+      height: 70px
+      border-radius: 50%
+      background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+      border: 5px solid rgba(255,255,255,0.5)
+      display: none
+
+
+
+.vjs-error .vjs-error-display .vjs-modal-dialog-content
+  color: transparent      

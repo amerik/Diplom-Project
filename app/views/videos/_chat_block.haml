@@ -1,0 +1,25 @@
+%input#user_chat_update{:type => "hidden", :value => 'true'}
+.chat-block
+  .chat-wrapper
+    .chat-header
+      .h5.with-icon-status Chat
+      .date= DateTime.now.strftime('%d %B %y')
+    .chat-body
+      .chat-area.chat_body
+        = render partial: 'messages/chat_item', :locals => { :messages => chat.messages.or_default }
+      %input#message_last_id{:type => 'hidden', :value => chat.messages.count > 0 ? chat.messages.or_default.last.id : 0}
+      .somebody-writing.hidden
+        .ui.icon.typemessage.black.inline-block.v-middle
+        = "#{user_other.profile.first_name} is typing a message..."
+    .chat-footer
+      .ui.input
+        = form_for Message.new, :url => messages_path, :method => :post do |f|
+          = f.hidden_field :chat_id, :value => chat.id
+          = f.hidden_field :user_id, :value => user_other.id
+          = f.hidden_field :status , :value => 'not_read'
+          .input-container.input-container-chat
+            = f.text_field :description, :placeholder => 'Type a message...'
+            .ui.icon.clip.black.select_file.file-attach
+              %input.sent_files_to_chat{:type => 'file', :name => 'files[]', :multiple => true}
+            .chat-send.create_message
+              .ui.icon.clip.white.send

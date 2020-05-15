@@ -1,0 +1,22 @@
+.row
+  .col-md-6.col-xs-12
+
+    .margintop-20
+
+    .margintop-20
+    .default_label Name
+    %input.default_input_text.width-350{:name => 'translation[name]', :value => entity.name}
+
+    .margintop-20
+    .default_label Kind
+    = admin_select_enumerize(Category.kind.values, entity.kind, 'category[kind]', 'model.category.kind.', '', false)
+
+    .margintop-20
+    .default_label Alias
+    = admin_select_enumerize(Category.alias.values, entity.alias, 'category[alias]', 'model.category.alias.', '', false)
+
+
+    .margintop-20
+    .default_label Position
+    %input.default_input_text.width-350{:name => 'category[position]', :value => entity.position}
+

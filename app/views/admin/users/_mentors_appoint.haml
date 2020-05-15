@@ -1,0 +1,62 @@
+.default_table
+  %table.table.table-striped.table-condensed
+    %tr
+      %th= admin_default_checkbox_th
+      %th
+        = t("view.admin.user.login")
+        = admin_sort(@url, 'order_login', params)
+      %th
+        = t("view.admin.user.account_created")
+        = admin_sort(@url, 'order_created_at', params)
+      %th
+        = t("view.admin.user.name")
+        = admin_sort(@url, 'order_last_name', params)
+      %th
+        Specialization
+      %th
+        Verification
+        = admin_sort(@url, 'order_is_mentor_verification', params)
+      %th
+
+
+    - mentors.each do |element|
+      %tr{:style => "#{ user.my_mentor.nil? ? '' : user.my_mentor.id == element.id ? 'background: #c8dad5': '' }", :data => {:id => element.id}}
+        %td
+          = admin_default_checkbox_tr
+        %td 
+          .normal
+            = element.decorate.login
+          .fast_edit       
+            %input.field_input{:type => 'text', :name => 'user[login]', :placeholder => t("view.admin.user.login"), :value => element.login}
+        %td 
+          .normal
+            = element.decorate.created_at
+          .fast_edit       
+            = element.decorate.created_at
+        %td 
+          .normal
+            = element.profile.decorate.full_name
+          .fast_edit
+            %input.field_input{:type => 'text', :name => 'user[profile][first_name]', :placeholder => t("view.admin.user.first_name"), :value => element.profile.first_name}
+            %input.margintop-10.field_input{:type => 'text', :name => 'user[profile][last_name]', :placeholder => t("view.admin.user.last_name"), :value => element.profile.last_name}
+        %td 
+          %ul
+            - element.profile.specializations.or_default.each_with_index do |specialization, index|
+              %li= specialization.decorate.name
+              %li= specialization.decorate.company
+              %li= specialization.decorate.industry
+              %li= specialization.decorate.occupation
+        %td 
+          = element.decorate.is_mentor_verification
+        %td  
+          - if user.my_mentor.nil? 
+            - if Appoint.has_user(user.id).has_mentor(element.id).has_status('old').count > 0
+              был ментором   
+            = link_to 'Назначить', '#', :class => 'default_button dark set_mentor_for_user', :data => {:id => element.id}
+          - else
+            - if user.my_mentor.id == element.id 
+              .text-left назначенный
+            - else
+              - if Appoint.has_user(user.id).has_mentor(element.id).has_status('old').count > 0
+                был ментором              
+              = link_to 'Назначить', '#', :class => 'default_button dark set_mentor_for_user', :data => {:id => element.id}

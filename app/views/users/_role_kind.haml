@@ -1,0 +1,37 @@
+.stage-1{:class => "#{@user_current.step_profile == 0 ? '' : 'hidden'}"}
+  .form_content
+    %h1.text-center 
+      Welcome to 
+      %span ELEWAY
+    %h4.text-center Tell us a little about yourself so we can customise your site experience
+    = form_for @user_current, :url => user_path(@user_current), :method => :put do |f|
+      / %input{:type => 'hidden', :value => 1, :name => 'user[step_profile]'}
+      .wrapper
+        .col-xs-6.col-xs-offset-3
+          .marginbottom-25
+            .ui.input
+              .label-text.text-center Do you want to become a mentor or a student?
+
+          .radio-area.center
+            .pull-left.marginright-90
+              .ui.radio
+                .radio-container{:class => "#{@user_current.role_kind == 'client' ? 'checked' : ''}"}
+                  .circle
+                    = check_box_tag 'user[role_kind]', 'client', @user_current.role_kind == 'client' ? true : false 
+                  .ui-label Student
+            .pull-left
+              .ui.radio
+                .radio-container{:class => "#{@user_current.role_kind == 'mentor' ? 'checked' : ''}"}
+                  .circle
+                    = check_box_tag 'user[role_kind]', 'mentor', @user_current.role_kind == 'mentor' ? true : false 
+                  .ui-label Mentor 
+
+      .clearfix
+      .margintop-50.center
+        .continue.ui.button.large.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.save_role_kind Continue
+
+  .tree_progress
+    %h1.text-center Progress registation
+    %h4.text-center 
+      As your information becomes full, your tree grows. The higher the tree, the more suitable mentor we will choose for you
+    %img.tree{:src => '/assets/student/progress_tree_stage_1.png'}

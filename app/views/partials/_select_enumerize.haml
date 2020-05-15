@@ -1,0 +1,17 @@
+.ui.dropdown{:class => "#{cl_button}"}
+  .label-text= label_name
+  .dropdown-container
+    %span.error_message
+    - unless element_select.nil?
+      - select_text = t("#{i18n}#{element_select}")
+    - else
+      - select_text = init_text
+    %input.select_val{:type => 'text', :value => select_text, :placeholder => 'value', :readonly => true}
+    %input.select_value{:type => 'hidden', :value => element_select, :placeholder => 'value', :name => name, :id => input_id}
+    .dropdown-trigger.ui.icon.arrowdown
+  .dropdown-list  
+    %ul
+      - if is_init
+        %li.hhjj{:class => "#{class_li}", :data => {:id => ''}}= init_text
+      - elements.each do |element|
+        %li.hhjj{:class => "#{class_li}", :data => {:id => element}}= t("#{i18n}#{element}")

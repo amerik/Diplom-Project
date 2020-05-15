@@ -1,0 +1,31 @@
+.user_auth_container
+  .col-md-3.col-sm-6.col-xs-12.user_auth_wrapper
+    .user_auth_block.animated.bounceInLeft
+      = form_for User.new, :html => {:autocomplete => "off"}, :url => authorization_admin_users_path do |f|
+        .h3.text-center= t("view.admin.index.title_auth")
+        .login_area
+          .margintop-5
+            .icon
+            = f.text_field :login, :placeholder => t("view.admin.index.login"), :class => 'log_in_enter', :autocomplete => 'off'
+          .margintop-5
+            .icon.password
+            = f.password_field :password, :placeholder => t("view.admin.index.password"), :class => 'log_in_enter', :autocomplete => 'off'
+        .message_errors
+          %ul
+        .margintop-15
+        = link_to t("view.admin.index.sign_in"), '#', :class => 'login button user_authorization'
+        / = link_to 'Sign up', '#', :class => 'sign_up button'
+
+        = link_to '#', :class => 'forgot_password' do 
+          = t("view.admin.index.forget_password")
+          %span.forgot
+
+        / .sign_up_by_phone
+        /   %span.icon
+        /   Sign-up by phone
+
+        / .phone_number
+        /   %span +7
+        /   %input#phone{:type => 'text'}
+
+        / = link_to 'Send me SMS-code', '#', :class => 'send_sms button'

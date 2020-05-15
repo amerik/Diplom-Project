@@ -1,0 +1,10 @@
+= render partial: 'layouts/admin/modals/success_modal'
+= render partial: 'layouts/admin/modals/error_modal'
+= render partial: 'layouts/admin/modals/yes_no_modal'
+- if params[:controller] == 'admin/properties' && params[:action] == 'manage'
+  = render partial: 'layouts/admin/modals/offer_reject'
+  - unless @property.get_listing.nil?
+    = render partial: 'layouts/admin/modals/in_pre_selling'
+    = render partial: 'layouts/admin/modals/stop_listing'
+= render partial: 'layouts/admin/modals/enter_sms'
+= render partial: 'layouts/admin/modals/info_modal'

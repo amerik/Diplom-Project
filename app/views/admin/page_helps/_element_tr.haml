@@ -1,0 +1,37 @@
+%td
+  = admin_default_checkbox_tr
+
+%td
+  .normal
+    = element.name
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'translation[name]', :placeholder => 'Name', :value => element.name}
+
+%td
+  .normal
+    = element.category.nil? ? nil : element.category.name
+  .fast_edit
+    = admin_select_standart(Category.sort, element.category_id.nil? ? nil : element.category, 'page_help[category_id]', '', false)
+
+%td 
+  .normal
+    = simple_format(element.description)
+  .fast_edit
+    %textarea.default_input_text.width-350.field_input{:name => 'translation[description]'}= element.description
+%td 
+  .normal
+    = element.category.kind
+  .fast_edit
+    = element.category.kind
+
+%td          
+  %ul.functions
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/element_tr"}}
+    %li
+      = link_to edit_admin_page_help_path(element) do
+        .icon.edit_function
+    %li
+      = link_to '#' do
+        .icon.delete_function{:data => {:id => element.id, :entity => @entity_table}}

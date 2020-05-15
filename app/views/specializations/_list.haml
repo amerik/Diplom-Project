@@ -1,0 +1,25 @@
+.choice
+  .choice-wrapper
+    %ul
+      - related.each_with_index do |specialization, i|
+        - if i > 0
+          %li
+            .text
+              .marginbottom-5
+                .p.h4.inline-block= t("view.specialization.name_#{@user_current.role_kind}").to_s + (i > 0 ? " (#{i})" : '')
+              .p= specialization.name
+          %li
+            .text
+              .marginbottom-5
+                .p.h4.inline-block= t("view.specialization.company_#{@user_current.role_kind}").to_s + (i > 0 ? " (#{i})" : '')
+              .p= specialization.company
+          %li
+            .text
+              .marginbottom-5
+                .p.h4.inline-block= t("view.specialization.industry_#{@user_current.role_kind}").to_s + (i > 0 ? " (#{i})" : '')
+              .p= specialization.industry
+          %li
+            .text
+              .marginbottom-5
+                .p.h4.inline-block= t("view.specialization.occupation_#{@user_current.role_kind}").to_s + (i > 0 ? " (#{i})" : '')
+              .p= specialization.occupation

@@ -1,0 +1,20 @@
+.h4{:style => "font-size: 15px; margin-bottom: 26px; font-weight: 600;"} Bookings by statuses:
+%ul.bookings
+  - is_pending_confirmation = false
+  - bookings.each do |booking|
+    - if booking.status == 'pending_confirmation'
+      - is_pending_confirmation = true
+    %li
+      %b= t("model.booking.status.#{booking.status}")
+      = " - #{booking.count}"
+
+  - if is_pending_confirmation
+    .h3{:style => "font-size: 15px; margin-bottom: 16px; font-weight: 600;"} Do you have reservations with status "Pending confirmation". They will go into status "Cancelled"
+
+    .yes_no_buttons
+      = link_to 'Sent in "Cancelled" and stop listing', '#', :class => 'yes set_stop_listing', :style => "font-size: 15px;", :data => { :id => listing.property.id }
+      = link_to 'cancel', '#', :style => "font-size: 15px;", :'data-dismiss' => "modal",  :'aria-label' => "Close"
+  - else
+    .yes_no_buttons
+      = link_to 'Stop listing', '#', :class => 'yes set_stop_listing', :style => "font-size: 15px;", :data => { :id => listing.property.id }
+      = link_to 'cancel', '#', :style => "font-size: 15px;", :'data-dismiss' => "modal",  :'aria-label' => "Close"

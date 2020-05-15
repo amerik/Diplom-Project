@@ -1,0 +1,132 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'                         
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to 'Main','#'
+      %li= link_to 'Objects','#'
+      %li= link_to 'New obect','#'
+    .h3.marginbottom-20 Notification
+    .row
+      .col-md-6
+        .default_label Language
+        .default_dropdown.dropdown.width-350
+          %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+            .text English
+            %span.caret_x
+          %ul.dropdown-menu
+            %li= link_to 'English','#'
+            %li= link_to 'Russian','#'
+            %li= link_to 'French','#'
+
+        .margintop-20
+        .checkbox_area
+          %ul
+            %li
+              .default_checkbox
+              .text Use a flash loader to download attachments
+            %li
+              .default_checkbox.active
+              .text Use a flash loader to download attachments
+            %li
+              .default_checkbox.active
+              .text Use a flash loader to download attachments
+            %li
+              .default_checkbox
+              .text Use a flash loader to download attachments
+            %li
+              .default_checkbox.active
+              .text Use a flash loader to download attachments 
+
+        
+        .margintop-20
+        .default_label Color
+        .default_dropdown.dropdown.width-350
+          %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+            .text Blue Sky
+            %span.caret_x
+          %ul.dropdown-menu
+            %li= link_to 'Blue Sky','#'
+            %li= link_to 'Red Apple','#'
+            %li= link_to 'Green Grass','#'
+
+
+        .margintop-20
+        %ul.yes_no_swich_list
+          %li
+            .default_label.text Visibility settings
+            .yes_no_switch
+              .ball
+              .button.no no
+              .button.yes yes            
+          %li
+            .default_label.text Visibility settings
+            .yes_no_switch.active
+              .ball
+              .button.no no
+              .button.yes yes
+
+        .margintop-20
+        .default_label Visibility settings
+        .default_dropdown.dropdown.width-350
+          %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+            .text All users
+            %span.caret_x
+          %ul.dropdown-menu
+            %li= link_to 'All users','#'
+            %li= link_to 'Admins','#'
+            %li= link_to 'Selected','#'
+
+    .h3.margintop-40.marginbottom-20 Settings
+    .row
+      .col-md-6
+        .form-group
+          .default_label Setting 1
+          .default_dropdown.dropdown.width-350
+            %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+              .text Item 1
+              %span.caret_x
+            %ul.dropdown-menu
+              %li= link_to 'Item 1','#'
+              %li= link_to 'Item 2','#'
+              %li= link_to 'Item 3','#'
+
+        .form-group
+          .default_label Setting 2
+          .default_dropdown.dropdown.width-350
+            %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+              .text Item 1
+              %span.caret_x
+            %ul.dropdown-menu
+              %li= link_to 'Item 1','#'
+              %li= link_to 'Item 2','#'
+              %li= link_to 'Item 3','#'
+
+      .col-md-6
+        .form-group
+          .default_label Setting 3
+          .default_dropdown.dropdown.width-350
+            %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+              .text Item 1 
+              %span.caret_x
+            %ul.dropdown-menu
+              %li= link_to 'Item 1','#'
+              %li= link_to 'Item 2','#'
+              %li= link_to 'Item 3','#'
+
+        .form-group
+          .default_label Setting 4
+          .default_dropdown.dropdown.width-350
+            %button.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+              .text Item 1
+              %span.caret_x
+            %ul.dropdown-menu
+              %li= link_to 'Item 1','#'
+              %li= link_to 'Item 2','#'
+              %li= link_to 'Item 3','#'
+    
+    .margintop-30
+      = link_to 'save','#', :class => 'default_button dark'
+      = link_to 'edit','#', :class => 'marginleft-30 default_button'

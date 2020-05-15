@@ -1,0 +1,25 @@
+#in_pre_selling.modal.auth.slide-in
+  .modal-dialog
+    .col-md-10.col-md-offset-1.col-sm-8.col-sm-offset-2.col-xs-12.col-xs-offset-0
+      .modal-contents.mod
+        .close{:'data-dismiss' => "modal",  :'aria-label' => "Close"}
+        = form_for @property, :url => { :controller => 'properties', :action => 'sent_in_pre_selling', :id => @property.id }, :method => :post do |f|
+          .h4{:style => "font-size: 15px; margin-bottom: 16px; font-weight: 600;"}
+            = "Activate pre-selling listing (#{@request_clients.count})"
+          .row
+            .form-group
+              .col-md-12
+                .h5 Pre start:
+                %input.default_input_text.full-width.date_field_pre_start_at{:name => 'listing[pre_start_at]'}
+              .col-md-12
+                .h5 Pre end:
+                %input.default_input_text.full-width.date_field_pre_end_at{:name => 'listing[pre_end_at]'}
+              .col-md-12
+                .h5 Till:
+                %input.default_input_text.full-width.date_field_end_at{:name => 'listing[end_at]', :value => @property.get_listing.decorate.end_at_val}
+
+          .yes_no_buttons
+            .message_errors
+              %ul
+            = link_to 'activate pre-selling', '#', :class => 'yes sent_in_pre_selling', :style => "font-size: 15px;"
+            = link_to 'cancel', '#', :style => "font-size: 15px;", :'data-dismiss' => "modal",  :'aria-label' => "Close"

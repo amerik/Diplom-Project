@@ -1,0 +1,152 @@
+@import "common/mixing"
+@import "common/ui-mixin"
+
+.notes-block
+  /* border: 1px solid #D6D6D6 */
+  &.active
+    .notes-body
+      display: block  
+    .function-button.plus-button
+      //background: #D6D6D6 !important
+      .icon
+        //background: url(/assets/icons/black/Minus.png) !important
+        background-image: url(/assets/icons/black/ArrowTop.png) !important   
+        margin: 3px 3px !important
+        width: 22px !important
+        background-position: 3px 2px 
+  .notes-header
+    height: 53px
+    background: #FFFFFF
+    border-bottom: 1px solid #D6D6D6
+    padding: 0px 30px
+    @include box_shadow(0px, 6px, 24px, rgba(0,0,0,0.03))
+    border: 1px solid #D6D6D6
+    .h5
+      font-size: 18px
+      color: #1A2028
+      font-weight: 700
+      float: left
+      margin: 0px
+      line-height: 53px
+    .function-button
+      float: right
+      width: 34px
+      height: 34px
+      opacity: 1
+      @include rounded(100px)
+      display: inline-block
+      margin: 9px 0px 9px 20px
+      cursor: pointer
+      &.add_note
+        @include box_shadow(0px, 6px, 18px, rgba(0,0,0,0.08))
+        background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)      
+        width: 25px
+        height: 25px        
+        margin-top: 13px
+      .icon
+        &.arrowdown
+          width: 22px
+          height: 22px
+          margin: 7px      
+          opacity: 0.5 !important  
+        &.plus
+          width: 16px
+          height: 16px
+          margin: 5px  
+        &.checkbox
+          width: 18px
+          height: 18px
+          margin: 8px  
+        &.typography
+          width: 18px
+          height: 18px
+          margin: 7px  
+        &.delete
+          width: 18px
+          height: 18px
+          margin: 8px
+      &.delete-button
+        background-image: linear-gradient(-180deg, #F86661 0%, #EE3632 100%)                                  
+  .notes-body
+    padding: 0px 0px
+    height: 400px          
+    overflow: hidden
+    border: 1px solid #D6D6D6
+    top: -2px
+    position: relative
+    width: 100%
+    &.show
+      padding: 30px
+    p
+      font-size: 14px      
+      line-height: 22px
+      color: #1A2028    
+      word-break: break-word  
+      line-height: 20px
+      font-size: 14px         
+    .h4
+      font-size: 16px
+      color: #1A2028
+      font-weight: 700
+      margin: 0px
+      line-height: 24px      
+      display: block
+      margin-bottom: 20px
+    .date
+      text-align: center
+      color: rgba(26,32,40,0.3)
+      line-height: 22px
+      font-size: 14px
+      margin-bottom: 20px
+    ul
+      padding: 0px
+      margin: 0px
+      list-style: none
+      li
+        dispay: block
+        padding: 0px
+        border-bottom: 1px solid #D6D6D6
+        .wrapper
+          padding: 25px 30px
+          display: block
+        a
+          display: block
+          &:hover 
+            .wrapper     
+              background: rgba(26,146,235,0.08)
+        .buttons-area
+          a
+            display: inline-block
+        .h4
+          float: left
+          margin: 0px
+          width: calc(100% - 130px)  
+          overflow: hidden
+          display: inline-block
+          text-overflow: ellipsis
+          white-space: nowrap         
+        .time
+          float: right
+          color: rgba(26,32,40,0.3)
+          font-size: 14px
+          font-weight: 400        
+          line-height: 22px
+          width: 110px
+          text-align: right
+        .description
+          font-size: 14px      
+          line-height: 24px
+          color: #1A2028
+          clear: both
+          @include box_shadow(0px, 0px, 24px, rgba(0,0,0,0.008))
+          overflow: hidden
+          display: inline-block
+          text-overflow: ellipsis
+          //white-space: nowrap  
+          width: 100%            
+    .mCSB_inside > .mCSB_container.mCSB_container:not(.mCS_no_scrollbar_y)
+      margin-right: 10px      
+
+.block-show-hide
+  .notes-body
+    display: none

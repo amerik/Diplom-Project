@@ -1,0 +1,10 @@
+.row
+  .col-md-6.col-xs-12
+
+    .margintop-20
+    .default_label= t("view.admin.country.name_rus")
+    %input.default_input_text.width-350{:placeholder => t("view.admin.country.name_rus"), :name => 'country[name_rus]', :value => entity.name_rus}
+
+    .margintop-20
+    .default_label= t("view.admin.country.name_en")
+    %input.default_input_text.width-350{:placeholder => t("view.admin.country.name_en"), :name => 'country[name_en]', :value => entity.name_en}

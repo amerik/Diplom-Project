@@ -1,0 +1,139 @@
+.left_menu
+  padding-bottom: 15px
+  height: 100%
+  position: fixed
+  -webkit-font-smoothing: antialiased
+  z-index: 2
+  padding-top: 85px
+  background: url('/assets/admin/left_menu_bg.png')
+  a.exit
+    padding: 15px 15px
+    display: block
+    color: #ffffff
+    text-decoration: none
+    margin-top: 15px
+    &.active,
+    &:hover
+      background: #3d545a
+    .icon
+      height: 43px 
+      background: url('/assets/admin/left_menu.png')
+      width: 47px
+      background-position: 0px -813px
+      display: inline-block
+      vertical-align: middle
+      margin-right: 10px            
+  .list_menu
+    ul.first
+      padding: 0px
+      overflow: auto
+      min-height: 500px
+      &>li
+        display: block
+        &.active
+          background: #3d545a
+          -webkit-transition: background 1s ease-in-out
+          &>ul
+            display: block
+        &>ul
+          padding: 0
+          padding-left: 50px
+          list-style: none
+          padding-bottom: 15px
+          padding-right: 20px
+          display: none
+          li
+            display: block
+            padding-bottom: 10px
+            .label,
+            a
+              display: block
+              text-decoration: none
+              padding: 2px 10px
+              color: #ffffff
+              font-size: 0.9em
+              min-width: 90px
+              font-weight: normal
+              text-align: left
+              span
+                display: inline-block
+                &.text
+                  width: 90px
+                  display: inline-block
+                  vertical-align: middle
+                  font-size: 1.2em
+                  margin-left: -43px
+                &.ball
+                  vertical-align: middle
+                  width: 18px
+                  height: 18px
+                  display: inline-block
+                  border: 1px solid #ffffff
+                  border-radius: 50%
+                  position: relative
+                  cursor: pointer
+                  &.active 
+                    &:before
+                      content: ''
+                      width: 12px
+                      height: 12px
+                      position: absolute
+                      background: #ffffff
+                      left: 2px
+                      top: 2px
+                      border-radius: 50%
+              &.create_new
+                color: #8bf3d2
+                background: #3d4d5a
+                border: 1px solid #ffffff
+                border-radius: 20px 
+                display: inline-block
+                padding: 3px 10px 4px  
+                .ball
+                  background: url('/assets/admin/plus_icon.png') 
+                  border: none                       
+        &>a
+          padding: 15px 15px
+          display: block
+          color: #ffffff
+          text-decoration: none
+          font-size: 1.1em
+          &.profile
+            .icon
+          &.settings
+            .icon
+              background-position: 0px -91px
+          &.docs
+            .icon
+              background-position: 0px -177px
+          &.media
+            .icon
+              background-position: 0px -267px
+          &.instruments
+            .icon
+              background-position: 0px -358px
+          &.users
+            .icon
+              background-position: 0px -445px
+          &.pages
+            .icon
+              background-position: 0px -538px
+        
+        .icon
+          background: url('/assets/admin/left_menu.png')
+          width: 47px
+          height: 42px
+          display: inline-block
+          vertical-align: middle
+          margin-right: 10px
+
+.type_1_menu
+  .left_menu
+    width: 250px
+    display: none
+
+.type_2_menu
+  .left_menu  
+    width: 74px
+    display: none 
+    left: -74px       

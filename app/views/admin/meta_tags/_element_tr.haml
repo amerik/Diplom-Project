@@ -1,0 +1,28 @@
+%td
+  - unless element.attach.nil?
+    = element.attach.name
+  - else
+    = "-"
+%td
+  .normal
+    = element.title
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'translation[title]', :placeholder => 'Title', :value => element.title}
+%td 
+  .normal
+    = element.keywords
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'translation[keywords]', :placeholder => 'Keywords', :value => element.keywords}
+%td 
+  .normal
+    = element.description
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'translation[description]', :placeholder => 'Description', :value => element.description}
+%td          
+  %ul.functions
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/element_tr"}}
+    %li
+      = link_to edit_admin_meta_tag_path(element) do
+        .icon.edit_function

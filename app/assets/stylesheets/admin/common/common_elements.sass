@@ -1,0 +1,473 @@
+/* pagginate_block */
+.pagginate_block
+  display: table
+  margin: 20px -10px 20px
+  ul
+    padding: 0px
+    margin: 0px
+    list-style: none
+    li
+      margin: 0px 5px
+      color: #373737
+      display: inline-block
+      a
+        font-weight: normal
+        color: #373737
+        font-family: 'century-gothic'
+        -webkit-font-smoothing: antialiased
+        display: block
+        font-size: 0.9em
+        border-radius: 50%
+        &.active
+          background: #5aa38e
+          padding: 4px 10px
+          color: #ffffff
+          text-decoration: none
+
+/* tabs */
+.tabs
+  border-bottom: 1px solid #3d545a
+  padding-right: 10px
+  margin: 5px 0px 15px
+  ul
+    padding: 0px
+    margin: 0px
+    list-style: none
+    li
+      margin-right: 1px
+      display: inline-block
+      a
+        background: #cfd7da
+        padding: 5px 20px
+        display: block
+        color: #616065
+        text-decoration: none
+        &.active
+          background: #3d545a
+          color: #ffffff
+
+
+/* stars_bar
+.stars_bar
+  ul
+    padding: 0px
+    li
+      width: 10px
+      height: 11px
+      margin-right: 2px
+      background: url('/assets/admin/small_stars.png') no-repeat
+      display: inline-block
+      background-position: -28px 0px
+      &.active
+        background-position: -15px 0px
+      &.half_active
+        background-position: 0px 0px
+
+/* paths */
+ul.paths
+  padding: 0px
+  li
+    display: inline-block
+    font-size: 0.9em
+    &:after
+      content: '-'
+      color: #999999
+      margin: 0px 5px
+      display: inline-block
+    &:nth-last-child(1)
+      a
+        color: #3d3b3b
+      &:after
+        display: none
+    &:nth-last-child(2)
+      &:after
+        color: #3d3b3b       
+    a
+      display: inline-block
+      color: #999999
+
+
+/* default_button */
+.default_button,
+a.default_button
+  background: #9fa8a9
+  border-radius: 15px
+  padding: 3px 15px 6px
+  color: #ffffff
+  min-width: 170px
+  display: inline-block
+  vertical-align: middle
+  text-align: center
+  text-decoration: none
+  font-size: 12px
+  font-family: 'Calibri-regular'
+  &.dark
+    background: #516d6f
+
+
+/* default_input_text */
+.default_input_text
+  &.width-350
+    width: 350px
+  &.width-300
+    width: 300px
+  &.width-250
+    width: 250px
+  &.full-width
+    width: 100%
+  text-align: left
+  color: #848484
+  border-radius: 0px
+  border: 1px solid #827d7d
+  background: #eef2f5
+  font-size: 1em
+  padding: 6px 12px
+  outline: none
+  margin: 5px 0px
+
+
+/* dropdown_area */
+.dropdown_area
+  .default_dropdown
+    button
+      cursor: pointer
+      span.caret_x
+        cursor: pointer
+  .selected_items
+    &>ul
+      display: block
+      width: 100%
+      padding: 0px
+      list-style: none
+      cursor: default
+      margin: 0px
+      li
+        display: inline-block
+        margin: 2px 3px
+        float: left
+        a
+          display: inline-block
+          color: #ffffff
+          background: #859491
+          border-radius: 15px
+          padding: 1px 5px 1px 15px
+          text-decoration: none
+          cursor: default
+          .remove
+            background: url('/assets/admin/delete.png')
+            width: 7px
+            height: 7px
+            display: inline-block
+            margin: 2px 5px
+            vertical-align: middle
+            cursor: pointer
+
+/* default_dropdown */
+.default_dropdown
+  margin: 5px 0px
+  &.width-350
+    width: 350px
+  &.width-250
+    width: 250px
+  &.width-150
+    width: 150px    
+  &.full-width
+    width: 100%
+  &.bordered
+    border: 1px solid #827d7d
+    padding-right: 10px
+    padding-right: 10px
+  &.rounded
+    border-radius: 5px
+  button,
+  .button
+    width: 100%
+    text-align: left
+    color: #848484
+    border-radius: 0px
+    border: 1px solid #827d7d
+    background: #eef2f5
+    font-size: 1em
+    .text,
+    .selected_items
+      font-size: 1em
+      vertical-align: middle
+      width: 95%
+      display: inline-block
+    .caret_x
+      background: url('/assets/admin/drop_menu_caret.png') no-repeat
+      width: 13px 
+      height: 6px
+      vertical-align: middle
+      width: 5%
+      display: inline-block
+      min-width: 13px
+  .dropdown-menu
+    width: 100%
+    max-height: 200px
+    overflow-y: auto
+
+/* default_checkbox */
+.default_checkbox
+  width: 16px
+  height: 16px
+  border: 1px solid #859491
+  border-radius: 50%
+  display: inline-block
+  margin-right: 10px
+  vertical-align: middle
+  background: #ffffff
+  cursor: pointer
+  &.active
+    background: #859491
+  &.type_2.active
+    position: relative
+    background: none
+    &:after
+      content: ''
+      width: 8px
+      height: 8px
+      position: absolute
+      background: #859491
+      border-radius: 50%
+      left: 3px
+      top: 3px
+
+/* checkbox_area */
+.checkbox_area
+  ul
+    padding: 0px
+    list-style: none
+    li
+      padding-bottom: 10px
+      .text
+        display: inline-block
+        font-size: 0.9em
+        color: #494949
+        vertical-align: middle
+
+
+/* yes_no_swich_list */
+ul.yes_no_swich_list
+  padding: 0px
+  list-style: none
+  li
+    padding-bottom: 5px    
+    .text
+      display: inline-block
+      width: 40%
+      vertical-align: middle
+    .yes_no_switch
+      display: inline-block
+      vertical-align: middle
+
+/* .yes_no_switch */
+.yes_no_switch   
+  width: 60px
+  height: 22px
+  border-radius: 15px
+  background: #859491
+  position: relative
+  -webkit-transition: background 1s ease-in-out
+  .ball
+    width: 18px
+    height: 18px
+    border-radius: 50%
+    background: #ffffff
+    position: absolute
+    left: 3px
+    top: 2px
+    -webkit-transition: all 1s ease-in-out
+  .button
+    position: absolute
+    color: #ffffff
+    top: 1px
+    right: 0px
+    height: 22px
+    width: 38px
+    text-align: center
+    cursor: pointer
+    font-size: 0.9em
+    &.yes
+      display: none
+  &.active
+    background: #0b7e34
+    .button.no
+      display: none
+    .button.yes
+      display: block
+      left: 0px
+      right: inherit
+    .ball
+      right: 3px
+      left: inherit
+
+
+/* main_photo */
+.main_photo_block
+  .main_photo
+    width: 350px
+    height: 250px
+    border: 1px solid #7c7878
+    margin: 10px 0px
+    position: relative
+  .no-photo
+    position: absolute
+    margin: auto
+    width: 80px
+    height: 62px
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    display: block
+    background: url('/assets/admin/no_photo.png')
+    cursor: pointer
+    input
+      width: 80px
+      height: 62px
+      border: 0px
+      outline: 0px
+      opacity: 0
+      cursor: pointer
+  a.edit_delete
+    color: #707070
+    display: table
+    margin: 5px auto
+/* main_photo */
+.other_photos_block
+  padding: 0px 30px
+  display: inline-block 
+  max-width: 600px     
+  ul
+    padding: 0px
+    list-style: none
+    margin-top: 20px
+    li
+      float: left
+      margin-bottom: 10px
+      width: 125px
+      margin-right: 10px
+      position: relative 
+      min-height: 125px 
+      .add_button
+        background: url('/assets/admin/add.png')
+        width: 49px
+        height: 49px
+        position: absolute
+        margin: auto
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+        display: block
+        cursor: pointer
+        input
+          width: 49px
+          height: 49px
+          border: 0px
+          outline: 0px
+          opacity: 0
+          cursor: pointer
+      img
+        width: 100%    
+  a.edit_delete
+    color: #707070
+    display: table
+    margin: 5px auto        
+
+
+/* default_table */
+.default_table
+  /*overflow: auto */
+  display: inline-block
+  width: 100%
+  font-size: 0.9em
+  table
+    th
+      font-weight: normal
+      background: #b0c5c7 !important
+      padding: 10px !important
+      vertical-align: middle
+      .carret
+        display: inline-block
+        border: 4px solid transparent
+        border-left-color: #4e4e4e
+        margin-left: 10px
+        vertical-align: middle
+        margin-top: -1px
+        &.active
+          border-left-color: #b0c5c7
+          margin-top: 2px
+          border-top-color: #4e4e4e !important
+    td
+      vertical-align: middle !important
+      padding: 10px !important
+      .fast_edit
+        display: none
+      input
+        width: 100%
+        border: 0px
+        border-bottom: 1px solid #929292
+        background: transparent
+      ul.functions
+        padding: 0px
+        margin: 0px
+        display: inline-block
+        list-style: none
+        li
+          display: inline-block
+          vertical-align: middle
+          .icon
+            background: url('/assets/admin/function_icons_3.png')
+            height: 25px
+            display: inline-block
+            margin: 5px 10px
+            &.fast_edit_function
+              width: 28px
+              &.save
+                background-position: -202px 0px
+            &.edit_function
+              width: 25px
+              background-position: -77px 0px
+            &.delete_function
+              width: 19px
+              background-position: -152px 0px
+    tr:nth-child(odd) td
+        background: #dee6e8
+  ul.list_style
+    list-style: none
+    padding: 0px
+    li
+      padding: 5px 0px
+      border-bottom: 1px dashed #CCC
+      span
+        font-family: 'ebrima-bold'
+        display: inline-block
+        margin-right: 5px
+
+
+/* filters_block */
+.filters_block
+  padding: 10px 15px
+  border: 1px solid #7f7c7c
+  margin-bottom: 10px
+  font-size: 0.9em
+  .filter
+    vertical-align: middle
+  .default_dropdown
+    button
+      border: 0px !important
+      outline: 0px !important  
+      box-shadow: none !important 
+    .dropdown-menu
+      min-width: 170px
+    .checkbox_area
+      padding: 2px 10px 
+      ul
+        margin: 0px
+  .default_input_text
+    width: 80px
+    padding: 2px 10px
+  a.default_button
+    min-width: 130px !important

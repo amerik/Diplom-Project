@@ -1,0 +1,17 @@
+.uploader_many.file-container
+  %span.error_message
+  .uploader{:class => "#{attachs.count > 0 ? 'hidden' : ''}"}
+    .ui.button.middle.fill-with-icon.background.background-prymary-gradient.border.rounded-8.color.color-white.select_file.inline-block.many_uploader
+      .text
+        %span.icon.clip
+        Select file
+      %input{:type => 'file', :name => name, :id => input_id, :multiple => true}
+    .p= "#{allow_files} (5MB limit)"
+  .uploader_true{:class => "#{attachs.count > 0 ? '' : 'hidden'}"}
+    .ui.file_loader
+      .file-loading-container
+        - attachs.each do |attach|
+          .file-item
+            .name{:title => attach.original_filename}= truncate(attach.original_filename, :length => 16)
+            .size= "(#{attach.decorate.size} mb)"
+            .remove{:class => "#{del_class}", :data => {:id => attach.id}}

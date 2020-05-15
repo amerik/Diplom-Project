@@ -1,0 +1,70 @@
+#order_modal.modal.slide-in
+  .vert-body
+    .modal-dialog
+      .wrapper
+        .top-area-header
+          .pull-right.margintop-10.content
+            .user
+              .name= @user_current.profile.decorate.full_name
+              .avatar
+                %img{:src => @user_current.profile.image_url('42x42', 'png')}
+              .icon.ui.icon.arrowdown.black
+            / = link_to '#' do 
+            /   %span.notifications
+            / = link_to '#' do
+            /   .messages
+            /     .count 7      
+        .order-modal-body
+          .info-content
+            .pull-left
+              .h2.margintop-10 Your order
+            .pull-right
+              .ui.button.middle.fill.background.background-prymary-gradient.border.rounded-8.color.color-white.close{:'data-dismiss' => "modal",  :'aria-label' => "Close"} Close
+            .clearfix
+          %hr.margintop-0.marginbottom-0
+          .lessons
+            .info-content
+
+              .baskets_body
+                = render partial: 'baskets/items', :locals => { :baskets => @baskets }
+
+              %hr.marginbottom-0
+
+          .order-checkout
+            .info-content
+              .pull-left.relative
+                .h2.margin-0 Subtotal:
+                .dashed.d-1
+              .pull-right
+                .p.h1= @user_current.decorate.price_full
+              .clearfix
+              .radio-area.margintop-20.marginbottom-20
+                .marginbottom-10
+                  .ui.radio
+                    .radio-container
+                      .circle
+                        %input{:type => 'radio'}
+                      .ui-label.inline-block
+                        Use available lessons (4 available)
+                        %spabn.ui.icon.blue.faq.inline-block.v-middle.marginleft-10
+
+                .marginbottom-10
+                  .ui.radio
+                    .radio-container.checked
+                      .circle
+                        %input{:type => 'radio'}
+                      .ui-label Pay now            
+                .clearfix
+              .pull-left.relative
+                .h2.margin-0 Total:
+                .dashed.d-2
+              .pull-right
+                .p.h1 
+                  %span.old.marginright-5= @user_current.decorate.price_total
+                  £0
+              .clearfix
+              .margintop-20
+                .marginright-10.inline-block
+                  .ui.button.middle.border.border-1.border-light-gray.rounded-8.pull-left.color.color-dark.del_all_new_baskets Clear All
+                .inline-block
+                  .ui.button.middle.fill.background.background-prymary-gradient.border.rounded-8.pull-left.color.color-white.checkout.set_user_for_schedules Checkout

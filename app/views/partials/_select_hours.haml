@@ -1,0 +1,16 @@
+.ui.dropdown{:class => "#{cl_button}"}
+  .label-text= label_name
+  .dropdown-container
+    %span.error_message
+    - unless element_select.nil?
+      - select_text = element_select.decorate.period_time
+    - else
+      - select_text = init_text
+    %input.select_val{:type => 'text', :value => select_text, :placeholder => 'value', :readonly => true}
+    %input.select_value{:type => 'hidden', :value => element_select.id, :placeholder => 'value', :name => name, :id => input_id}
+    .dropdown-trigger.ui.icon.arrowdown
+  .dropdown-list  
+    %ul
+      - elements.each do |element|
+        - if user.baskets.has_status('new').has_schedule(element.id).count == 0 || is_all
+          %li{:class => "#{class_li}", :data => {:id => element.id}}= element.decorate.period_time

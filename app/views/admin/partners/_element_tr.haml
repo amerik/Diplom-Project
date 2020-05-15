@@ -1,0 +1,25 @@
+%td
+  = admin_default_checkbox_tr
+%td
+  %img{:src => element.image_url('220x66')}
+%td
+  .normal
+    = element.title
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'translation[title]', :placeholder => 'Title', :value => element.title}
+%td 
+  .normal
+    = element.position
+  .fast_edit
+    %input.margintop-10.field_input{:type => 'text', :name => 'partner[position]', :placeholder => 'Position', :value => element.position}
+%td          
+  %ul.functions
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/element_tr"}}
+    %li
+      = link_to edit_admin_partner_path(element) do
+        .icon.edit_function
+    %li
+      = link_to '#' do
+        .icon.delete_function{:data => {:id => element.id, :entity => @entity_table}}

@@ -1,0 +1,25 @@
+#add_note.modal.slide-in
+  .modal-dialog
+    .wrapper
+      .close{:'data-dismiss' => "modal",  :'aria-label' => "Close"}
+        %img{:src => '/assets/close_shape.png'}
+      .h3 Add new note
+      = form_for Note.new, :url => notes_path, :method => :post do |f|
+        = f.hidden_field :schedule_id, :value => @schedule_current.id
+
+        %hr
+        .ui.input.margintop-20
+          .p.marginbottom-5 Header:
+          .input-container
+            %span.error_message Enter header
+            = f.text_field :name, :placeholder => 'Enter header'
+        %hr
+        .ui.textarea.margintop-20
+          .p.marginbottom-5 Your comment:
+          .textarea-container
+            = f.text_area :description, :placeholder => 'Leave your comment for this note'
+        %hr
+
+        .margintop-30.marginbottom-30
+          .ui.button.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.with_shadow.blue_button.create_note.min-width Save
+        %hr

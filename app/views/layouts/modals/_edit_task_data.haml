@@ -1,0 +1,18 @@
+= form_for task, :url => task_path(task), :method => :put do |f|
+  %hr
+  .ui.textarea
+    .p.marginbottom-5 Your comment:
+    .textarea-container
+      = f.text_area :description, :placeholder => 'Leave your comment for this task'  
+  %hr
+
+  .margintop-20.marginbottom-20
+    Achivement of this task:
+    = select_standart(Achivment.or_default, task.achivment, 'task[achivment_id]', 'task_achivment_id', '', false, "")
+
+    .clearfix
+  %hr
+
+  .margintop-30.marginbottom-30
+    .ui.button.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.with_shadow.blue_button.update_task Save
+  %hr

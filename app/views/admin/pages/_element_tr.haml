@@ -1,0 +1,8 @@
+%td= element.name
+%td= element.h1
+%td= element.description.html_safe
+%td          
+  %ul.functions
+    %li
+      = link_to edit_admin_page_path(element) do
+        .icon.edit_function

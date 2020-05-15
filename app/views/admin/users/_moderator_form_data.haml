@@ -1,0 +1,30 @@
+.row
+  .col-md-6.col-xs-12
+    .margintop-20
+    .default_label Type user
+    = admin_select_enumerize(['admin', 'moderator'], user.nil? ? nil : user.role_kind, 'user[role_kind]', 'model.user.role_kind.', '', false)
+
+    .margintop-20
+    .default_label Role
+    = admin_select_standart(Role.sort, user.role.nil? ? nil : user.role, 'user[role_id]', '', false)
+
+    .margintop-20
+    .default_label First Name
+    %input.default_input_text.width-350{:placeholder => 'First Name', :name => 'user[profile][first_name]', :value => user.profile.nil? ? '' : user.profile.first_name}
+    
+    .margintop-20
+    .default_label Last Name
+    %input.default_input_text.width-350{:placeholder => 'Last Name', :name => 'user[profile][last_name]', :value => user.profile.nil? ? '' : user.profile.last_name}
+
+    .margintop-20
+    .default_label Login (E-mail)
+    %input.default_input_text.width-350{:placeholder => 'Login (E-mail)', :name => 'user[login]', :value => user.login}
+
+    - if user.id.to_i == 0
+      .margintop-20
+      .default_label Password
+      %input.default_input_text.width-350{:placeholder => 'Password', :name => 'user[password]', :type => 'password'}
+
+      .margintop-20
+      .default_label Password confirmation
+      %input.default_input_text.width-350{:placeholder => 'Password confirmation', :name => 'password_confirmation', :type => 'password'}

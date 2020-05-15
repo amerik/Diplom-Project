@@ -1,0 +1,56 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .user_profile-block.student-home.half-body.white-background.box-shadow
+        .info-wrapper
+          = render partial: 'profiles/user_profile', :locals => { :related => 'profiles_student_home', :user => @user_current }
+          %hr.margintop-30.marginbottom-0
+        .info-wrapper.no-top-padding
+          .achievements-block
+            .p Achievements
+            .user_achivments_body= render partial: 'profiles/achievements', :locals => { :user_achivments => @user_achivments, :per_page => @per_page, :user => @user_current }
+
+      .half-body.student-home.marginleft-30.white-background.box-shadow
+        .info-wrapper
+          = render partial: 'profiles/search_mentor', :locals => {:related => 'profiles'}
+
+      .eleway-block.half-body.white-background.box-shadow.margintop-30
+        .info-wrapper
+          = render partial: 'profiles/tree'
+
+      .notifications-block.half-body.marginleft-30.white-background.box-shadow.margintop-30
+        .notifications-block-header
+          .head-item
+            .h1 Notifications
+          / .head-item
+          /   .pull-left
+          /     .h1.sort Sort by:
+          /   .pull-right
+          /     .ui.dropdown
+          /       .dropdown-container
+          /         %a#dropdown_notifications_page{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          /           %input{:type => 'text', :value => 'Recent', :placeholder => 'value', :readonly => true}
+          /           .dropdown-trigger.ui.icon.arrowdown.black
+
+          /         .dropdown-list.dropdown-menu{"aria-labelledby" => "dropdown_notifications_page"}
+          /           %ul
+          /             %li Recent
+          /             %li Example Value 2
+          /             %li Example Value 3
+          /             %li Example Value 4
+      
+        .notifications-block-body
+          .notifications-wrapper.info-wrapper
+            %ul
+              - @notifications.each do |notification|
+                %li{:class => "#{notification.not_read? ? 'active' : ''}"}
+                  .text
+                    .marginbottom-5
+                      .p= notification.description
+                    .p.time= distance_of_time_in_words(notification.created_at, DateTime.now)
+                - notification.sent_read                                                 
+  
+      .clearfix

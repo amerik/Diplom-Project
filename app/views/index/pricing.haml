@@ -1,0 +1,104 @@
+.index
+  .decor
+  .top_content.pricing
+    .container
+      = render partial: 'layouts/header'
+
+      .center_content
+        %h1 
+          Pricing to 
+          %span ELEWAY
+        .h5 Here you can see our prices for students
+
+    / .decor
+    .bg_gradient
+
+  .price_list
+    .container
+      %img.icon{:src => '/assets/price_list.png'}
+      %h2 Price list
+      %p 
+        There are several subscription options available for you! You can choose the right plan 
+        %br
+        and change it at any convenient time!
+
+      .price_items
+        .price_item
+          %img.icon{:src => '/assets/icon_free.png'}
+          .block
+            .h2 Free/regular
+            .line
+            .h3 No monthly fee
+            .line
+            .p £14.99/consultation
+            .p Random mentor
+          = link_to 'Your current plan','#', :class => 'current-plan grey_button'
+        .price_item
+          %img.icon{:src => '/assets/icon_member.png'}      
+          .block
+            .h2 Full member  
+            .line
+            .h2 
+              £6.99 
+              %span /month
+            .line
+            .p £11.99/consultation
+            .p Best fit mentors and request mentors
+            .p Full website access
+          = link_to 'Get started','#', :class => 'get-start blue_button'
+
+  .container
+    .become_mentor
+      .h2
+        Do you want to become a mentor 
+        %br and conduct classes?    
+      = link_to 'Become a mentor', '#', :class => 'become_a_mentor blue_button'
+
+  .how_it_works
+    .container
+      %h2 How it works
+      .choosing-mentor
+        %ul
+          %li= link_to 'Choosing of mentor', '#', :class => 'active', :'data-name' => 'choosing_of_mentor'
+          %li= link_to 'Learning process', '#', :'data-name' => 'learning_process'
+          %li= link_to 'Taking the exam', '#', :'data-name' => 'taking_the_exam'
+          %li= link_to 'Completion', '#', :'data-name' => 'completion'
+      
+        .contents.choosing_of_mentor.first
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor 
+
+        .contents.learning_process
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image_2.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor  
+
+        .contents.taking_the_exam
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image_3.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor  
+
+        .contents.completion
+          %p
+            Based on your preferences and wishes, our team selects the right mentor for further work. You get acquainted with the mentor and if you are satisfied, then start working with him. If the mentor does not suit you, then you can change it and try learning with another*    
+          %img.how-works-image{:src => '/assets/how-works-image_4.png'}
+          %small.text-center
+            * Change the mentor can only users who have paid a subscription to the service. For a 
+            %br 
+            free account, you can not change a mentor   
+
+
+  = render partial: 'layouts/footer_index'

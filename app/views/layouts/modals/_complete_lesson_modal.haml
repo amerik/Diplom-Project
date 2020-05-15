@@ -1,0 +1,45 @@
+#complete_lesson.modal.slide-in
+  .modal-dialog
+    .wrapper
+      .close{:'data-dismiss' => "modal",  :'aria-label' => "Close"}
+        %img{:src => '/assets/close_shape.png'}
+      .h3 Complete Lesson
+      %hr
+      .margintop-30.marginbottom-30
+        .p Rate the lesson on a scale of 1 to 5:
+        .rate-bar
+          .star-item.active
+          .star-item
+          .star-item
+          .star-item
+          .star-item
+          %input.ratings{:type => 'hidden', :value => 1, :name => 'ratings'}
+
+        .ui.textarea
+          .p.marginbottom-5 Your comment:
+          .textarea-container
+            %textarea{:placeholder => 'Leave your comment for this lesson'}        
+      %hr
+
+      .margintop-20.marginbottom-20
+        Achivement of this lesson:
+        .achievements-block
+          .achievement-items
+            .achievement-item
+              .icon
+                %img{:src => '/uploads/achivment/image/1142/1.png'}
+
+            .achievement-item
+              .icon
+                %img{:src => '/uploads/achivment/image/1142/1.png'}
+
+            .achievement-item
+              .icon
+                %img{:src => '/uploads/achivment/image/1142/1.png'}
+
+        .clearfix
+      %hr
+
+      .margintop-30.marginbottom-30
+        .ui.button.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.with_shadow.blue_button  Complete this lesson
+      %hr            

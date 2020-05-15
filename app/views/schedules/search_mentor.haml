@@ -1,0 +1,10 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+    .data-content
+      .tab
+        = render partial: 'schedules/menu_student'
+        .tab-body.min-height
+          = render partial: 'profiles/search_mentor', :locals => {:related => 'schedules'}
+                       

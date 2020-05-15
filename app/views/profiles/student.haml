@@ -1,0 +1,22 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .user_profile-block.half-body.white-background.box-shadow
+        .info-wrapper
+          = render partial: 'profiles/user_profile', :locals => { :related => 'profiles_student', :user => @user_current }
+        %hr.margin-0
+        .info-wrapper
+          .p.h3 Other specialization
+          = render partial: 'specializations/list', :locals => { :related => @user_current.profile.specializations.or_default }
+                  
+      .eleway-block.half-body.marginleft-30.white-background.box-shadow
+        .info-wrapper
+          = render partial: 'profiles/tree'      
+      .achievements-block.full-body.margintop-30.white-background.box-shadow
+        .info-wrapper
+          .h1 Achievements
+          %hr
+          .user_achivments_body= render partial: 'profiles/achievements', :locals => { :user_achivments => @user_achivments, :per_page => @per_page, :user => @user_current }

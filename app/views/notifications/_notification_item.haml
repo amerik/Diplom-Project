@@ -1,0 +1,6 @@
+- if notifications_count > 0
+  - notifications.each do |notification|
+    = link_to @user_current.client? ? student_home_profiles_path : mentor_profiles_path, :class => 'dropdown-item' do
+      = notification.description
+- else
+  .no-new-notifications You have not new notifications

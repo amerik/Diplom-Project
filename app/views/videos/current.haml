@@ -1,0 +1,74 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .tab
+        .ui.buttons-wrap.border.rounded-8
+          = link_to @user_current.client? ? student_schedules_path : mentor_schedules_path do
+            .button.relative.ui.middle.fill-with-icon.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block
+              .text
+                Lesson
+          = link_to @user_current.client? ? student_schedules_path(:is_forcibly => true) : mentor_schedules_path(:is_forcibly => true) do
+            .button.relative.ui.middle.color.color-black.border.inline-block
+              .text
+                Calendar
+
+        - if @user_current.client?
+          = render partial: 'schedules/menu_student'
+        - else
+          = render partial: 'schedules/menu_mentor'
+
+        %input#videos_page{:value => 'current', :type => 'hidden'}
+        .tab-body
+          .marginbottom-10
+            %h1.inline-block Lesson with a mentor:
+
+            .alert.alert-info.margintop-20.marginbottom-0
+              %b Note well!
+              Sharing your screen is an experimental
+              feature in WebRTC, and only works if the browser you're using meets particular requirements.
+              If you're using a relatively recent version of Chrome (34+), you'll need to install
+              = succeed "." do
+                %b
+                  %a{:href => "https://chrome.google.com/webstore/detail/janus-webrtc-screensharin/hapfgfdkleiggjjpfpenajgdnfckjpaj"} this extension
+              %b
+                %a{:href => "chrome://flags/#enable-usermedia-screen-capture"} chrome://flags/#enable-usermedia-screen-capture
+              or otherwise you'll get a permission error. Besides, please beware that some versions of Chrome may only
+              support the feature if you explicitly pass the
+              %code --enable-usermedia-screen-capturing
+              parameter on the command line. Finally, active screen/application sharing will only work from
+              Firefox if you have at least version 33 installed: if so, make sure you also manually enable
+              the
+              %code media.getusermedia.screensharing.enabled
+              setting in
+              = succeed "," do
+                %b
+                  %a{:href => "about:config"} about:config
+              = succeed "." do
+                %code media.getusermedia.screensharing.allowed_domains
+
+            .mentor-info
+              / .avatar
+              /   %img{:src => @my_mentor.profile.image_url('42x42', 'png')}
+              / .name= @my_mentor.profile.decorate.full_name
+          
+          %input#is_mentor{:type => 'hidden', :value => "#{@is_mentor}"}
+          %input#room{:type => 'hidden', :value => @schedule_current.id}
+          %input#call_config{:type => 'hidden', :value => ''}
+
+          %input#user_other{:type => 'hidden', :value => "#{@user_other.id}"}
+          %input#chat_block_id{:type => 'hidden', :value => "#{@chat.id}"}
+          
+          .block-wrapper
+            .video-call-container
+              
+
+
+          .tasks-block.half-body.white-background.white-background.margintop-30.block-show-hide.active      
+            = render partial: 'videos/tasks_block'
+          .notes-block.half-body.marginleft-30.white-background.margintop-30.block-show-hide.active
+            = render partial: 'videos/notes_block'  
+            / = render partial: 'videos/notes_block_show'                                                                          
+          .clearfix

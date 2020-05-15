@@ -1,0 +1,21 @@
+.user-logged
+  .user
+    = link_to users_path do
+      .name= @user_current.profile.decorate.full_name
+    = link_to users_path do
+      .avatar
+        .loading
+        %img{:src => @user_current.profile.image_url('42x42', 'png')}
+    / .icon.ui.icon.arrowdown.black
+    = link_to 'exit', exit_users_path, :class => "marginleft-10"
+  
+
+  .dropdown.notification-button
+    %a#dropdown_notifications{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+      %span.notifications
+    .dropdown-menu{"aria-labelledby" => "dropdown_notifications"}
+      .notifications-list
+      
+
+  .messages_count_icon
+

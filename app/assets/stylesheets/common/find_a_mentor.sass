@@ -1,0 +1,102 @@
+@import "common/mixing"
+@import "common/ui-mixin"
+
+.find_a_mentor
+  display: table
+  margin: 130px auto
+  img
+    display: block
+    margin: 0px auto
+  .h2
+    font-size: 32px
+    font-weight: 700
+    color: #000000
+    line-height: 42px
+    text-align: center
+    margin: 25px 0px
+  .p
+    margin: 0px
+    color: #1A2028
+    font-size: 14px
+    text-align: center
+    line-height: 22px
+    margin: auto
+    width: 550px
+  .button
+    &.find,
+    &.ready_to_start
+      width: 270px
+      display: table
+      margin: 40px auto 0px
+      @include box_shadow(0px, 10px, 24px, rgba(96,181,246,0.30))
+  .progress_bar
+    width: 260px
+    height: 20px
+    border-radius: 5px
+    background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+    margin: 30px auto
+    display: table
+    position: relative
+    //display: none
+    .bar-stripped
+      height: 100%
+      width: 100%
+      position: absolute
+      background-image: linear-gradient(-45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)
+      background-image: -webkit-linear-gradient(-45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)
+      background-image: -o-linear-gradient(-45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)
+      background-size: 15px 15px
+
+  .waiting-mentor-ready
+    .mentor_avatar
+      width: 112px
+      height: 112px
+      position: relative
+      margin: 0px auto
+      display: table
+      .round-1,
+      .round-2,
+      .round-3,
+      img
+        position: absolute
+        left: 0 
+        right: 0
+        top: 0
+        bottom: 0
+        margin: auto
+        border-radius: 100px
+      .round-1
+        width: 112px
+        height: 112px
+        background-image: linear-gradient(-180deg, rgba(102,184,246,0.05) 0%, rgba(26,146,235,0.05) 100%)
+        opacity: 0
+        -webkit-animation: hide_show 1.3s ease-out infinite
+        -moz-animation: hide_show 1.3s ease-out infinite
+        animation: hide_show 1.3s ease-out infinite
+        animation-delay: 0.8s
+        animation-fill-mode: both
+      .round-2
+        background-image: linear-gradient(-180deg, rgba(102,184,246,0.1) 0%, rgba(26,146,235,0.1) 100%)
+        animation: hide_show 1s
+        opacity: 0
+        width: 98px
+        height: 98px
+        -webkit-animation: hide_show 1.2s ease-out infinite
+        -moz-animation: hide_show 1.2s ease-out infinite
+        animation: hide_show 1.2s ease-out infinite
+        animation-delay: 0.5s
+        animation-fill-mode: both
+      .round-3
+        background-image: linear-gradient(-180deg, rgba(102,184,246,0.3) 0%, rgba(26,146,235,0.3) 100%)
+        animation: hide_show 1s
+        opacity: 0
+        width: 84px
+        height: 84px
+        -webkit-animation: hide_show 1s ease-out infinite
+        -moz-animation: hide_show 1s ease-out infinite
+        animation: hide_show 1s ease-out infinite
+        animation-delay: 0.2s
+        animation-fill-mode: both
+      img
+        width: 70px
+        height: 70px

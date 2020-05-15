@@ -1,0 +1,90 @@
+!!!
+/ %html
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8">
+/[if IE 8] <html class="no-js lt-ie9">
+/ [if gt IE 8]><!
+%html.no-js
+  / <![endif]
+  %head
+    %title= meta_title
+    %meta{:name => "description", :content => meta_description}
+    %meta{:name => "keywords", :content => meta_keywords}
+
+    //%meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}
+    %meta{:name =>"viewport", :content => "width=device-width, initial-scale=1, maximum-scale=0, user-scalable=yes"}
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js"></script>
+    :javascript
+      WebFont.load({
+        custom: {
+          families: ['ebrima','ProximaNova-Regular','ProximaNova-Light','century-gothic']
+        }
+      });
+
+    = stylesheet_link_tag "common/font-face", :media => "all"
+
+    = stylesheet_link_tag "lib/bootstrap.min", :media => "all" 
+    = stylesheet_link_tag "common/common", :media => "all"  
+    = stylesheet_link_tag "#{params[:controller]}.css", :media => "all"
+
+    = favicon_link_tag "favicon.ico", :rel=>'shortcut icon', :type=>'image/x-icon'
+    = favicon_link_tag "favicon.ico", :rel=>'icon', :type=>'image/x-icon'
+
+    /[if lt IE 9]
+      <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    /[if IE] <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    /[if lte IE 8]
+      <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+      <link rel="stylesheet" type="text/css" media="screen" href="/application/assets/css/ie8.css"  />
+
+    = javascript_include_tag "jquery"
+    = javascript_include_tag "jquery_ujs"
+    = javascript_include_tag "common"
+    = javascript_include_tag "lib/bootstrap.min"
+
+    %script{:src => "//ulogin.ru/js/ulogin.js"}
+
+    - if params[:controller] == 'videos' && params[:action] == 'current'
+      = javascript_include_tag "lib/adapter.min"
+      = javascript_include_tag "janus"
+      = javascript_include_tag "video_room"
+      = javascript_include_tag "remote_feed"
+      / = javascript_include_tag "video_call"
+      = javascript_include_tag "caller"        
+
+    - if params[:controller] == 'videos' && params[:action] == 'index'
+      %link{:href => "https://vjs.zencdn.net/7.3.0/video-js.css", :rel => "stylesheet"}/
+      %script{:src => "https://vjs.zencdn.net/7.3.0/video.js"}
+
+    = javascript_include_tag "#{params[:controller]}" if Rails.application.assets.find_asset("#{params[:controller]}")
+    / = stylesheet_link_tag "lib/lightbox.min", :media => "all", "data-turbolinks-track" => true
+    / = javascript_include_tag "admin/lib/jquery.fancybox"
+
+    - if params[:controller] == 'index' && %w(privacy_policy terms_of_service).include?(params[:action])
+      = stylesheet_link_tag "pages", :media => "all"
+
+
+
+  %body
+    .full_width
+      = yield
+    .clearfix
+
+    = render partial: 'layouts/preloader'
+
+  = render partial: 'layouts/modals'
+  %input#hash_auto_fill{:type => "hidden", :value => User.hash_auto_fill}
+  %input#user_current_auth{:type => "hidden", :value => @user_current.auth?.to_s}
+  %input#del_read{:type => "hidden", :value => "Delete record?"}
+
+  / :javascript
+  /   $(function() {
+  /     var img = document.getElementsByTagName('img');
+  /     for(var i in img)
+  /     {
+  /       img[i].oncontextmenu = function()
+  /       {
+  /         return false;
+  /       }
+  /     }
+  /   });

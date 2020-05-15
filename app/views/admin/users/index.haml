@@ -1,0 +1,67 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'                         
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to 'Students', admin_users_path
+
+    .h3.marginbottom-20= 'Students'
+
+    / .new_entity
+    /   = link_to new_admin_user_path, :class => 'create_new' do 
+    /     %span.text create new
+    /     %span.ball
+
+    .filters_block
+      = form_for User.new, :url => { :controller => 'users', :action => 'index' }, :method => :get do |f|
+        %input{:type => 'hidden', :name => 'page', :value => 1}
+        .filter.inline-block.marginleft-25
+          .inline-block
+            %span Period of sign up
+            %input.default_input_text.date_field{:type => 'text', :name => "has_created_at_min", :style => "width: 84px", :value => params[:has_created_at_min]}
+          .inline-block.marginleft-5
+            %span to
+            %input.default_input_text.date_field{:type => 'text', :name => "has_created_at_max", :style => "width: 84px", :value => params[:has_created_at_max]}  
+
+        .filter.inline-block.marginleft-25
+          .inline-block
+            %span ID User
+            %input.default_input_text{:type => 'text', :name => 'has_id', :value => params[:has_id]}
+
+        .filter.inline-block.marginleft-25
+          .inline-block
+            %span User E-mail
+            %input.default_input_text{:type => 'text', :name => 'has_login', :value => params[:has_login]}
+    
+        .inline-block.marginleft-10
+          = link_to 'search', '#', :class => 'default_button dark search_entities'
+          = link_to 'reset', admin_users_path, :class => 'default_button'
+        .inline-block.marginleft-10
+          = link_to 'delete selected', '#', :class => 'default_button dark del_checking_tr', :data => {:entity => @entity_table}
+    
+    .default_table
+      %table.table.table-striped.table-condensed
+        %tr
+          %th= admin_default_checkbox_th
+          %th
+            = t("view.admin.user.login")
+            = admin_sort(@url, 'order_login', params)
+          %th
+            = t("view.admin.user.account_created")
+            = admin_sort(@url, 'order_created_at', params)
+          %th
+            = t("view.admin.user.name")
+            = admin_sort(@url, 'order_last_name', params)
+          %th
+            = t("view.admin.user.last_login")
+            = admin_sort(@url, 'order_updated_at', params)
+          %th Mentor
+          %th
+
+        - @elements.each do |element|
+          %tr{:data => {:id => element.id}}
+            = render partial: "admin/#{@entity_table}/client_tr", :locals => {:element => element}
+
+    = admin_pagginate(@url, @params_pagginate, @page, params)

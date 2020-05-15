@@ -1,0 +1,17 @@
+.row
+  .col-md-6.col-xs-12
+
+    .margintop-20
+    .default_label Image
+    - unless entity.image.file.nil?
+      %img{:src => entity.image_url('220x66')}
+    %input.default_input_text.width-350{:name => 'partner[image]', :type => 'file'}
+
+    .margintop-20
+    .default_label Title
+    %input.default_input_text.width-350{:name => 'translation[title]', :value => entity.title}
+
+    .margintop-20
+    .default_label Position
+    %input.default_input_text.width-350{:name => 'partner[position]', :value => entity.position}
+

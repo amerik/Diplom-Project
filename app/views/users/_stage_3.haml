@@ -1,0 +1,101 @@
+.stage-3{:class => "#{@user_current.step_profile == 2 ? '' : 'hidden'}"}
+  .form_content
+    %h1.text-center 
+      Tell us more about yourself
+    %h4.text-center Tell us about yourself, share information about your social networks and add a resume
+    = form_for @user_current.profile, :html => {:id => 'edit_profile_stage_3'}, :url => profile_path(@user_current.profile), :method => :put do |f|
+      %input{:type => 'hidden', :value => 3, :name => 'user[step_profile]'}
+      .wrapper
+
+        %hr
+        .margintop-30
+          .h3 Your CV
+          %hr
+          = uploader_single('your_cv', 'profile_your_cv', @user_current.profile.get_your_cv, 'del_your_cv', '.pdf, .doc, .docx, .odt, .pages')
+
+        %hr
+        .margintop-30
+          .h3 Supporting documents
+          %hr
+          -# = uploader_many('other_files[]', 'profile_other_files', @user_current.profile.get_other_files, 'del_other_file')
+          .half-column{:style => "margin-left: 0px"}= uploader_single('any_first', 'profile_any_first', @user_current.profile.get_any_first, 'del_any_first', 'any')
+          .half-column= uploader_single('any_second', 'profile_any_second', @user_current.profile.get_any_second, 'del_any_second', 'any')
+
+        .clearfix
+        %hr
+        .margintop-20
+          .h3 Motivational letter
+          .ui.textarea.marginbottom-25.margintop-15
+            .textarea-container.with_icon
+              .icon.instagram-icon
+              %textarea{:name => 'profile[motivational_letter]'}= @user_current.profile.motivational_letter
+
+        .half-column{:style => "margin-left: 0px"}
+          .marginbottom-25
+            = select_enumerize(Profile.time_preference.values, @user_current.profile.time_preference, 'profile[time_preference]', 'profile_time_preference', 'model.profile.time_preference.', '', false, "Time preference:")
+        .half-column
+          .marginbottom-25
+            = select_enumerize(Profile.price_preference.values, @user_current.profile.price_preference, 'profile[price_preference]', 'profile_price_preference', 'model.profile.price_preference.', '', false, "Price preference:")
+
+        .clearfix
+        .margintop-40
+          .h3 Social networks
+          %hr
+          .ui.input.pull-left.marginbottom-25
+            .label-text Facebook:
+            .input-container.with_icon{:class => "#{!@user_current.profile.fb_url.nil? && @user_current.profile.fb_url != '' ? 'success' : ''}"}
+              .icon.fb-icon
+              %input.soc_fb_url{:type => 'text', :placeholder => 'Url', :name => 'profile[fb_url]', :value => @user_current.profile.fb_url}
+          .pull-left
+            / .change-profile.button.ui.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block{:class => "#{!@user_current.profile.fb_url.nil? && @user_current.profile.fb_url != '' ? '' : 'hidden'}"} Change profile
+            .add-profile.button.ui.middle.border.border-1.border-light-gray.rounded-8.color.color-dark.inline-block.check_social_url{:data => {:soc => 'fb_url'}} Check profile
+
+          .ui.input.pull-left.marginbottom-25
+            .label-text Twitter:
+            .input-container.with_icon{:class => "#{!@user_current.profile.tw_url.nil? && @user_current.profile.tw_url != '' ? 'success' : ''}"}
+              .icon.twitter-icon
+              %input.soc_tw_url{:type => 'text', :placeholder => 'Url', :name => 'profile[tw_url]', :value => @user_current.profile.tw_url}
+          .pull-left
+            / .change-profile.button.ui.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block{:class => "#{!@user_current.profile.tw_url.nil? && @user_current.profile.tw_url != '' ? '' : 'hidden'}"} Change profile
+            .add-profile.button.ui.middle.border.border-1.border-light-gray.rounded-8.color.color-dark.inline-block.check_social_url{:data => {:soc => 'tw_url'}} Check profile
+
+          .ui.input.pull-left.marginbottom-25
+            .label-text Instagram:
+            .input-container.with_icon{:class => "#{!@user_current.profile.inst_url.nil? && @user_current.profile.inst_url != '' ? 'success' : ''}"}
+              .icon.instagram-icon
+              %input.soc_inst_url{:type => 'text', :placeholder => 'Url', :name => 'profile[inst_url]', :value => @user_current.profile.inst_url}
+          .pull-left
+            / .change-profile.button.ui.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block{:class => "#{!@user_current.profile.inst_url.nil? && @user_current.profile.inst_url != '' ? '' : 'hidden'}"} Change profile
+            .add-profile.button.ui.middle.border.border-1.border-light-gray.rounded-8.color.color-dark.inline-block.check_social_url{:data => {:soc => 'inst_url'}} Check profile
+
+          .ui.input.pull-left.marginbottom-25
+            .label-text Google Plus:
+            .input-container.with_icon{:class => "#{!@user_current.profile.google_url.nil? && @user_current.profile.google_url != '' ? 'success' : ''}"}
+              .icon.google-plus-icon
+              %input.soc_inst_url{:type => 'text', :placeholder => 'Url', :name => 'profile[google_url]', :value => @user_current.profile.google_url}
+          .pull-left
+            .add-profile.button.ui.middle.border.border-1.border-light-gray.rounded-8.color.color-dark.inline-block.check_social_url{:data => {:soc => 'google_url'}} Check profile
+        
+        .clearfix
+        %hr
+        / .margintop-30
+        /   .h3 About
+        /   %hr
+        /   .ui.textarea.marginbottom-25
+        /     .label-text Additional information that you want us to know:
+        /     .textarea-container.with_icon
+        /       .icon.instagram-icon
+        /       %textarea{:name => 'profile[additional_info]'}= @user_current.profile.additional_info
+
+        .margintop-30
+          .margintop-40.center
+            .pull-left  
+              .button.skip.ui.large.border.border-2.border-light-gray.rounded-8.color.color-dark.marginright-20.set_stage_back{:data => {:stage => 2, :oldstage => 3}} Skip for Now
+            .pull-left
+              .button.continue.ui.large.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.save_stage_3 Continue 
+
+  .tree_progress
+    %h1.text-center Progress registation
+    %h4.text-center 
+      As your information becomes full, your tree grows. The higher the tree, the more suitable mentor we will choose for you
+    %img.tree{:src => '/assets/student/progress_tree_stage_3.png'}

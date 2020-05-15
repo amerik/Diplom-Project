@@ -1,0 +1,53 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .tab
+        - unless @user_current.get_schedule_current.nil?
+          .ui.buttons-wrap.border.rounded-8
+            = link_to @user_current.client? ? student_schedules_path : mentor_schedules_path do
+              .button.relative.ui.middle.color.color-black.border.inline-block
+                .text
+                  Lesson
+            = link_to @user_current.client? ? student_schedules_path(:is_forcibly => true) : mentor_schedules_path(:is_forcibly => true) do
+              .button.relative.ui.middle.fill-with-icon.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block
+                .text
+                  Calendar
+
+        / .button.ui.middle.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block Set a lesson schedule
+        = render partial: 'schedules/menu_mentor'
+        .tab-body
+          .marginbottom-50
+            %h1 Calendar of your lessons
+          
+          .change-month
+            = link_to mentor_schedules_path(:year => (DateTime.new(@year, @month, 1) - 1.months).year, :month => (DateTime.new(@year, @month, 1) - 1.months).month), :class => 'change_month prev' do
+              %span.ui.icon.inline-block.arrowleft.black
+            .month 
+              = t("datetime.month_full_name.m_#{@month}")
+              %span= @year
+            = link_to mentor_schedules_path(:year => (DateTime.new(@year, @month, 1) + 1.months).year, :month => (DateTime.new(@year, @month, 1) + 1.months).month), :class => 'change_month next' do
+              %span.ui.icon.inline-block.arrowright.black
+
+          .calendar_lesions_mentor
+            - 1.upto(DateTime.new(@year, @month, 1).end_of_month.day) do |day|
+              - old_day = false
+              - if DateTime.now.to_date > Time.new(@year, @month, day).to_date
+                - old_day = true
+              .day
+                - day_name = "#{day} " + t("datetime.dweek_short.dw_#{DateTime.new(@year, @month, day).wday}").to_s
+                .item.name{:class => "#{old_day ? 'grey' : ''}"}= day_name
+                - 0.upto(23) do |hour|
+                  - schedule = @schedules.select{|s| s.start_at.year == @year && s.start_at.month == @month && s.start_at.day == day && s.start_at.hour == hour}.first
+                  .item.set_date_shedule{:class => "#{schedule.nil? ? '' : 'active'} #{old_day ? 'old_day' : ''} #{DateTime.new(@year, @month, day).wday == 0 || DateTime.new(@year, @month, day).wday == 6 ? 'outlet' : ''} #{(hour == 5 || hour == 11 || hour == 17) ? 'border_right' : ''}", :title => "#{day_name}, #{Filter.get_double_int(hour)}:00 - #{Filter.get_double_int(hour + 1)}:00", :data => {:year => @year, :month => @month, :day => day, :hour => hour}}
+                    %span.block
+
+            .day.time
+              .item.name
+              - 0.upto(23) do |hour|
+                .item
+                  %span.time= "#{Filter.get_double_int(hour)}:00"
+                  %span.break -
+                  %span.time= "#{Filter.get_double_int(hour + 1)}:00"

@@ -1,0 +1,76 @@
+#sign_up_modal.modal.auth.slide-in
+  .modal-dialog
+    .wrapper
+      .close{:'data-dismiss' => "modal",  :'aria-label' => "Close"}
+        %img{:src => '/assets/close_shape.png'}
+      .h1 Sign Up
+
+      = form_for User.new, :url => { :controller => 'users', :action => 'create' }, :method => :post do |f|
+        %input{:type => 'hidden', :value => User.time_auto_fill, :name => "time_auto_fill"}
+        .marginbottom-25
+          .ui.input
+            .label-text Your E-mail:
+            .input-container
+              %span.error_message A user with such an email address does not exit !
+              %input#user_login{:type => 'text', :placeholder => 'Enter your e-mail', :name => 'user[login]'}
+        .marginbottom-25
+          .ui.input
+            .label-text Password:
+            .input-container
+              %span.error_message Password not correct !
+              %input#user_password{:type => 'password', :placeholder => 'Create password', :name => 'user[password]'}
+        .marginbottom-25
+          .ui.input
+            .label-text Password confirmation:
+            .input-container
+              %span.error_message Password not correct !
+              %input#user_password_confirmation{:type => 'password', :placeholder => 'Password confirmation', :name => 'password_confirmation'}
+        %hr
+        .marginbottom-25
+          .h3.marginbottom-20.text-center Do you want to become a mentor or a student?
+          .radio-area.center
+            .pull-left.marginright-90
+              .ui.radio
+                .radio-container.checked
+                  .circle
+                    %input.aa{:type => 'radio', :checked => true, :name => "user[role_kind]", :value => 'client'}
+                  .ui-label Student
+            .pull-left
+              .ui.radio
+                .radio-container
+                  .circle
+                    %input.aa{:type => 'radio', :name => "user[role_kind]", :value => 'mentor'}
+                  .ui-label Mentor              
+
+          .clearfix
+        %hr
+        .margintop-0
+          .terms 
+            By creating an account you agree to the 
+            %br 
+            = link_to 'Terms of Service', terms_of_service_index_index_path, :target => '_blank'
+            and 
+            = link_to 'Privacy Policy', privacy_policy_index_index_path, :target => '_blank'
+          .ui.button.large.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.with_shadow.create_user.blue_button Sign Up
+
+         
+
+      %hr
+      .or OR
+      .social
+        = link_to '#', :class => 'facebook' do
+          %img{:src => '/assets/facebook.png'}
+        = link_to '#', :class => 'twitter' do
+          %img{:src => '/assets/twitter.png'}
+        = link_to '#', :class => 'googleplus' do
+          %img{:src => '/assets/google-plus.png'}
+
+        = render partial: 'layouts/sos_network', :locals => {:id => 'uLogin-1', :redirect_uri => URI.encode("#{SITE_FULL_NAME_GLOBAL}/users/soc_authorization/client") }
+
+        = render partial: 'layouts/sos_network', :locals => {:id => 'uLogin-2', :redirect_uri => URI.encode("#{SITE_FULL_NAME_GLOBAL}/users/soc_authorization/mentor") }         
+    %hr
+
+    %hr
+    .bottom 
+      Do you have an account?
+      = link_to 'Log In', '#', :class => 'log-in'

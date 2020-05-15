@@ -1,0 +1,84 @@
+.user_cabinet{:class => "#{params['action']}"}
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .user_profile-block.half-body.white-background.box-shadow
+        .info-wrapper
+          .image_part
+            %img{:src => @user_current.profile.image_url('130x130', 'png')}
+            - unless @user_current.profile.get_your_cv.nil?
+              = link_to @user_current.profile.get_your_cv.file.url, :target => '_blank' do
+                .ui.button.small.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.margintop-20.resume Resume
+            - else
+              .ui.button.small.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.margintop-20.resume No resume
+            = link_to mentor_edit_profiles_path do
+              .button.ui.small.border.border-1.border-light-gray.rounded-8.color.color-dark.margintop-15 Edit profile  
+          .right-part
+            .marginbottom-10
+              .p.h6 Mentor
+            .marginbottom-10
+              .p.h3= @user_current.profile.decorate.full_name
+            .p.h5= @user_current.profile.decorate.university
+            %hr
+            .marginbottom-10
+              .p.h4.inline-block Location
+              .p.inline-block.marginleft-15= @user_current.profile.decorate.location
+            .marginbottom-10
+              .p.h4.inline-block Specialization
+              .p.inline-block.marginleft-15= @user_current.profile.decorate.specialization
+            .marginbottom-10
+              .p.h4.inline-block Social
+              .social.margintop-10
+                - if !@user_current.profile.fb_url.nil? && @user_current.profile.fb_url != ""
+                  = link_to @user_current.profile.fb_url, :target => '_blank' do
+                    %img{:src => '/assets/social/28x28/Facebook.png'}
+                - if !@user_current.profile.tw_url.nil? && @user_current.profile.tw_url != ""
+                  = link_to @user_current.profile.tw_url, :target => '_blank' do
+                    %img{:src => '/assets/social/28x28/Twitter.png'}
+                / %img{:src => '/assets/social/28x28/Google Plus.png'}
+                - if !@user_current.profile.inst_url.nil? && @user_current.profile.inst_url != ""
+                  = link_to @user_current.profile.inst_url, :target => '_blank' do
+                    %img{:src => '/assets/social/28x28/Instagram.png'}               
+          %hr
+          .marginbottom-10
+            .p.h3 About
+          .p= @user_current.profile.decorate.about_my
+        %hr.margin-0
+        .info-wrapper
+          .p.h3 Other specialization
+          = render partial: 'specializations/list', :locals => { :related => @user_current.profile.specializations.or_default }
+
+
+      .notifications-block.half-body.marginleft-30.white-background.box-shadow
+        .notifications-block-header
+          .head-item
+            .h1 Notifications
+          / .head-item
+          /   .pull-left
+          /     .h1.sort Sort by:
+          /   .pull-right
+          /     .ui.dropdown
+          /       .dropdown-container
+          /         %a#dropdown_notifications_page{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          /           %input{:type => 'text', :value => 'Recent', :placeholder => 'value', :readonly => true}
+          /           .dropdown-trigger.ui.icon.arrowdown.black
+
+          /         .dropdown-list.dropdown-menu{"aria-labelledby" => "dropdown_notifications_page"}
+          /           %ul
+          /             %li Recent
+          /             %li Example Value 2
+          /             %li Example Value 3
+          /             %li Example Value 4
+        
+        .notifications-block-body
+          .notifications-wrapper.info-wrapper
+            %ul
+              - @notifications.each do |notification|
+                %li{:class => "#{notification.not_read? ? 'active' : ''}"}
+                  .text
+                    .marginbottom-5
+                      .p= notification.description
+                    .p.time= distance_of_time_in_words(notification.created_at, DateTime.now)
+                - notification.sent_read          

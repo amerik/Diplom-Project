@@ -1,0 +1,28 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'                         
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to t("view.admin.user.moderators"), moderators_admin_users_path
+      %li= link_to t("view.admin.common.roles"), admin_roles_path
+      %li= link_to @role.name, admin_privileges_path(:role_id => @role.id)
+
+    .h3.marginbottom-20= @role.name
+    = form_for Privilege.new, :url => { :controller => 'privileges', :action => 'set_role' }, :method => :post do |f|
+      %input{:type => "hidden", :name => "role_id", :value => params[:role_id]}
+      .row
+        - Privilege.action_name.values.each do |action_name|
+          .col-md-6.col-xs-12
+            .h3.marginbottom-20= t("model.privilege.action_name.#{action_name}")
+            .margintop-10
+            %ul.yes_no_swich_list
+              - Privilege.page_name.values.each do |page_name|
+                %li
+                  .default_label.text= t("model.privilege.page_name.#{page_name}")
+                  = admin_check_box_standart(@role.is_privilege?(action_name, page_name), {}, "privileges[#{action_name}][#{page_name}]", '')
+      
+      .clearfix
+      .margintop-30
+        = link_to 'save', '#', :class => 'default_button dark create_entity'

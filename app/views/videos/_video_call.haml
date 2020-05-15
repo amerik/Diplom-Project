@@ -1,0 +1,39 @@
+.video-chat-block.full-body.margintop-30.white-background.box-shadow
+  .video-call-block
+    .vid-button.resize
+      .icon.ui.fullscreen.white
+    .vid-button.chat.option-buttons
+      .icon.ui.chat.white
+    .vid-button.microphone.option-buttons#microphone.hide
+      .icon.ui.microphone.white
+    #make_call.vid-button.putthephoneup.call-function-button
+      .icon.ui.putthephonedown.white
+    #answer_to_call.vid-button.answer_to_call.call-function-button
+      .icon.ui.putthephonedown.white
+      
+    #call_hangup.vid-button.putthephonedown.call-function-button
+      .icon.ui.putthephonedown.white
+    .vid-button.videocamera.option-buttons.hide#video_share
+      .icon.ui.videocamera.white                
+    .vid-button.screen-share.option-buttons#screen_share.hide
+      .icon.ui.screen-share.white 
+    .video-ready-to-call-container
+      .other-user
+        .image{:style => "background-image: url(#{user_other.profile.image_url})"}
+
+    .video-establishing-container
+      .establishing-text 
+        Establishing connection 
+        %span 
+      .other-user
+        .image{:style => "background-image: url(#{user_other.profile.image_url})"}
+        .round-1
+        .round-2
+    .video-stream-container.remote-stream-container
+      %video#remote-stream{:autoplay => "", :height => "500", :width => "666"}
+    .you.local-stream{:style => "background-image: url(#{@user_current.profile.image_url})"}
+      %video#local-stream{:autoplay => "", :height => "100", :width => "135"}
+
+
+  = render partial: 'videos/chat_block', :locals => { :chat => chat, :user_other => user_other }
+  .clearfix

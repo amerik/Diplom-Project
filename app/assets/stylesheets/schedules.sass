@@ -1,0 +1,490 @@
+@import "common/user_cabinet"
+@import "common/mixing"
+@import "common/ui-mixin"
+@import "common/animate"
+@import "common/achievements"
+@import "common/chat"
+
+.cabinet_body
+  .show_order
+    display: none
+  .change-month
+    position: absolute
+    right: 40px
+    top: 60px
+    a.change_month
+      width: 18px
+      height: 18px
+      display: inline-block
+      vertical-align: top
+      margin-top: 5px
+    .month
+      vertical-align: top
+      min-width: 160px
+      display: inline-block
+      padding: 0px 20px
+      font-size: 18px
+      font-weight: 500
+      color: #1A2028
+      text-align: center
+      span
+        font-size: 14px
+        font-weight: 400
+        color: rgba(26,32,40,0.4)
+        display: block
+        text-align: center
+  .mentor-info
+    display: inline-block
+    vertical-align: middle
+    margin-left: 15px
+    max-width: 550px
+    .avatar
+      width: 47px
+      height: 47px
+      display: inline-block
+      vertical-align: middle
+      background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+      position: relative
+      border-radius: 100px
+      img
+        width: 39px
+        height: 39px
+        position: absolute
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+        margin: auto
+        border-radius: 100px
+    .name
+      font-size: 18px
+      color: #1A2028
+      line-height: 24px
+      display: inline-block
+      vertical-align: middle
+      margin-left: 15px
+    .button
+      display: inline-block
+      margin-left: 20px
+
+  .calendar_lesions_mentor
+    display: table
+    width: 100%
+    border-collapse: collapse
+    table-layout: fixed    
+    .day
+      display: table-row
+      span.block
+        position: absolute
+        top: 0
+        bottom: 0
+        right: 0
+        left: 0
+        margin: auto      
+      &.time 
+        .item
+          border: none
+          padding-top: 10px
+          span
+            display: block
+            font-size: 10px
+            line-height: 11px
+            color: #1A2028
+            font-weight: 500
+            text-align: center
+
+    .item
+      display: table-cell
+      height: 42px
+      border: 1px solid #D6D6D6
+      position: relative
+      &.active
+        &:before
+          content: ''
+          position: absolute
+          left: 0
+          right: 0
+          bottom: 0
+          top: 0
+          margin: auto
+          background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+          z-index: 1
+        &:after
+          content: ''
+          position: absolute
+          left: 0
+          right: 0
+          bottom: 0
+          top: 0
+          width: 18px
+          height: 18px
+          margin: auto
+          z-index: 1
+          background: url('/assets/icons/white/Check.png') no-repeat
+          background-size: cover
+      &.name
+        width: 80px
+        text-transform: uppercase
+        text-align: center
+        font-size: 12px
+        color: #1A2028
+        border: none
+        vertical-align: middle
+        &.grey
+          color: #c3c3c3
+
+    .set_date_shedule
+      cursor: pointer
+      &:hover
+        background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+
+      &.border_right
+        border-right: 2px solid #909090
+    
+    .item  
+      &.outlet
+        span.block
+          background: #e9f1f9
+          &:hover
+            background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)    
+      &.old_day
+        span.block
+          cursor: not-allowed
+          background: #fff7f7
+          &:hover
+            background-image: none
+
+  .calendar_lesions_student
+    display: table
+    width: 100%
+    border-collapse: collapse
+    table-layout: fixed
+    border: 1px solid #EFEFEF
+    .weak
+      display: table-row
+      &.names 
+        .item
+          height: 60px
+          border: none
+          text-align: right
+          text-transform: uppercase
+          padding: 20px 18px
+          font-size: 12px
+    .item
+      display: table-cell
+      height: 122px
+      border: 1px solid #EFEFEF
+      position: relative
+      padding: 20px 18px 20px 10px
+      font-size: 14px
+      color: #1A2028
+      &.last-month
+        background: rgba(239,239,239,0.33)
+        span.day
+          color: rgba(26,32,40,0.33)      
+      &.next-month
+        background: rgba(239,239,239,0.33)
+        span.day
+          color: rgba(26,32,40,0.33)       
+      &.day-passed         
+        .available_lession
+          opacity: 0.3
+          cursor: default
+          .tool-tip
+            display: none 
+      &.today
+        span.day
+          background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+          color: #FFFFFF
+      span.day
+        display: block
+        position: absolute
+        right: 10px
+        top: 15px
+        width: 30px
+        height: 30px       
+        text-align: center 
+        line-height: 30px
+        border-radius: 100px
+      &:nth-child(6),
+      &:nth-child(7)
+        .tool-tip
+          left: initial
+          right: 110%
+          &:before
+            left: initial
+            right: -6px
+            @include box_shadow(-3px, 22px, 40px, rgba(0,0,0,0.28))
+      .tool-tip
+        display: none
+        width: 310px
+        padding: 15px 30px
+        background: #FFFFFF
+        border-radius: 0 3px 3px 3px 3px
+        position: absolute
+        @include box_shadow(0px, -8px, 40px, rgba(0,0,0,0.28))
+        z-index: 2
+        cursor: default
+        left: 160px
+        top: -90px
+        &.active
+          display: block
+        &:before
+          @include box_shadow(14px, -2px, 24px, rgba(0,0,0,0.16))
+          position: absolute
+          left: -6px
+          margin-top: 85px
+          content: ''
+          background: #FFFFFF
+          width: 12px
+          height: 12px
+          @include rotate(45deg)
+          border-right: 1px solid #FFFFFF
+          border-bottom: 1px solid #FFFFFF        
+        .tool-tip-header
+          padding: 0px 0px
+          margin: 0px
+          padding-bottom: 10px
+          border-bottom: 1px solid #EBEBEB
+          position: relative
+          .cross
+            cursor: pointer
+            position: absolute
+            right: 0px
+            top: 0px
+            opacity: 0.3
+            width: 24px
+            height: 24px
+        .tool-tip-body
+          padding-top: 10px
+          .calendar-trigger
+            opacity: 0.5
+          .button
+            margin: 30px 0px 10px
+            &.background-danger-gradient
+              @include box_shadow(0px, 10px, 24px, rgba(238,54,50,0.30))
+        .h4
+          font-weight: 700
+          font-size: 16px
+          line-height: 24px
+          color: #1A2028
+          margin: 0px
+      .available_lession
+        position: relative
+        .availability
+          cursor: pointer
+          margin-top: 40px
+          background: rgba(26,146,235,0.08)
+          height: 29px
+          width: 143px
+          font-size: 12px
+          font-weight: 700
+          color: #1A92EB
+          padding-left: 20px
+          line-height: 29px
+          position: relative
+          &:before
+            left: 0
+            width: 5px
+            content: ''
+            top: 0
+            height: 29px
+            background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+            position: absolute
+      .place_occupied
+        position: relative
+        .availability
+          cursor: pointer
+          margin-top: 40px
+          background: rgba(238,54,50,0.08)
+          height: 29px
+          width: 142px
+          font-size: 12px
+          font-weight: 700
+          color: #EE3632
+          padding-left: 20px
+          line-height: 29px
+          position: relative
+          &:before
+            left: 0
+            width: 5px
+            content: ''
+            top: 0
+            height: 29px
+            background: #EE3632
+            position: absolute
+      .scheduled_lesson
+        position: relative
+        .availability
+          cursor: pointer
+          margin-top: 40px
+          background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+          height: 29px
+          width: 144px
+          font-size: 12px
+          font-weight: 700
+          color: #FFFFFF
+          padding-left: 13px
+          line-height: 29px
+          position: relative
+          border-radius: 5px
+          margin-left: -2px
+          @include box_shadow(0px, 10px, 24px, rgba(0,0,0,0.08))
+          &:before
+            width: 8px
+            height: 8px
+            display: inline-block
+            background: url('/assets/dot.png')         
+            content: ''
+            margin-right: 5px
+  .my-students-block   
+    display: table
+    width: 100%
+    .student-item
+      padding: 30px 25px
+      overflow: hidden
+    .student-image
+      float: left
+      img
+        width: 130px
+        height: 130px
+        border-radius: 50%
+    .student-data  
+      display: block
+      margin-left: 30px 
+      float: left
+      width: calc(100% - 160px)  
+      .p
+        font-size: 14px
+        font-weight: 400
+        line-height: 18px
+        color: #1A2028     
+      hr
+        border-top-color: #EBEBEB
+      .left-part
+        float: left
+        width: 60%
+        &.bottom
+          border-right: 1px solid #EBEBEB
+      .right-part
+        width: 40%
+        float: left  
+        padding-left: 30px
+        .profile
+          @include box_shadow(0px, 10px, 24px, rgba(96,181,246,0.3))
+      .name
+        font-size: 20px
+        font-weight: 500
+        line-height: 35px
+      ul.upcomming
+        padding: 15px 0px 0px
+        margin: 0px
+        list-style: none
+        li
+          padding: 5px 0px
+          &:before
+            width: 8px
+            height: 8px
+            border-radius: 100px
+            background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+            display: inline-block
+            content: ""
+            float: left
+            margin-top: 6px
+            margin-right: 10px
+      .tasks-block
+        .pagination
+          display: table
+  .my-mentor-block  
+    display: table
+    width: 100%
+    .left-block
+      width: 60%
+      float: left
+      padding-right: 30px
+      .resume
+        @include box_shadow(0px, 10px, 24px, rgba(96,181,246,0.3))
+      .mentor-image
+        float: left
+        width: 150px
+        img
+          width: 130px
+          height: 130px
+          border-radius: 50%
+          margin: 0px auto
+          display: block
+      .mentor-data  
+        display: block
+        margin-left: 50px 
+        float: left
+        width: calc(100% - 200px)  
+      hr
+        border-top-color: #EBEBEB        
+      .p
+        font-size: 14px
+        font-weight: 400
+        line-height: 18px
+        color: #1A2028  
+        &.h4
+          font-size: 14px
+          line-height: 22px
+          font-weight: 700
+          color: #1A2028         
+      .name
+        font-size: 20px
+        font-weight: 500
+        line-height: 35px  
+      .h4
+        font-weight: 500
+        font-size: 18px
+        line-height: 24px
+        color: #1A2028
+        margin: 0px  
+      .choice
+        margin-top: 10px
+        .choice-wrapper
+          height: 150px
+        ul
+          padding: 0px
+          margin-top: 10px
+          list-style: none                 
+          li
+            display: block
+            padding-bottom: 18px
+            .text
+              display: block
+              margin-left: 25px
+            .p
+              font-size: 14px
+              font-weight: 400
+              line-height: 18px
+              color: #1A2028
+              margin-bottom: 0px
+              margin-top: 0px    
+              &.h4
+                font-size: 14px
+                line-height: 22px
+                font-weight: 700
+                color: #1A2028                                     
+            &:before
+              width: 12px
+              height: 12px
+              border-radius: 100px
+              background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+              display: inline-block
+              content: ""
+              float: left
+              margin-top: 5px
+
+    .right-block
+      width: 40%  
+      float: left    
+      .chat-block
+        position: relative
+        margin: 0px auto
+        @include box_shadow(0px, 10px, 24px, rgba(0,0,0,0.06))
+        .chat-wrapper .chat-body .chat-area   
+          padding: 10px   
+        .chat-area
+          height: 400px  
+

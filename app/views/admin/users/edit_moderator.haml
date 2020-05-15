@@ -1,0 +1,42 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to t("view.admin.user.moderators"), moderators_admin_users_path
+      %li= link_to t("view.admin.user.edit_moderator"), edit_moderator_admin_user_path(@user)
+    .h3.marginbottom-20= t("view.admin.user.edit_moderator")
+
+    = form_for @user, :url => { :controller => 'users', :action => 'update', :id => @user.id }, :method => :put do |f|
+
+      = render partial: 'admin/users/moderator_form_data', :locals => { :f => f, :user => @user }
+
+      .clearfix
+      .margintop-30
+        .message_errors
+          %ul
+        .loading_button
+          %img{:src => '/assets/admin/loading_button.gif'}
+        = link_to 'save', '#', :class => 'default_button dark update_entity'
+
+    - if @user_current.admin?
+      .row
+        .col-md-6.col-xs-12
+          .h3.marginbottom-20 Set password
+
+          = form_for @user, :url => {:controller => 'users', :action => 'update_password', :id => @user.id}, :method => :post do |f|
+            .margintop-10
+            .default_label 
+              %b Password
+            %input.default_input_text.width-350.user_password{:type => "password", :name => 'user[password]'}
+
+            .margintop-10
+            .default_label 
+              %b Password confirmation
+            %input.default_input_text.width-350.user_password_confirmation{:type => "password", :name => 'user[password_confirmation]'}
+
+            .clearfix
+            .margintop-10
+            = link_to 'save', '#', :class => 'default_button dark update_password'

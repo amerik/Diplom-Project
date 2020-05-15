@@ -1,0 +1,12 @@
+.user_cabinet
+  %header
+    .wrapper
+      = link_to root_path do
+        %img.logo{:src => '/assets/logo_x189.png'}
+
+  
+  .stages
+    = render partial: 'users/role_kind'
+
+        
+  = render partial: 'layouts/footer'

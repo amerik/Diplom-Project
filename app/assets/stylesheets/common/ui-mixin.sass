@@ -1,0 +1,156 @@
+@mixin ui-icons($path: '')
+  &.arrowdown
+    background: url("/assets/icons/#{$path}/ArrowDown.png")
+  &.arrowleft
+    background: url("/assets/icons/#{$path}/ArrowLeft.png")
+  &.arrowright
+    background: url("/assets/icons/#{$path}/ArrowRight.png")
+  &.arrowtop
+    background: url("/assets/icons/#{$path}/ArrowTop.png")
+  &.calendar
+    background: url("/assets/icons/#{$path}/Calendar.png")
+  &.chat
+    background: url("/assets/icons/#{$path}/Chat.png")
+  &.check
+    background: url("/assets/icons/#{$path}/Check.png")
+  &.checkbox
+    background: url("/assets/icons/#{$path}/CheckBox.png")
+  &.clip
+    background: url("/assets/icons/#{$path}/Clip.png")
+  &.cross
+    background: url("/assets/icons/#{$path}/Cross.png")
+  &.customize
+    background: url("/assets/icons/#{$path}/Customize.png")
+  &.delete
+    background: url("/assets/icons/#{$path}/Delete.png")
+  &.faq
+    background: url("/assets/icons/#{$path}/FAQ.png")
+  &.file
+    background: url("/assets/icons/#{$path}/File.png")
+  &.fullscreen
+    background: url("/assets/icons/#{$path}/FullScreen.png")
+  &.gbp
+    background: url("/assets/icons/#{$path}/GBP.png")
+  &.home
+    background: url("/assets/icons/#{$path}/Home.png")
+  &.info
+    background: url("/assets/icons/#{$path}/Info.png")
+  &.internship
+    background: url("/assets/icons/#{$path}/Internship.png")
+  &.logout
+    background: url("/assets/icons/#{$path}/Logout.png")
+  &.longarrow
+    background: url("/assets/icons/#{$path}/LongArrow.png")
+  &.mentor
+    background: url("/assets/icons/#{$path}/Mentor.png")
+  &.messages
+    background: url("/assets/icons/#{$path}/Messages.png")
+  &.microphone
+    background: url("/assets/icons/#{$path}/Microphone.png")
+  &.minus
+    background: url("/assets/icons/#{$path}/Minus.png")
+  &.notifications
+    background: url("/assets/icons/#{$path}/Notifications.png")
+  &.phone
+    background: url("/assets/icons/#{$path}/Phone.png")
+  &.play 
+    background: url("/assets/icons/#{$path}/Play.png")
+  &.plus
+    background: url("/assets/icons/#{$path}/Plus.png")
+  &.popular
+    background: url("/assets/icons/#{$path}/Popular.png")
+  &.pricing
+    background: url("/assets/icons/#{$path}/Pricing.png")
+  &.putthephonedown
+    background: url("/assets/icons/#{$path}/PutthePhoneDown.png")
+  &.search
+    background: url("/assets/icons/#{$path}/Search.png")
+  &.selected
+    background: url("/assets/icons/#{$path}/Selected.png")
+  &.send
+    background: url("/assets/icons/#{$path}/Send.png")
+  &.study
+    background: url("/assets/icons/#{$path}/Study.png")
+  &.typemessage
+    background: url("/assets/icons/#{$path}/TypeMessage.png")
+  &.typography
+    background: url("/assets/icons/#{$path}/Typography.png")
+  &.user
+    background: url("/assets/icons/#{$path}/User.png")
+  &.videocamera
+    background: url("/assets/icons/#{$path}/Videocamera.png")
+  &.warning
+    background: url("/assets/icons/#{$path}/Warning.png")
+
+
+
+@mixin ui-attribute-set-color($attibute_set: '', $value: '')
+  @if $attibute_set == 'background'
+    background: $value
+  @if $attibute_set == 'background-image'
+    background-image: $value
+  @if $attibute_set == 'color'
+    color: $value
+  @if $attibute_set == 'border'
+    border-color: $value
+
+@mixin ui-colors($attribute: '')
+  //prymary-gradient
+  &.#{$attribute}-prymary-gradient
+    @include ui-attribute-set-color($attibute_set: 'background-image',$value: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%))
+  //main-blue
+  &.#{$attribute}-main-blue
+    @include ui-attribute-set-color($attibute_set: $attribute ,$value: #1A92EB)         
+  //blue
+  &.#{$attribute}-blue
+    @include ui-attribute-set-color($attibute_set: $attribute ,$value: #1A92EB)     
+  //light-blue
+  &.#{$attribute}-light-blue
+    @include ui-attribute-set-color($attibute_set: $attribute ,$value: #9FD5FF)    
+  //danger
+  &.#{$attribute}-danger
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #EE3632) 
+  //danger-light
+  &.#{$attribute}-danger-light
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #F86661) 
+  //danger-gradient
+  &.#{$attribute}-danger-gradient
+    @include ui-attribute-set-color($attibute_set: 'background-image',$value: linear-gradient(-180deg, #F86661 0%, #EE3632 100%))
+  //warning
+  &.#{$attribute}-warning
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #F76928)
+  //dark
+  &.#{$attribute}-dark
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #000000)
+  //dark-gray
+  &.#{$attribute}-dark-gray
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #878787)
+  //gray-gradient
+  &.#{$attribute}-gray-gradient
+    @include ui-attribute-set-color($attibute_set: 'background-image',$value: linear-gradient(-180deg, #B0B0B0 0%, #878787 100%))
+  //dark-gray-2
+  &.#{$attribute}-dark-gray-2
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #B0B0B0)
+  //gray
+  &.#{$attribute}-gray
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #C2C2C2)
+  //light-gray
+  &.#{$attribute}-light-gray
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #D6D6D6)
+  //light-gray-2
+  &.#{$attribute}-light-gray-2
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #EBEBEB)
+  //light-gray-3
+  &.#{$attribute}-light-gray-3
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #EFEFEF)  
+  //light-gray-4
+  &.#{$attribute}-light-gray-4
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #F6F6F6)  
+  //light-gray-5
+  &.#{$attribute}-light-gray-5
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #F9F9F9)  
+  //white
+  &.#{$attribute}-white
+    @include ui-attribute-set-color($attibute_set: $attribute, $value: #FFFFFF)  
+
+

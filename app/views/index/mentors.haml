@@ -1,0 +1,61 @@
+.index
+  .decor
+  .top_content.pricing
+    .container
+      = render partial: 'layouts/header'
+
+      .center_content
+        %h1
+          %span Mentors
+        .h5 Here you can see our prices for students
+
+    / .decor
+    .bg_gradient
+
+  .top_mentors_list
+    .container
+      %h2 Our Top 8 Mentors
+      .mentors__list
+        - @mentors.each do |mentor|
+          .mentor_item
+            .top-container
+              %img{:src => mentor.profile.image_url('130x130', 'png')}
+              .data-content
+                .top-part
+                  .pull-left
+                    .h5 Mentor
+                    .name= mentor.profile.decorate.full_name
+                    .position= mentor.profile.decorate.university
+                  .pull-right
+                    %button.grey_button View resume
+                .bottom-part
+                  .left-part
+                    .pull-left
+                      .h5 Career
+                    .pull-right
+                      - if mentor.profile.specializations.or_default.count > 2
+                        = link_to "View all (#{mentor.profile.specializations.or_default.count})", '#', :class => 'more-career-view'
+                    .clearfix
+                    = render partial: 'specializations/list', :locals => { :related => mentor.profile.specializations.or_default }                      
+                  .right-part
+                    .h5 About
+                    .p= mentor.profile.decorate.about_my    
+
+            - if mentor.reviews.count > 0            
+              .bottom-container
+                .student-reviews
+                  - mentor.reviews.sort.limit(3).each do |review|
+                    .review-item
+                      %img{:src => "#{review.image_url('165x165')}"}
+                      .review-data
+                        // .p.type Student
+                        .name= review.name
+                        .p= review.location  
+                        .comment
+                          .p= review.description.html_safe
+                .clearfix                       
+
+
+              .clearfix
+
+  = render partial: 'layouts/footer_index'

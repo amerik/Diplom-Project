@@ -1,0 +1,47 @@
+- if mentor_status == 'not_assigned' ||  mentor_status == nil
+  .start-body
+    %img{:src => '/assets/find_a_mentor.png'}
+    .h2 Find a mentor
+    .p 
+      By free subscription we will pick up a mentor for you and you will be able to 
+      conduct a lesson with him
+    = link_to student_schedules_path do  
+      .button.ui.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block.find{:class => "#{related == 'schedules' ? 'large' : 'middle'} search_mentor"} Find a mentor
+
+- elsif mentor_status == 'requested'
+  .search_process
+    %img{:src => '/assets/mentor_search_icon.png'}
+    .h2 Looking for a mentor
+    .p Within 24 hours we will pick up a mentor based on your interests
+    .margintop-50
+      .progress_bar
+        .bar-stripped
+
+- elsif mentor_status == 'assigned'
+  .lesson-ready
+    %img{:src => '/assets/ready-lesson.png'}
+    .h2 Your lesson is ready!
+    .p 
+      Confirm your willingness to start a lesson with a mentor
+
+    = link_to student_schedules_path do
+      .button.ui.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block.ready_to_start{:class => "#{related == 'schedules' ? 'large' : 'middle'}"} I'm ready to start     
+
+
+
+/ .waiting-mentor-ready
+/   .mentor_avatar
+/     .round-1
+/     .round-2
+/     .round-3
+/     %img{:src => '/assets/men.jpg'}
+/   .h2 Waiting for the mentor to be ready
+/   .p 
+/     Your mentor is not ready yet, as soon as it appears, we will begin
+/     %br
+/     compound
+/   .margintop-50
+/     .progress_bar
+/       .bar-stripped 
+
+      

@@ -1,0 +1,59 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .tab
+        - if @user_current.client?
+          = render partial: 'schedules/menu_student'
+        - else
+          = render partial: 'schedules/menu_mentor'
+        .tab-body
+          .half-body.white-background.white-background.margintop-0.past-lessons-block
+            %h1.inline-block Past lessons
+            .margintop-20
+              .pull-left
+                .ui.calendar
+                  .label-text Start Date:
+                  .calendar-container
+                    %input#video_start_date{:type => 'text', :value => "#{@week_before}", :placeholder => 'value', :readonly => true}
+                    .calendar-trigger.ui.icon.calendar.start-date
+              .break
+              .pull-left
+                .ui.calendar
+                  .label-text End Date:
+                  .calendar-container
+                    %input#video_end_date{:type => 'text', :value => "#{@today}", :placeholder => 'value', :readonly => true}
+                    .calendar-trigger.ui.icon.calendar.end-date
+              .clearfix
+              .box-shadow.margintop-0.past-lessons-list
+                .videos_body
+                  = render partial: 'videos/video_list', :locals => { :videos => @videos, :per_page => @per_page}
+                                              
+                .clearfix
+          .half-body.white-background.white-background.margintop-0.marginleft-30
+            %h1.inline-block
+              Lesson history
+              %span.date.lesson-history
+                - unless @video_last.nil? 
+                  = @video_last.schedule.decorate.date_day_with_time
+            .video-history-block.margintop-30
+              .tone
+              .function-button.play
+                .icon.ui.play.white
+              .video-container#video
+                %video#player.video-js{:width => 520, :height => 416, :controls => "", :data => { :setup => {"controls": true, "autoplay": false, "preload": "auto"} }}
+                  - unless @video_last.nil?
+                    %source{:src => "/videos/#{@video_last.file}.webm", :type => "video/webm"}       
+                  - else
+                    %source{:src => "/", :type => "video/webm"}       
+              :javascript
+                videojs('player');
+            
+            / .tasks-block.height-not-fix.white-background.white-background.margintop-30.block-show-hide.active.unselectable
+            /   = render partial: 'videos/tasks_block'  
+            / .notes-block.white-background.margintop-30.block-show-hide.active.unselectable
+            /   = render partial: 'videos/notes_block'              
+            /   / = render partial: 'videos/notes_block_show'   
+          .clearfix

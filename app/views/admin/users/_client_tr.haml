@@ -1,0 +1,38 @@
+%td
+  = admin_default_checkbox_tr
+%td 
+  .normal
+    = element.decorate.login
+  .fast_edit       
+    %input.field_input{:type => 'text', :name => 'user[login]', :placeholder => t("view.admin.user.login"), :value => element.login}
+%td 
+  .normal
+    = element.decorate.created_at
+  .fast_edit       
+    = element.decorate.created_at
+%td 
+  .normal
+    = element.profile.decorate.full_name
+  .fast_edit
+    %input.field_input{:type => 'text', :name => 'user[profile][first_name]', :placeholder => t("view.admin.user.first_name"), :value => element.profile.first_name}
+    %input.margintop-10.field_input{:type => 'text', :name => 'user[profile][last_name]', :placeholder => t("view.admin.user.last_name"), :value => element.profile.last_name}
+%td 
+  = element.decorate.online_at
+%td 
+  - unless element.my_mentor.nil?
+    = link_to element.my_mentor.decorate.login, edit_mentor_admin_user_path(element.my_mentor)
+  - else
+    = link_to 'Назначить', set_mentor_admin_user_path(element), :class => 'default_button dark'
+%td          
+  %ul.functions
+    %li
+      = admin_check_box_standart(element.status_register, {:id => element.id}, '', 'set_status_register')
+    %li
+      = link_to '#' do
+        .icon.fast_edit_function{:data => {:id => element.id, :entity => @entity_table, :partial => "admin/#{@entity_table}/client_tr"}}
+    %li
+      = link_to edit_admin_user_path(element) do
+        .icon.edit_function
+    %li
+      = link_to '#' do
+        .icon.delete_function{:data => {:id => element.id, :entity => @entity_table}}

@@ -1,0 +1,31 @@
+.add_comapny{:class => "#{i == 1 ? 'margintop-60' : ''}"}
+  - if specialization.id.to_i > 0
+    %input{:type => 'hidden', :name => "specializations[#{i}][id]", :value => specialization.id}  
+  .marginbottom-25
+    .ui.input
+      .label-text= t("view.specialization.name_#{@user_current.role_kind}").to_s + (i > 0 ? " (#{i + 1})" : '')
+      .input-container
+        %span.error_message Enter name
+        %input{:type => 'text', :name => "specializations[#{i}][name]", :value => specialization.name}        
+  .marginbottom-25
+    .ui.input
+      .label-text= t("view.specialization.company_#{@user_current.role_kind}").to_s + (i > 0 ? " (#{i + 1})" : '')
+      .input-container
+        %span.error_message Enter company
+        %input{:type => 'text', :name => "specializations[#{i}][company]", :value => specialization.company}  
+  .marginbottom-25
+    .ui.input
+      .label-text= t("view.specialization.industry_#{@user_current.role_kind}").to_s + (i > 0 ? " (#{i + 1})" : '')
+      .input-container
+        %span.error_message Enter industry
+        %input{:type => 'text', :name => "specializations[#{i}][industry]", :value => specialization.industry} 
+  .marginbottom-25
+    .ui.input
+      .label-text= t("view.specialization.occupation_#{@user_current.role_kind}").to_s + (i > 0 ? " (#{i + 1})" : '')
+      .input-container
+        %span.error_message Enter occupation
+        %input{:type => 'text', :name => "specializations[#{i}][occupation]", :value => specialization.occupation}
+  - if i > 0
+    .marginbottom-25.remove-block.relative
+      .break_line
+      .button.remove.ui.small.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.inline-block.del_item_specialization Remove

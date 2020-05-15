@@ -1,0 +1,409 @@
+@import "common/ui-mixin"
+@import "common/mixing"
+@import "common/achievements"
+
+.auth
+  .close
+    width: 64px
+    height: 64px
+    background: #FFFFFF
+    border-radius: 100px
+    @include box_shadow(0px, 8px, 24px, rgba(0,0,0,0.06))
+    opacity: 1
+    position: absolute
+    right: -32px
+    top: -32px
+    img
+      width: 16px
+      height: 16px
+      margin: 24px
+  .modal-dialog
+    width: 555px !important
+    background: #FFFFFF
+    margin: 120px auto !important
+    position: relative
+    .wrapper
+      padding: 60px 80px 50px
+      .h1
+        font-size: 32px
+        line-height: 42px
+        color: #000000
+        font-weight: 700
+        margin-top: 0px
+        text-align: center
+        margin-bottom: 42px
+      a.lost
+        color: #1D94EC !important
+        font-weight: 400
+        font-size: 14px
+        line-height: 24px
+      .button
+        &.with_shadow
+          @include box_shadow(0px, 10px, 24px, rgba(96,181,246,0.3))      
+    .bottom
+      font-weight: 500
+      color: #000000
+      font-size: 14px
+      text-align: center
+      padding: 20px 0px
+      a
+        color: #1D94EC
+        font-weight: 400
+        text-decoration: underline
+    hr
+      margin: 0px
+      border-top-color: #EBEBEB
+
+#log_in_modal
+  .modal-dialog
+    .or
+      font-size: 14px
+      display: table
+      margin: 0px auto
+      color: #000000
+      margin-top: -10px
+      padding: 0px 25px
+      background: #FFFFFF
+
+    .social
+      display: table
+      margin: 15px auto 0px
+      a
+        display: inline-block
+        margin: 0px -5px
+    .sos-logins
+      display: none
+
+
+#sign_up_modal
+  .modal-dialog
+    .h3
+      font-size: 14px
+      color: #000000
+      font-weight: 700
+    .terms
+      font-weight: 500
+      color: #000000
+      font-size: 14px
+      text-align: center
+      padding: 30px 0px
+      a
+        color: #1D94EC
+        font-weight: 400
+        text-decoration: underline
+
+    .or
+      font-size: 14px
+      display: table
+      margin: 0px auto
+      color: #000000
+      margin-top: 20px
+      padding: 0px 25px
+      background: #FFFFFF
+
+    .social
+      display: table
+      margin: 15px auto 0px
+      a
+        display: inline-block
+        margin: 0px -5px
+    .sos-logins
+      display: none
+
+#success_modal,
+#error_modal
+  .modal-dialog
+    .h1
+      font-size: 35px
+      color: #000000
+      font-weight: 700
+
+    .p
+      font-size: 18px
+      color: #000000
+      font-weight: 400
+    .button
+      font-size: 18px
+
+#error_modal
+  .modal-dialog
+    .h1
+      color: #ab2e2e
+#success_modal
+  .modal-dialog
+    .h1
+      color: #119028
+
+#order_modal
+  overflow: hidden
+  .vert-body
+    width: 1540px
+    height: 100%
+  .modal-dialog
+    width: 390px
+    margin-top: 0px
+    height: 100%
+    position: absolute
+    right: 0
+    .wrapper
+      position: relative
+      background: #FFFFFF
+      width: 390px
+      height: 100%
+      .info-content
+        padding: 20px 30px
+
+    .top-area-header
+      height: 80px
+      position: relative
+      &:after
+        background: #EBEBEB
+        content: ''
+        left: 0
+        right: 0
+        position: absolute
+        margin: auto
+        bottom: 0
+        height: 2px      
+      .content
+        margin-right: 50px
+      .logo
+        margin: 10px 28px
+      .user
+        float: right
+        .icon
+          display: inline-block
+          vertical-align: middle
+          margin-left: 5px
+        .avatar
+          display: inline-block
+          vertical-align: middle
+          position: relative
+          width: 60px
+          height: 60px
+          &:before
+            width: 60px
+            height: 60px
+            background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+            position: absolute
+            content: ''
+            z-index: 0
+            border-radius: 100px
+            opacity: 0.1
+          img
+            width: 42px
+            height: 42px
+            border-radius: 100px
+            left: 0
+            right: 0
+            bottom: 0
+            top: 0
+            margin: auto
+            position: absolute          
+            @include box_shadow(0px, 0px, 5px, rgba(0,0,0,0.20))
+            z-index: 2
+          &:after
+            position: absolute
+            width: 50px
+            height: 50px
+            z-index: 1
+            border-radius: 100px
+            background-image: linear-gradient(-180deg, #66B8F6 0%, #1A92EB 100%)
+            left: 0
+            right: 0
+            bottom: 0
+            top: 0
+            margin: auto
+            content: ''
+        .name
+          display: inline-block
+          font-size: 14px
+          font-weight: 500
+          color: #1A2028
+          vertical-align: middle
+          line-height: 22px
+          margin-right: 10px
+      .notifications
+        display: inline-block
+        vertical-align: middle
+        background: url('/assets/notifications.png') no-repeat
+        width: 20px
+        height: 20px
+        margin-top: 20px
+        float: right
+        margin-right: 40px
+      .messages
+        display: inline-block
+        vertical-align: middle
+        float: right
+        margin-right: 20px
+        margin-top: 20px
+        position: relative
+        .count
+          background-image: linear-gradient(-180deg, #63B5F4 0%, #1B91E9 100%)
+          @include box_shadow(0px, 3px, 6px, rgba(0,0,0,0.08))
+          color: #FFFFFF
+          width: 20px
+          height: 20px
+          border-radius: 100px
+          font-size: 12px
+          font-weight: 500
+          position: absolute
+          top: -10px
+          right: -5px
+          text-align: center
+        &:before
+          background: url('/assets/messages.png') no-repeat
+          width: 24px
+          height: 24px
+          display: inline-block
+          content: ''        
+    .order-modal-body
+      .mCSB_inside > .mCSB_container
+        margin-right: 0px
+      .lessons
+        height: 480px
+        overflow-y: auto
+      .h2
+        font-size: 18px
+        line-height: 24px
+        color: #1A2028
+        font-weight: 700
+      .h3
+        font-size: 16px
+        line-height: 24px
+        color: #1A2028
+        margin: 0px
+        font-weight: 700 
+      .p
+        font-size: 14px
+        line-height: 24px
+        color: #1A2028
+        margin: 0px
+        font-weight: 400
+        &.h1
+          font-size: 16px
+          font-weight: 400
+          margin: 0px
+          span.old
+            opacity: 0.3
+            text-decoration: line-through
+      .remove
+        cursor: pointer
+        position: relative
+        width: 36px
+        height: 36px
+        border-radius: 100px
+        background: #EFEFEF
+        display: inline-block
+        &:after
+          width: 24px
+          height: 24px
+          content: ''
+          position: absolute
+          left: 0
+          right: 0
+          top: 0
+          bottom: 0
+          margin: auto
+          background-size: cover
+          opacity: 0.3
+          background-image: url(/assets/icons/black/Cross.png)
+      .calendar-trigger.ui
+        opacity: 0.3
+      .close
+        opacity: 1
+        @include box_shadow(0px, 10px, 24px, rgba(96,181,246,0.3))
+        text-shadow: none
+      hr
+        border-top-color: #EBEBEB
+      .order-checkout
+        @include box_shadow(0px, 8px, 24px, rgba(0,0,0,0.24))
+        position: absolute
+        bottom: 0
+        z-index: 1
+        background: #FFFFFF  
+        width: 100%
+        .p
+          background: #FFFFFF
+        .dashed
+          position: absolute
+          height: 1px
+          width: 250px
+          border-top: 1px dashed #878787
+          top: 17px
+          &.d-1
+            left: 84px
+            width: 193px
+          &.d-2
+            left: 53px
+            width: 193px
+        .button
+          width: 150px
+          &.checkout
+            @include box_shadow(0px, 10px, 24px, rgba(96,141,246,0.30))
+        .ui.faq
+          width: 24px
+          height: 24px
+
+
+#complete_lesson,
+#add_task,
+#add_note,
+#edit_task,
+#edit_note,
+#yes_no_modal
+  .modal-dialog
+    width: 500px !important
+    background: #FFFFFF
+    margin: 120px auto !important
+    position: relative
+    hr
+      margin: 0px
+      border-top-color: #EBEBEB    
+    .close
+      margin-top: 15px
+    .wrapper
+      padding: 0px 30px
+      .h3
+        font-size: 18px
+        line-height: 24px
+        color: #000000
+        font-weight: 500
+        margin-top: 0px
+        text-align: left
+        margin: 0px
+        padding: 15px 0px       
+      .button
+        display: table
+        margin: 0px auto
+        &.with_shadow
+          @include box_shadow(0px, 10px, 24px, rgba(96,181,246,0.3))      
+    
+
+    .rate-bar
+      overflow: hidden
+      margin: 10px 0px 20px
+      .star-item
+        width: 26px
+        height: 28px
+        float: left
+        background: url('/assets/star.png')
+        margin-right: 7px
+        cursor: pointer
+        &.active,
+        &:hover
+          background: url('/assets/star_active.png')
+
+#yes_no_modal
+  .bottons
+    margin-left: 104px
+    height: 45px
+    .yes,
+    .no
+      display: inline-block
+      float: left
+    .no
+      background: #a5a5a5
+      margin-left: 21px !important
+

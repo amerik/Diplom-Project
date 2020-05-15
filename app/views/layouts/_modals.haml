@@ -1,0 +1,17 @@
+= render partial: 'layouts/modals/sign_up_modal'
+= render partial: 'layouts/modals/log_in_modal'
+= render partial: 'layouts/modals/forgot_password_modal'
+= render partial: 'layouts/modals/new_password_modal'
+= render partial: 'layouts/modals/yes_no_modal'
+= render partial: 'layouts/modals/success_modal'
+= render partial: 'layouts/modals/error_modal'
+
+- if @user_current.client? && params[:controller] == 'schedules' && params[:action] == 'student'
+  = render partial: 'layouts/modals/order_modal'
+
+= render partial: 'layouts/modals/complete_lesson_modal'
+- if params[:controller] == 'videos' && params[:action] == 'current'
+  = render partial: 'layouts/modals/add_task'
+  = render partial: 'layouts/modals/add_note'
+  = render partial: 'layouts/modals/edit_task'
+  = render partial: 'layouts/modals/edit_note'

@@ -1,0 +1,42 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .pricing-block
+        .pricing-intro.full-body.white-background.box-shadow
+          .h1 
+            .circle.marginright-5.ui.background.background-prymary-gradient
+              .ui.icon.inline-block.pricing.white
+            Pricing to 
+            %span.eleway ELEWAY
+          %p 
+            There are several subscription options available for you! You can choose the right 
+            %br
+            plan and change it at any convenient time!
+
+        .price_items
+          .price_item
+            %img.icon{:src => '/assets/icon_free.png'}
+            .block
+              .h2 Free/regular
+              .line
+              .h3 No monthly fee
+              .line
+              .p £14.99/consultation
+              .p Random mentor
+            = link_to 'Your current plan','#', :class => 'current-plan grey_button'
+          .price_item
+            %img.icon{:src => '/assets/icon_member.png'}      
+            .block
+              .h2 Full member  
+              .line
+              .h2 
+                £6.99 
+                %span /month
+              .line
+              .p £11.99/consultation
+              .p Best fit mentors and request mentors
+              .p Full website access
+            = link_to 'Get started','#', :class => 'get-start blue_button'            

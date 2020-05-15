@@ -1,0 +1,14 @@
+- messages.each do |message|
+  .chat-item{:id => "message-#{message.id}", :class => "#{message.user_sender_id == @user_current.id ? 'you' : 'other-user'}", :data => {:id => message.id}}
+    - if !message.description.nil? && message.description != ""
+      .text= simple_format(message.description)
+    - if message.message_items.count > 0
+      - message.message_items.each do |message_item|
+        .message_item.margintop-5.marginleft-10.marginright-10
+          = link_to download_message_item_path(message_item) do
+            %img{:src => message_item.image_url('130x130')}
+    - if message.attachments.count > 0
+      - message.attachments.each do |attachment|
+        .attachment.margintop-5.marginleft-10.marginright-10
+          = link_to truncate(attachment.file.file.original_filename, :length => 15), download_attachment_path(attachment), :title => attachment.file.file.original_filename
+    .date= message.decorate.created_at

@@ -1,0 +1,255 @@
+.row
+  .col-md-4.col-xs-12
+    .h3.marginbottom-20 User data
+
+    = form_for entity, :url => {:controller => 'users', :action => 'update', :id => entity.id}, :method => :put do |f|
+      %table.table.table-striped.table-condensed{:style => "margin: 13px 0px"}
+        %tr
+          %td
+            .default_label
+              %b User ID
+          %td
+            = entity.id
+        %tr
+          %td
+            .default_label
+              %b E-Mail
+          %td
+            = entity.login
+        %tr
+          %td
+            .default_label
+              %b Телефон
+          %td
+            %input{:type => 'text', :value => entity.profile.phone, :name => "user[profile][phone]", :style => "width: 100%; padding: 2px 6px"}
+        %tr
+          %td
+            .default_label
+              %b Имя
+          %td
+            %input{:type => 'text', :value => entity.profile.first_name, :name => "user[profile][first_name]", :style => "width: 100%; padding: 2px 6px"}
+        %tr
+          %td
+            .default_label
+              %b Фамилия
+          %td
+            %input{:type => 'text', :value => entity.profile.last_name, :name => "user[profile][last_name]", :style => "width: 100%; padding: 2px 6px"}
+        %tr
+          %td
+            .default_label
+              %b Создал аккаунт
+          %td
+            = entity.decorate.created_at
+        %tr
+          %td
+            .default_label
+              %b Дата рождения
+          %td
+            = entity.profile.decorate.birth_at
+        %tr
+          %td
+            .default_label
+              %b Location
+          %td
+            = entity.profile.decorate.location
+        %tr
+          %td
+            .default_label
+              %b University
+          %td
+            = entity.profile.decorate.university
+        %tr
+          %td
+            .default_label
+              %b Year of Study
+          %td
+            = entity.profile.decorate.year_of_study
+        %tr
+          %td
+            .default_label
+              %b Degree
+          %td
+            = entity.profile.decorate.degree
+        %tr
+          %td
+            .default_label
+              %b Sex
+          %td
+            = entity.profile.decorate.sex
+        %tr
+          %td
+            .default_label
+              %b Your CV
+          %td
+            - unless entity.profile.get_your_cv.nil?
+              = link_to 'show', entity.profile.get_your_cv.file.url, :target => '_blank'
+            - else
+              = "-"
+        %tr
+          %td
+            .default_label
+              %b Supporting document 1
+          %td
+            - unless entity.profile.get_any_first.nil?
+              = link_to 'show', entity.profile.get_any_first.file.url, :target => '_blank'
+            - else
+              = "-"
+        %tr
+          %td
+            .default_label
+              %b Supporting document 2
+          %td
+            - unless entity.profile.get_any_second.nil?
+              = link_to 'show', entity.profile.get_any_second.file.url, :target => '_blank'
+            - else
+              = "-"
+        %tr
+          %td
+            .default_label
+              %b Time preference
+          %td
+            = entity.profile.decorate.time_preference
+        %tr
+          %td
+            .default_label
+              %b Price preference
+          %td
+            = entity.profile.decorate.price_preference
+        %tr
+          %td
+            .default_label
+              %b Facebook
+          %td
+            - if !entity.profile.fb_url.nil? && entity.profile.fb_url != ""
+              = link_to 'show', entity.profile.fb_url, :target => '_blank'
+            - else
+              = "-"
+        %tr
+          %td
+            .default_label
+              %b Twitter
+          %td
+            - if !entity.profile.tw_url.nil? && entity.profile.tw_url != ""
+              = link_to 'show', entity.profile.tw_url, :target => '_blank'
+            - else
+              = "-"
+        %tr
+          %td
+            .default_label
+              %b Instagram
+          %td
+            - if !entity.profile.inst_url.nil? && entity.profile.inst_url != ""
+              = link_to 'show', entity.profile.inst_url, :target => '_blank'
+            - else
+              = "-"
+        %tr
+          %td
+            .default_label
+              %b Google Plus
+          %td
+            - if !entity.profile.google_url.nil? && entity.profile.google_url != ""
+              = link_to 'show', entity.profile.google_url, :target => '_blank'
+            - else
+              = "-"
+        %tr
+          %td
+            .default_label
+              %b Последнее посещение
+          %td
+            = entity.decorate.online_at
+        %tr
+          %td
+            .default_label
+              %b Доступ на сайт
+          %td
+            = admin_check_box_standart(entity.status_register, {}, 'user[status_register]', '')
+
+      .clearfix
+      .margintop-10
+      = link_to 'Сохранить', '#', :class => 'default_button dark update_entity'
+
+  .col-md-2.col-xs-12
+
+    - if @user_current.admin?
+      .h3.marginbottom-20 Set password
+
+      = form_for entity, :url => {:controller => 'users', :action => 'update_password', :id => entity.id}, :method => :post do |f|
+        .margintop-10
+        .default_label 
+          %b Password
+        %input.default_input_text.user_password{:type => "password", :name => 'user[password]', :style => "width: 100%"}
+
+        .margintop-10
+        .default_label 
+          %b Password confirmation
+        %input.default_input_text.user_password_confirmation{:type => "password", :name => 'user[password_confirmation]', :style => "width: 100%"}
+
+        .clearfix
+        .margintop-10
+        .message_errors
+          %ul
+        = link_to 'Сохранить пароль', '#', :class => 'default_button dark update_password'
+
+  .col-md-6.col-xs-12{:style => "margin-bottom: 50px"}
+    .h3.marginbottom-20 Specialization user
+
+    .default_table
+      %table.table.table-striped.table-condensed
+        %tr
+          %th №
+          %th Name
+          %th Company
+          %th Industry
+          %th Occupation
+        - entity.profile.specializations.or_default.each_with_index do |specialization, index|
+          %tr
+            %td= index + 1
+            %td= specialization.decorate.name
+            %td= specialization.decorate.company
+            %td= specialization.decorate.industry
+            %td= specialization.decorate.occupation
+
+    %table.table.table-striped.table-condensed{:style => "margin: 13px 0px"}
+      %tr
+        %td
+          .default_label
+            %b Motivational letter
+          %br
+          %br
+          = simple_format(entity.profile.decorate.motivational_letter)
+      %tr
+        %td
+          .default_label
+            %b Additional information that you want us to know
+          %br
+          %br
+          = simple_format(entity.profile.decorate.additional_info)
+    
+    .h3.marginbottom-20 Mentor
+    .inline-block Mentor: 
+    - unless entity.my_mentor.nil?
+      .inline-block.marginleft-10= link_to entity.my_mentor.decorate.login, edit_mentor_admin_user_path(entity.my_mentor)
+      .inline-block.marginleft-10= link_to 'Изменить', set_mentor_admin_user_path(entity.id), :class => 'default_button dark'
+    - else
+      = link_to 'Назначить', set_mentor_admin_user_path(entity.id), :class => 'default_button dark marginleft-10'
+
+  .clearfix
+  .col-md-6.col-xs-12{:style => "margin-top: 30px"}
+    .h3.marginbottom-20 Achivments
+
+    .default_table
+      %table.table.table-striped.table-condensed
+        %tr
+          %th Image
+          %th Description
+          %th Task
+        - entity.user_achivments.or_default.each do |user_achivment|
+          %tr
+            %td
+              %img{:src => user_achivment.achivment.image_url}
+            %td= user_achivment.decorate.description
+            %td= user_achivment.decorate.task
+
+  .col-md-6.col-xs-12{:style => "margin-top: 30px"}
+    .h3.marginbottom-20 Schedules
+    = render partial: 'admin/schedules/list', :locals => { :elements => entity.schedules.or_default, :is_pagginate => false, :url => @url }

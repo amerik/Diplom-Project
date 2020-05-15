@@ -1,0 +1,118 @@
+= render partial: 'layouts/admin/header'
+= render partial: 'layouts/admin/left_menu'                         
+
+.content_wrapper
+  = render partial: 'layouts/admin/left_detail_menu' 
+  .data_content
+    %ul.paths
+      %li= link_to 'Notifications', admin_notifications_path
+
+    .h3.marginbottom-20 Notifications
+
+    .filters_block
+      = form_for User.new, :url => admin_notifications_path, :method => :get do |f|
+        %input{:type => 'hidden', :name => 'page', :value => 1}
+        .filter.inline-block.marginleft-25
+          .inline-block
+            %span User, E-mail
+            %input.default_input_text{:type => 'text', :name => 'has_search', :value => params[:has_search]}
+
+        .filter.inline-block.marginleft-25
+          .inline-block
+            %span Set period
+            %input.default_input_text.date_field{:type => 'text', :name => "has_created_at_min", :style => "width: 84px", :value => params[:has_created_at_min]}
+          .inline-block.marginleft-5
+            %span to
+            %input.default_input_text.date_field{:type => 'text', :name => "has_created_at_max", :style => "width: 84px", :value => params[:has_created_at_max]}  
+
+        .filter.inline-block.marginleft-25
+          .inline-block
+            %span Read
+        .filter.inline-block.marginleft-5
+          = admin_select_state(Notification.state_machines[:status].states, params[:has_status], 'has_status', 'model.notification.status.', '', true)
+    
+        .inline-block.marginleft-10
+          = link_to 'search', '#', :class => 'default_button dark search_entities'
+          = link_to 'reset', admin_notifications_path, :class => 'default_button'
+
+    .default_table
+      %table.table.table-striped.table-condensed
+        %tr
+          %th
+            = t("view.admin.notification.time")
+          %th
+            = t("view.admin.notification.id")
+          %th
+            = t("view.admin.notification.user")
+          %th
+            = t("view.admin.notification.type")
+          %th
+            = t("view.admin.notification.text")
+          %th
+            = t("view.admin.notification.status")
+        %tr
+          %td
+
+        - @elements.each_with_index do |element, index|
+          - if index == 0
+            %tr
+              %th
+                .headings= element.decorate.created_at_date
+              %th
+              %th
+              %th
+              %th
+              %th
+            %tr{:class => "#{element.status}"}
+              %td 
+                .normal= element.decorate.created_at_time
+              %td 
+                .normal= element.id
+              %td 
+                .normal= link_to element.user.decorate.login, admin_user_path(element.user)
+              %td 
+                .normal= t("model.notification.kind.#{element.kind}")
+              %td 
+                .normal= element.description.html_safe
+              %td 
+                .normal= t("model.notification.status.#{element.status}")
+          - else
+            - if element.created_at_date.to_s != @elements[index - 1].created_at_date.to_s
+              %tr
+                %th
+                  .headings= element.decorate.created_at_date
+                %th
+                %th
+                %th
+                %th
+                %th
+              %tr{:class => "#{element.status}"}
+                %td 
+                  .normal= element.decorate.created_at_time
+                %td 
+                  .normal= element.id
+                %td 
+                  .normal= link_to element.user.decorate.login, admin_user_path(element.user)
+                %td 
+                  .normal= t("model.notification.kind.#{element.kind}")
+                %td 
+                  .normal= element.description.html_safe
+                %td 
+                  .normal= t("model.notification.status.#{element.status}")
+            - else
+              %tr{:class => "#{element.status}"}
+                %td 
+                  .normal= element.decorate.created_at_time
+                %td 
+                  .normal= element.id
+                %td 
+                  .normal= link_to element.user.decorate.login, admin_user_path(element.user)
+                %td 
+                  .normal= t("model.notification.kind.#{element.kind}")
+                %td 
+                  .normal= element.description.html_safe
+                %td 
+                  .normal= t("model.notification.status.#{element.status}")
+          - element.sent_read
+
+    = admin_pagginate(@url, @params_pagginate, @page, params)

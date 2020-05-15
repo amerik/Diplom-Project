@@ -1,0 +1,14 @@
+.h1 Tree of student professional growth
+.p 
+  This tree reflects student progress on training on our service and 
+  %br
+  the willingness to go on internship. Thanks to this tree, our team 
+  %br
+  will select the ideal internship for you
+%img.illustration{:src => '/assets/profile/tree_illustration.png'}
+- if @user_current.client?
+  .center
+    .customize_tree.ui.button.small.fill-with-icon.background.background-prymary-gradient.border.rounded-8.pull-left.color.color-white
+      .text
+        %span.icon.customize
+        Customize tree

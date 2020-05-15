@@ -1,0 +1,57 @@
+.user_cabinet
+  = render partial: 'layouts/header_user_cabinet'
+  .cabinet_body
+    = render partial: 'layouts/left_menu'
+
+    .data-content
+      .tab
+        = render partial: 'schedules/menu_student'
+        .tab-body
+          .my-mentor-block
+            - unless @my_mentor.nil?
+              .left-block
+                .mentor-image
+                  %img{:src => @my_mentor.profile.image_url('130x130', 'png')}
+                         
+                  - unless @my_mentor.profile.get_your_cv.nil?
+                    = link_to @my_mentor.profile.get_your_cv.file.url, :target => '_blank' do
+                      .ui.button.small.fill.background.background-prymary-gradient.color.color-white.border.rounded-8.margintop-20.resume View Resume
+
+
+                .mentor-data
+                  .p Mentor
+                  .name= @my_mentor.profile.decorate.full_name
+                  .p= @my_mentor.profile.decorate.university   
+                  %hr
+                  .p.marginbottom-10
+                    .inline-block.h4.p Location:
+                    .inline-block.marginleft-30= @my_mentor.profile.decorate.location
+                  .p.marginbottom-10
+                    .inline-block.h4.p Date of Birth:
+                    .inline-block.marginleft-30= @my_mentor.profile.decorate.birth_at
+                  .marginbottom-10.block 
+                    .p.h4 Social
+                    .margintop-10    
+                      - if !@my_mentor.profile.fb_url.nil? && @my_mentor.profile.fb_url != ""
+                        = link_to @my_mentor.profile.fb_url, :target => '_blank', :class => 'marginright-5' do
+                          %img{:src => '/assets/social/28x28/Facebook.png'}
+                      - if !@my_mentor.profile.tw_url.nil? && @my_mentor.profile.tw_url != ""
+                        = link_to @my_mentor.profile.tw_url, :target => '_blank', :class => 'marginright-5' do
+                          %img{:src => '/assets/social/28x28/Twitter.png'}
+                      / %img{:src => '/assets/social/28x28/Google Plus.png'}
+                      - if !@my_mentor.profile.inst_url.nil? && @my_mentor.profile.inst_url != ""
+                        = link_to @my_mentor.profile.inst_url, :target => '_blank', :class => 'marginright-5' do
+                          %img{:src => '/assets/social/28x28/Instagram.png'}  
+                .clearfix                                                                                                  
+                %hr
+                .h4 About
+                .p.margintop-15= @my_mentor.profile.decorate.about_my
+                %hr
+                .h4 Career
+                = render partial: 'specializations/list', :locals => { :related => @my_mentor.profile.specializations.or_default } 
+
+                
+              .right-block
+                = render partial: 'videos/chat_block', :locals => { :chat => @chat, :user_other => @my_mentor }
+            - else
+              .text-center.margintop-50.h4 Mentor not assigned yet

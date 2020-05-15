@@ -1,0 +1,125 @@
+/* admin */
+@font-face {
+	font-family: 'MyriadPro-Cond';
+	src: url('/assets/admin/fonts/myriad/MyriadPro-Cond_gdi.eot');
+	src: url('/assets/admin/fonts/myriad/MyriadPro-Cond_gdi.eot?#iefix') format('embedded-opentype'),
+		url('/assets/admin/fonts/myriad/MyriadPro-Cond_gdi.woff') format('woff'),
+		url('/assets/admin/fonts/myriad/MyriadPro-Cond_gdi.ttf') format('truetype'),
+		url('/assets/admin/fonts/myriad/MyriadPro-Cond_gdi.svg#MyriadPro-Cond') format('svg');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: condensed;
+	unicode-range: U+0020-25CA;
+}
+
+@font-face {
+  font-family: 'myriad-pro-regular';
+  src: url('/assets/admin/fonts/myriad-pro-regular/myriad-pro-regular.eot');
+  src: url('/assets/admin/fonts/myriad-pro-regular/myriad-pro-regular.eot') format('embedded-opentype'), url('/assets/admin/fonts/myriad-pro-regular/myriad-pro-regular.woff') format('woff'), url('/assets/admin/fonts/myriad-pro-regular/myriad-pro-regular.ttf') format('truetype'), url('/assets/admin/fonts/myriad-pro-regular/myriad-pro-regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Calibri-regular';
+  src: url('/assets/admin/fonts/calibri_regular/calibri.eot');
+  src: url('/assets/admin/fonts/calibri_regular/calibri.eot') format('embedded-opentype'), url('/assets/admin/fonts/calibri_regular/calibri.woff') format('woff'), url('/assets/admin/fonts/calibri_regular/calibri.ttf') format('truetype'), url('/assets/admin/fonts/calibri_regular/calibri.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'Calibri-Light';
+	src: url('/assets/admin/fonts/calibri_light/Calibri-Light_gdi.eot');
+	src: url('/assets/admin/fonts/calibri_light/Calibri-Light_gdi.eot?#iefix') format('embedded-opentype'),
+		url('/assets/admin/fonts/calibri_light/Calibri-Light_gdi.woff') format('woff'),
+		url('/assets/admin/fonts/calibri_light/Calibri-Light_gdi.ttf') format('truetype'),
+		url('/assets/admin/fonts/calibri_light/Calibri-Light_gdi.svg#Calibri-Light') format('svg');
+	font-weight: 300;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+000D-2C67;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/assets/admin/fonts/glyphicons/glyphicons-halflings-regular.eot');
+  src: url('/assets/admin/fonts/glyphicons/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/admin/fonts/glyphicons/glyphicons-halflings-regular.woff') format('woff'), url('/assets/admin/fonts/glyphicons/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/admin/fonts/glyphicons/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+@font-face {
+  font-family: 'SegoeUIBold';
+  src: url('/assets/admin/fonts/segoeuibold/segoeuibold.eot');
+  src: url('/assets/admin/fonts/segoeuibold/segoeuibold.eot') format('embedded-opentype'), url('/assets/admin/fonts/segoeuibold/segoeuibold.woff') format('woff'), url('/assets/admin/fonts/segoeuibold/segoeuibold.ttf') format('truetype'), url('/assets/admin/fonts/segoeuibold/segoeuibold.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'SegoeUIRegular';
+  src: url('/assets/admin/fonts/segoeuiregular/segoeuiregular.eot');
+  src: url('/assets/admin/fonts/segoeuiregular/segoeuiregular.eot') format('embedded-opentype'), url('/assets/admin/fonts/segoeuiregular/segoeuiregular.woff') format('woff'), url('/assets/admin/fonts/segoeuiregular/segoeuiregular.ttf') format('truetype'), url('/assets/admin/fonts/segoeuiregular/segoeuiregular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SegoeUILight';
+  src: url('/assets/admin/fonts/segoeuilight/segoe-ui-light.eot');
+  src: url('/assets/admin/fonts/segoeuilight/segoe-ui-light.eot') format('embedded-opentype'), url('/assets/admin/fonts/segoeuilight/segoe-ui-light.woff') format('woff'), url('/assets/admin/fonts/segoeuilight/segoe-ui-light.ttf') format('truetype'), url('/assets/admin/fonts/segoeuilight/segoe-ui-light.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'segoeuiSemiBold';
+  src: url('/assets/admin/fonts/segoeui-semi-bold/segoeui-semi-bold.eot');
+  src: url('/assets/admin/fonts/segoeui-semi-bold/segoeui-semi-bold.eot') format('embedded-opentype'), url('/assets/admin/fonts/segoeui-semi-bold/segoeui-semi-bold.woff') format('woff'), url('/assets/admin/fonts/segoeui-semi-bold/segoeui-semi-bold.ttf') format('truetype'), url('/assets/admin/fonts/segoeui-semi-bold/segoeui-semi-bold.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RageItalic_gdi';
+  src: url('/assets/admin/fonts/raga/RageItalic_gdi.eot');
+  src: url('/assets/admin/fonts/raga/RageItalic_gdi.eot') format('embedded-opentype'), url('/assets/admin/fonts/raga/RageItalic_gdi.woff') format('woff'), url('/assets/admin/fonts/raga/RageItalic_gdi.ttf') format('truetype'), url('/assets/admin/fonts/raga/RageItalic_gdi.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'century-gothic';
+  src: url('/assets/admin/fonts/century-gothic/century-gothic.eot');
+  src: url('/assets/admin/fonts/century-gothic/century-gothic.eot') format('embedded-opentype'), url('/assets/admin/fonts/century-gothic/century-gothic.woff') format('woff'), url('/assets/admin/fonts/century-gothic/century-gothic.ttf') format('truetype'), url('/assets/admin/fonts/century-gothic/century-gothic.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'century-gothic-bold';
+  src: url('/assets/admin/fonts/century-gothic-bold/century-gothic-bold.eot');
+  src: url('/assets/admin/fonts/century-gothic-bold/century-gothic-bold.eot') format('embedded-opentype'), url('/assets/admin/fonts/century-gothic-bold/century-gothic-bold.woff') format('woff'), url('/assets/admin/fonts/century-gothic-bold/century-gothic-bold.ttf') format('truetype'), url('/assets/admin/fonts/century-gothic-bold/century-gothic-bold.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ebrima-bold';
+  src: url('/assets/admin/fonts/ebrima/ebrima-bold/ebrima-bold.eot');
+  src: url('/assets/admin/fonts/ebrima/ebrima-bold/ebrima-bold.eot') format('embedded-opentype'), url('/assets/admin/fonts/ebrima/ebrima-bold/ebrima-bold.woff') format('woff'), url('/assets/admin/fonts/ebrima/ebrima-bold/ebrima-bold.ttf') format('truetype'), url('/assets/admin/fonts/ebrima/ebrima-bold/ebrima-bold.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ebrima';
+  src: url('/assets/admin/fonts/ebrima/ebrima/ebrima.eot');
+  src: url('/assets/admin/fonts/ebrima/ebrima/ebrima.eot') format('embedded-opentype'), url('/assets/admin/fonts/ebrima/ebrima/ebrima.woff') format('woff'), url('/assets/admin/fonts/ebrima/ebrima/ebrima.ttf') format('truetype'), url('/assets/admin/fonts/ebrima/ebrima/ebrima.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
